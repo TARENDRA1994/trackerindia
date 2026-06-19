@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { ShieldCheck, Users, GraduationCap, ArrowRight, Award, BookOpen, Clock } from "lucide-react";
 
 export default function HomePage() {
@@ -28,11 +29,8 @@ export default function HomePage() {
       {/* Hero Section */}
       <nav className="border-b border-stone-200 bg-white/80 backdrop-blur-md sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <div className="w-10 h-10 bg-primary flex items-center justify-center rounded shadow-lg">
-              <Award className="text-white w-6 h-6" />
-            </div>
-            <span className="text-xl font-serif font-bold tracking-tighter text-primary">UPSC Tracker India</span>
+          <div className="flex items-center">
+            <Image src="/logo.png" alt="UPSC Mentorship Logo" width={180} height={50} priority />
           </div>
           <div className="hidden md:flex gap-8 text-sm font-bold uppercase tracking-widest text-muted-foreground">
             <Link href="#features" className="hover:text-primary transition-colors">Features</Link>
@@ -52,6 +50,9 @@ export default function HomePage() {
            <div className="max-w-5xl mx-auto text-center space-y-10 relative z-10">
               <div className="inline-flex items-center gap-2 bg-primary/5 border border-primary/10 px-4 py-2 rounded-full text-primary text-xs font-bold uppercase tracking-widest">
                 <Clock className="w-4 h-4" /> Consistency is the Hallmark of a Civil Servant
+              </div>
+              <div className="flex justify-center mb-4">
+                <Image src="/logo.png" alt="UPSC Mentorship Logo" width={220} height={60} priority />
               </div>
               <h1 className="text-6xl md:text-8xl font-serif font-bold tracking-tighter text-primary leading-tight">
                 UPSC Mentorship <br /> <span className="italic text-accent">Ecosystem</span>
