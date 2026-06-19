@@ -1,0 +1,256 @@
+generator client {
+  provider   = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+
+model User {
+  id          String             @id @default(cuid())
+  name        String
+  email       String             @unique
+  whatsapp    String             @unique
+  dob         DateTime
+  state       String
+  city        String
+  medium      String
+  exam        String
+  targetYear  Int
+  role        Role               @default(STUDENT)
+  status      RegistrationStatus @default(PENDING)
+  loginId     String?            @unique
+  password    String?
+  image       String?            // Profile Picture URL/Base64
+  createdAt   DateTime           @default(now())
+  updatedAt   DateTime           @updatedAt
+  
+  // Relationships
+  dailyLogs             DailyLog[]
+  medicalLogs           MedicalLog[]
+  testResults           TestResult[]
+  mobileChangeRequests  MobileChangeRequest[]
+  mentorLogs            MentorLog[]        @relation("MentorLogs")
+  
+  // Mentorship Logic (Many-to-Many)
+  mentors               User[]             @relation("UserMentors")
+  students              User[]             @relation("UserMentors")
+  
+  // Feedback
+  feedbacksReceived     Feedback[]         @relation("ReceivedFeedback")
+  feedbacksGiven        Feedback[]         @relation("GivenFeedback")
+  
+  // Notifications
+  notifications         Notification[]     @relation("UserNotifications")
+  whatsappLogs          WhatsAppMessageLog[] @relation("UserWhatsAppLogs")
+}
+
+model MobileChangeRequest {
+  id          String         @id @default(cuid())
+  userId      String
+  user        User           @relation(fields: [userId], references: [id])
+  newMobile   String
+  reason      String?
+  status      RequestStatus  @default(PENDING)
+  createdAt   DateTime       @default(now())
+  updatedAt   DateTime       @updatedAt
+}
+
+enum RequestStatus {
+  PENDING
+  APPROVED
+  REJECTED
+}
+
+model DailyLog {
+  id                    String   @id @default(cuid())
+  userId                String
+  timestamp             DateTime @default(now())
+  user                  User     @relation(fields: [userId], references: [id])
+
+  // SECTION 0: Intent
+  primaryGoal           String?
+
+  // SECTION 1: Emotional & Mental State
+  feeling               String   @default("Normal")
+  mentalHealthSupport   Boolean  @default(false)
+  supportType           String?
+
+  // SECTION 2: Daily Basics
+  wakeUpTime            String   @default("06:00")
+  sleepDuration         String   @default("7h")
+
+  // SECTION 3: Core Study Activity
+  currentAffairsDone    Boolean  @default(false)
+  attemptedCaTest       Boolean? @default(false)
+  pyqAnalysisDone       Boolean  @default(false)
+  subjectsStudied       String?  // Comma separated
+  studyHours            String   @default("0")
+
+  // SECTION 4: Study Quality & Behavior
+  workCompleted         String?  // 0-25%, 25-50% etc
+  focusLevel            String?
+  biggestDistraction    String?
+  reductionPlan         String?
+  productiveTime        String?
+  startDifficulty       String?
+  breaksEffect          String?
+  effortSatisfaction    String?
+
+  // SECTION 5: Answer Writing
+  answerWritingDone     Boolean  @default(false)
+  answersCount          Int?     @default(0)
+  reviewedAnswers       Boolean? @default(false)
+
+  // SECTION 6: Test Tracking
+  testAttempted         Boolean  @default(false)
+  testName              String?
+  testScore             Int?
+  mistakeType           String?
+
+  // SECTION 7: Learning, Retention & Depth
+  subjectsRevised       String?  // Comma separated
+  topicsRevised         String?
+  hardestTopic          String?
+  difficultyReason      String?
+  retentionScore        Int      @default(0)
+  understandingLevel    String?
+  recallLevel           String?
+  confidenceUPSC        String?
+  rememberAfter3Days    String?
+  mentalOverload        String?
+  weakestSubject        String?
+  urgentRevisionTopic   String?
+
+  // SECTION 8: Productivity & Reflection
+  studyEffectiveness    String?
+  dayRating             String?
+  smallWin              String?
+
+  // SECTION 9: Backlog & Pressure
+  buildingBacklog       String?
+  tasksForward          Boolean? @default(false)
+
+  // SECTION 10: Planning
+  clarityTomorrow       String?
+
+  // SECTION 11: Support & Feedback
+  mentorInteractionDone Boolean  @default(false)
+  stuckInTopic          Boolean? @default(false)
+  stuckTopicDetails     String?
+  feedbackCategory      String?
+  feedback              String?
+  
+  // AI Analysis Results
+  aiAnalysis            String?    // Detailed diagnosis
+  aiImprovement         String?    // Actionable areas
+}
+
+model TestResult {
+  id             String   @id @default(cuid())
+  userId         String
+  course         String
+  subject        String
+  score          Int
+  totalQuestions Int
+  accuracy       Float
+  timeTaken      Int
+  weakAreas      String
+  timestamp      DateTime @default(now())
+  user           User     @relation(fields: [userId], references: [id])
+}
+
+model MedicalLog {
+  id                String   @id @default(cuid())
+  userId            String
+  sleepQuality      String
+  eyeStrain         String
+  stressLevel       String
+  headacheFrequency String
+  aiSuggestions     String
+  timestamp         DateTime @default(now())
+  user              User     @relation(fields: [userId], references: [id])
+}
+
+model Feedback {
+  id            String   @id @default(cuid())
+  fromId        String
+  toId          String
+  content       String
+  type          String   // SUGGESTION, CRITIQUE, PRAISE
+  fromUser      User     @relation("GivenFeedback", fields: [fromId], references: [id])
+  toUser        User     @relation("ReceivedFeedback", fields: [toId], references: [id])
+  createdAt     DateTime @default(now())
+}
+
+model Notification {
+  id        String   @id @default(cuid())
+  userId    String
+  title     String
+  message   String
+  type      String   @default("ANNOUNCEMENT") // ANNOUNCEMENT, ALERT, REMINDER
+  read      Boolean  @default(false)
+  createdAt DateTime @default(now())
+  user      User     @relation("UserNotifications", fields: [userId], references: [id])
+}
+
+enum Role {
+  STUDENT
+  MENTOR
+  ADMIN
+}
+
+enum RegistrationStatus {
+  PENDING
+  APPROVED
+  REJECTED
+  HOLD
+}
+
+model MentorLog {
+  id                    String   @id @default(cuid())
+  mentorId              String
+  mentor                User     @relation("MentorLogs", fields: [mentorId], references: [id])
+  timestamp             DateTime @default(now())
+
+  // SECTION 1: 1:1 SESSION TRACKING
+  oneOnOneDone          Boolean  @default(false)
+  sessionCount          Int      @default(0)
+  sessionDetails        String?  // JSON string: [{ studentName, studentId, overview, prepLevel }]
+
+  // SECTION 2: BATCH SESSION TRACKING
+  batchSessionDone      Boolean  @default(false)
+  batchOverview         String?
+  batchMissedReason     String?
+
+  // SECTION 3: ADDITIONAL WORK DONE
+  additionalTasks       String?  // Comma separated list
+
+  // SECTION 4: FEEDBACK OR ISSUES
+  hasIssue              Boolean  @default(false)
+  issueDetail           String?
+
+  // SECTION 5: WORK HOURS
+  workHours             Int      @default(0)
+
+  // SECTION 6: PRODUCTIVITY SELF-ASSESSMENT
+  dailyProductivity     Int      @default(0)
+  weeklyProductivity    Int      @default(0)
+
+  // SECTION 7: TOP STUDENTS OF THE DAY
+  topStudents           String?  // JSON string: [{ studentName, studentId, rating }]
+}
+
+model WhatsAppMessageLog {
+  id          String   @id @default(cuid())
+  userId      String
+  user        User     @relation("UserWhatsAppLogs", fields: [userId], references: [id])
+  messageType String   @default("DAILY_REMINDER")
+  status      String   @default("PENDING") // PENDING, SENT, FAILED, DELIVERED, READ, REPLIED
+  messageId   String?  // ID returned from Meta API
+  errorDetail String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
