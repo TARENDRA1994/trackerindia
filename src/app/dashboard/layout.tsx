@@ -6,14 +6,16 @@ import {
   BarChart3, BookOpen, ClipboardCheck, HeartPulse, 
   LogOut, User, LayoutDashboard, Users,
   ShieldCheck, UserPlus, MessageSquare, TrendingUp, History,
-  GraduationCap, Clock
+  GraduationCap, Clock, Menu, X
 } from "lucide-react";
 import { signOut, useSession } from "next-auth/react";
+import { useState } from "react";
 
 export default function DashboardLayout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   const { data: session } = useSession();
   const role = (session?.user as any)?.role || "STUDENT";
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const navItems = {
     STUDENT: [
@@ -43,9 +45,33 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
   const navigation = navItems[role as keyof typeof navItems] || [];
 
   return (
-    <div className="min-h-screen bg-[#FDFCF8] flex">
-      <aside className="w-72 bg-primary text-white flex flex-col fixed h-full shadow-2xl z-50">
-        <div className="p-10">
+    <div className="min-h-screen bg-[#FDFCF8] flex flex-col md:flex-row">
+      {/* Mobile Top Bar */}
+      <div className="md:hidden bg-primary text-white p-4 flex items-center justify-between sticky top-0 z-40 shadow-md">
+        <div className="flex items-center gap-3">
+           <div className="w-8 h-8 bg-white/10 rounded flex items-center justify-center font-bold text-sm">🇮🇳</div>
+           <div>
+              <h1 className="text-lg font-serif font-bold text-white tracking-widest uppercase italic">Tracker India</h1>
+           </div>
+        </div>
+        <button onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} className="p-2 bg-white/10 rounded-sm">
+          {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+        </button>
+      </div>
+
+      {/* Overlay for mobile */}
+      {isMobileMenuOpen && (
+        <div 
+          className="fixed inset-0 bg-black/60 backdrop-blur-sm z-40 md:hidden"
+          onClick={() => setIsMobileMenuOpen(false)}
+        />
+      )}
+
+      {/* Sidebar */}
+      <aside className={`w-72 bg-primary text-white flex flex-col fixed h-full shadow-2xl z-50 transition-transform duration-300 ease-in-out ${
+        isMobileMenuOpen ? "translate-x-0" : "-translate-x-full md:translate-x-0"
+      }`}>
+        <div className="p-10 hidden md:block">
           <div className="flex items-center gap-3">
              <div className="w-8 h-8 bg-white/10 rounded flex items-center justify-center font-bold">🇮🇳</div>
              <div>
@@ -55,7 +81,18 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
           </div>
         </div>
 
-        <div className="px-6 py-4 mb-4">
+        {/* Mobile Sidebar Header */}
+        <div className="md:hidden p-6 flex justify-between items-center border-b border-white/10 bg-primary">
+           <div className="flex items-center gap-3">
+              <div className="w-8 h-8 bg-white/10 rounded flex items-center justify-center font-bold">🇮🇳</div>
+              <h1 className="text-lg font-serif font-bold italic tracking-widest uppercase text-white">Menu</h1>
+           </div>
+           <button onClick={() => setIsMobileMenuOpen(false)}>
+             <X className="w-6 h-6 text-white/50 hover:text-white transition-colors" />
+           </button>
+        </div>
+
+        <div className="px-6 py-4 mb-4 mt-4 md:mt-0">
            <div className="p-4 bg-white/5 border border-white/10 rounded-sm">
               <p className="text-[10px] font-bold text-white/40 uppercase tracking-widest mb-1">Signed in as</p>
               <p className="text-sm font-bold truncate text-accent italic">{role}</p>
@@ -69,6 +106,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
               <Link
                 key={item.name}
                 href={item.href}
+                onClick={() => setIsMobileMenuOpen(false)}
                 className={`flex items-center gap-4 px-5 py-4 text-[10px] font-bold uppercase tracking-[0.2em] transition-all rounded-sm ${
                   isActive ? "bg-white text-primary shadow-xl translate-x-2" : "text-white/50 hover:bg-white/5 hover:text-white"
                 }`}
@@ -80,9 +118,10 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
           })}
         </nav>
 
-        <div className="p-8 border-t border-white/5 space-y-3">
+        <div className="p-8 border-t border-white/5 space-y-3 pb-safe">
           <Link 
             href="/dashboard/profile"
+            onClick={() => setIsMobileMenuOpen(false)}
             className={`w-full flex items-center gap-4 px-5 py-4 text-[10px] font-bold uppercase tracking-[0.2em] transition-all border border-white/5 rounded-sm ${
                pathname === '/dashboard/profile' ? "bg-accent text-white" : "text-white/40 hover:text-white hover:bg-white/5"
             }`}
@@ -100,7 +139,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
         </div>
       </aside>
 
-      <main className="flex-1 ml-72 min-h-screen">
+      <main className="flex-1 md:ml-72 min-h-screen">
         {children}
       </main>
     </div>
