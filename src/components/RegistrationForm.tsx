@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { CheckCircle, AlertCircle, ChevronRight, Loader2 } from "lucide-react";
 
 const states = [
@@ -24,6 +24,14 @@ export default function RegistrationForm() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [success, setSuccess] = useState(false);
+
+  const isFormValid = 
+    formData.name.trim() !== "" && 
+    formData.email.trim() !== "" && 
+    formData.whatsapp.trim() !== "" && 
+    formData.dob !== "" && 
+    formData.state !== "" && 
+    formData.city.trim() !== "";
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -48,8 +56,14 @@ export default function RegistrationForm() {
       }
 
       setSuccess(true);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     } catch (err: any) {
       setError(err.message);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      // Fallback alert for mobile browsers if scroll is missed
+      if (typeof window !== "undefined" && window.innerWidth < 768) {
+        alert("Registration Error: " + err.message);
+      }
     } finally {
       setLoading(false);
     }
@@ -103,6 +117,7 @@ export default function RegistrationForm() {
               className="w-full p-3 bg-white border-b-2 border-border focus:border-primary outline-none transition-colors"
               placeholder="e.g. Rahul Sharma"
               onChange={handleChange}
+              value={formData.name}
             />
           </div>
 
@@ -116,6 +131,7 @@ export default function RegistrationForm() {
               className="w-full p-3 bg-white border-b-2 border-border focus:border-primary outline-none transition-colors"
               placeholder="rahul@example.com"
               onChange={handleChange}
+              value={formData.email}
             />
           </div>
 
@@ -129,6 +145,7 @@ export default function RegistrationForm() {
               className="w-full p-3 bg-white border-b-2 border-border focus:border-primary outline-none transition-colors"
               placeholder="+91 XXXXX XXXXX"
               onChange={handleChange}
+              value={formData.whatsapp}
             />
           </div>
 
@@ -141,6 +158,7 @@ export default function RegistrationForm() {
               type="date"
               className="w-full p-3 bg-white border-b-2 border-border focus:border-primary outline-none transition-colors"
               onChange={handleChange}
+              value={formData.dob}
             />
           </div>
 
@@ -152,6 +170,7 @@ export default function RegistrationForm() {
               name="state"
               className="w-full p-3 bg-white border-b-2 border-border focus:border-primary outline-none transition-colors"
               onChange={handleChange}
+              value={formData.state}
             >
               <option value="">Select State</option>
               {states.map(s => <option key={s} value={s}>{s}</option>)}
@@ -168,6 +187,7 @@ export default function RegistrationForm() {
               className="w-full p-3 bg-white border-b-2 border-border focus:border-primary outline-none transition-colors"
               placeholder="Enter City"
               onChange={handleChange}
+              value={formData.city}
             />
           </div>
 
@@ -176,11 +196,11 @@ export default function RegistrationForm() {
             <label className="text-sm font-semibold text-foreground/80">Medium</label>
             <div className="flex gap-4 p-2">
               <label className="flex items-center gap-2 cursor-pointer">
-                <input type="radio" name="medium" value="English" defaultChecked onChange={handleChange} className="accent-primary" />
+                <input type="radio" name="medium" value="English" checked={formData.medium === "English"} onChange={handleChange} className="accent-primary" />
                 <span className="text-sm">English</span>
               </label>
               <label className="flex items-center gap-2 cursor-pointer">
-                <input type="radio" name="medium" value="Hindi" onChange={handleChange} className="accent-primary" />
+                <input type="radio" name="medium" value="Hindi" checked={formData.medium === "Hindi"} onChange={handleChange} className="accent-primary" />
                 <span className="text-sm">Hindi</span>
               </label>
             </div>
@@ -194,6 +214,7 @@ export default function RegistrationForm() {
               name="exam"
               className="w-full p-3 bg-white border-b-2 border-border focus:border-primary outline-none transition-colors"
               onChange={handleChange}
+              value={formData.exam}
             >
               <option value="UPSC">UPSC Civil Services</option>
               <option value="State PCS">State PCS</option>
@@ -208,6 +229,7 @@ export default function RegistrationForm() {
               name="targetYear"
               className="w-full p-3 bg-white border-b-2 border-border focus:border-primary outline-none transition-colors"
               onChange={handleChange}
+              value={formData.targetYear}
             >
               {[2027, 2028, 2029, 2030].map(y => <option key={y} value={y}>{y}</option>)}
             </select>
@@ -216,9 +238,9 @@ export default function RegistrationForm() {
 
         <div className="pt-6">
           <button
-            disabled={loading}
+            disabled={loading || !isFormValid}
             type="submit"
-            className="w-full bg-primary hover:bg-primary/90 text-white p-4 font-semibold uppercase tracking-widest flex items-center justify-center gap-2 transition-all disabled:opacity-50"
+            className="w-full bg-primary hover:bg-primary/90 text-white p-4 font-semibold uppercase tracking-widest flex items-center justify-center gap-2 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
           >
             {loading ? <Loader2 className="animate-spin" /> : <>Complete Enrollment <ChevronRight className="w-5 h-5" /></>}
           </button>
