@@ -36,7 +36,7 @@ export async function POST(req: Request) {
         Message: 
         Welcome to Tracker India 🇮🇳
         Your login credentials:
-        URL: http://localhost:3000/login
+        URL: https://trackerindia.com/login
         User ID: ${loginId}
         Password: ${password}
         Stay consistent. Success is near.
