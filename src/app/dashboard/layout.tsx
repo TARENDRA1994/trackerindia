@@ -26,11 +26,11 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
       { name: "Medical Advisory", href: "/dashboard/medical", icon: HeartPulse },
     ],
     MENTOR: [
-      { name: "Performance Map", href: "/dashboard/mentor", icon: LayoutDashboard },
+      { name: "Performance Map", href: "/dashboard/mentor?v=2", icon: LayoutDashboard },
       { name: "Daily Activity Log", href: "/dashboard/mentor-log", icon: ClipboardCheck },
-      { name: "Assigned Aspirants", href: "/dashboard/mentor", icon: Users },
+      { name: "Assigned Aspirants", href: "/dashboard/mentor?v=2", icon: Users },
       { name: "Course Review", href: "/dashboard/analytics", icon: BarChart3 },
-      { name: "Comparison Lab", href: "/dashboard/mentor", icon: TrendingUp },
+      { name: "Comparison Lab", href: "/dashboard/mentor?v=2", icon: TrendingUp },
     ],
     ADMIN: [
       { name: "Command Center", href: "/dashboard/admin", icon: ShieldCheck },

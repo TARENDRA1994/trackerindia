@@ -19,7 +19,7 @@ export default withAuth(
     // 2. Role-Based Dashboard Routing (Root redirection)
     if (path === "/dashboard") {
        if (token?.role === "MENTOR") {
-          return NextResponse.redirect(new URL("/dashboard/mentor", req.url));
+          return NextResponse.redirect(new URL("/dashboard/mentor?v=2", req.url));
        }
        if (token?.role === "ADMIN") {
           return NextResponse.redirect(new URL("/dashboard/admin", req.url));
