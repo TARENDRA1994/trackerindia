@@ -84,6 +84,12 @@ export const authOptions: NextAuthOptions = {
       }
       return session;
     },
+    async redirect({ url, baseUrl }) {
+      // If the url is absolute, just trust it.
+      // This bypasses the default NextAuth check that rejects URLs that don't match NEXTAUTH_URL exactly.
+      if (url.startsWith('http')) return url;
+      return url.startsWith('/') ? `${baseUrl}${url}` : baseUrl;
+    },
   },
   pages: {
     signIn: "/login",
