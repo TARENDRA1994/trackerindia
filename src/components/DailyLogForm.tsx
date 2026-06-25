@@ -11,54 +11,49 @@ import {
 const translations: any = {
   English: {
     sections: {
-      0: "SECTION 0: Intent",
-      1: "SECTION 1: Emotional & Mental State",
-      2: "SECTION 2: Daily Basics",
+      0: "SECTION 0: Overall Purpose",
+      1: "SECTION 1: Emotional & Mental Well-Being",
+      2: "SECTION 2: Sleep Cycle",
       3: "SECTION 3: Core Study Activity",
-      4: "SECTION 4: Study Quality & Behavior",
+      4: "SECTION 4: Self-Analysis of Quality & Focus",
       5: "SECTION 5: Answer Writing",
       6: "SECTION 6: Test Tracking",
       7: "SECTION 7: Learning & Retention",
-      8: "SECTION 8: Productivity Reflection",
-      9: "SECTION 9: Backlog & Pressure",
-      10: "SECTION 10: Planning",
-      11: "SECTION 11: Feedback & Support",
+      8: "SECTION 8: Planning",
+      9: "SECTION 9: Feedback & Support",
     },
     subtitles: {
-      0: "Set your focus for the day.",
+      0: "Set your focus for tomorrow.",
     },
     questions: {
-      Q0: "What was your primary goal for today?",
+      Q0: "What is your primary goal for tomorrow?",
       Q1: "How are you feeling today?",
-      Q1a: "Would you like mental health support?",
       Q2: "What time did you wake up today?",
-      Q3: "Sleep duration",
-      Q4: "Current affairs studied?",
-      Q5: "PYQs analysed?",
-      Q6: "Subjects studied",
-      Q7: "Total Study hours",
-      Q8: "Planned work completed",
-      Q9: "Focus level",
-      Q10: "Biggest distraction",
-      Q11: "How will you reduce this tomorrow?",
-      Q12: "Practiced answer writing today?",
-      Q12a: "Number of answers written",
-      Q12b: "Reviewed them?",
-      Q13: "Test attempted today?",
-      Q13a: "Test Name",
-      Q13b: "Score",
-      Q13c: "Primary mistake type",
-      Q14: "Subjects revised",
-      Q15: "Hardest topic today",
-      Q16: "Retention Level (0-100%)",
-      Q17: "Understanding level",
-      Q18: "Study effectiveness",
-      Q19: "One small win today",
-      Q20: "Building backlog?",
-      Q21: "Tasks carrying forward?",
-      Q22: "Clarity for tomorrow's plan?",
-      Q23: "Stuck in any topic?",
-      Q24: "General feedback for mentor",
+      Q3: "How Much time did you sleep?",
+      Q4: "Did you study Current Affairs Today?",
+      Q5: "Did you analyse or solve PYQ today?",
+      Q6: "Which Subjects have you studied today?",
+      Q7: "Total Study hours?",
+      Q8: "How much of your Planned work is completed as per yesterday's plan?",
+      Q9: "Mark Your Focus level as per yourself?",
+      Q10: "What was your biggest distraction today?",
+      Q11: "How will you reduce this distraction tomorrow?",
+      Q12: "Did You Practiced answer writing today?",
+      Q12a: "Number of answers written?",
+      Q12b: "Did your mentor evaluate them?",
+      Q13: "Did you attempt any test today?",
+      Q13a: "Test Name?",
+      Q13b: "Score?",
+      Q13c: "Primary mistakes?",
+      Q13d: "Main reason for the mistakes?",
+      Q14: "Subjects revised?",
+      Q15: "Hardest topic today?",
+      Q16: "Self Retention Level (0-100%)",
+      Q17: "Overall Understanding level from the Last Revision?",
+      Q18: "Do you want to take a challenge for tomorrow?",
+      Q18a: "Explain your challenge?",
+      Q19: "General feedback for mentor",
+      Q19a: "Please explain your feedback",
     },
     options: {
       yes: "Yes",
@@ -74,54 +69,49 @@ const translations: any = {
   },
   Hindi: {
     sections: {
-      0: "अनुभाग 0: इरादा",
-      1: "अनुभाग 1: भावनात्मक और मानसिक स्थिति",
-      2: "अनुभाग 2: दैनिक बुनियादी बातें",
+      0: "अनुभाग 0: समग्र उद्देश्य",
+      1: "अनुभाग 1: भावनात्मक और मानसिक भलाई",
+      2: "अनुभाग 2: नींद का चक्र",
       3: "अनुभाग 3: मुख्य अध्ययन गतिविधि",
-      4: "अनुभाग 4: अध्ययन की गुणवत्ता और व्यवहार",
+      4: "अनुभाग 4: गुणवत्ता और फोकस का स्व-विश्लेषण",
       5: "अनुभाग 5: उत्तर लेखन",
       6: "अनुभाग 6: टेस्ट ट्रैकिंग",
       7: "अनुभाग 7: सीखना और प्रतिधारण (Retention)",
-      8: "अनुभाग 8: उत्पादकता प्रतिबिंब",
-      9: "अनुभाग 9: बैकलॉग और दबाव",
-      10: "अनुभाग 10: योजना बनाना",
-      11: "अनुभाग 11: प्रतिक्रिया और समर्थन",
+      8: "अनुभाग 8: योजना बनाना",
+      9: "अनुभाग 9: प्रतिक्रिया और समर्थन",
     },
     subtitles: {
-      0: "आज के लिए अपना ध्यान केंद्रित करें।",
+      0: "कल के लिए अपना लक्ष्य निर्धारित करें।",
     },
     questions: {
-      Q0: "आज आपका प्राथमिक लक्ष्य क्या था?",
+      Q0: "कल के लिए आपका प्राथमिक लक्ष्य क्या है?",
       Q1: "आज आप कैसा महसूस कर रहे हैं?",
-      Q1a: "क्या आप मानसिक स्वास्थ्य सहायता चाहेंगे?",
       Q2: "आज आप किस समय जागे?",
-      Q3: "नींद की अवधि",
-      Q4: "क्या करेंट अफेयर्स का अध्ययन किया?",
-      Q5: "क्या PYQs का विश्लेषण किया?",
-      Q6: "अध्ययन किए गए विषय",
-      Q7: "कुल अध्ययन के घंटे",
-      Q8: "नियोजित कार्य पूरा हुआ",
-      Q9: "एकाग्रता का स्तर",
-      Q10: "सबसे बड़ा विक्षेप (Distraction)",
-      Q11: "कल आप इसे कैसे कम करेंगे?",
-      Q12: "क्या आज उत्तर लेखन का अभ्यास किया?",
-      Q12a: "लिखे गए उत्तरों की संख्या",
-      Q12b: "उनकी समीक्षा की?",
-      Q13: "क्या आज टेस्ट दिया?",
-      Q13a: "टेस्ट का नाम",
-      Q13b: "स्कोर",
-      Q13c: "मुख्य गलती का प्रकार",
-      Q14: "दोहराए गए विषय",
-      Q15: "आज का सबसे कठिन विषय",
-      Q16: "प्रतिधारण स्तर (0-100%)",
-      Q17: "समझ का स्तर",
-      Q18: "अध्ययन की प्रभावशीलता",
-      Q19: "आज की एक छोटी जीत",
-      Q20: "क्या बैकलॉग बन रहा है?",
-      Q21: "क्या कार्य आगे बढ़ रहे हैं?",
-      Q22: "कल की योजना के लिए स्पष्टता?",
-      Q23: "किसी विषय में अटके हुए हैं?",
-      Q24: "मेंटॉर के लिए सामान्य प्रतिक्रिया",
+      Q3: "आपने कितना समय सोया?",
+      Q4: "क्या आपने आज करेंट अफेयर्स का अध्ययन किया?",
+      Q5: "क्या आपने आज PYQ का विश्लेषण या समाधान किया?",
+      Q6: "आज आपने किन विषयों का अध्ययन किया?",
+      Q7: "कुल अध्ययन के घंटे?",
+      Q8: "कल की योजना के अनुसार आपका कितना काम पूरा हुआ है?",
+      Q9: "अपने अनुसार अपने फोकस स्तर को चिह्नित करें?",
+      Q10: "आज आपका सबसे बड़ा ध्यान भंग (Distraction) क्या था?",
+      Q11: "कल आप इस ध्यान भंग को कैसे कम करेंगे?",
+      Q12: "क्या आपने आज उत्तर लेखन का अभ्यास किया?",
+      Q12a: "लिखे गए उत्तरों की संख्या?",
+      Q12b: "क्या आपके मेंटॉर ने उनका मूल्यांकन किया?",
+      Q13: "क्या आपने आज कोई टेस्ट दिया?",
+      Q13a: "टेस्ट का नाम?",
+      Q13b: "स्कोर?",
+      Q13c: "मुख्य गलतियाँ?",
+      Q13d: "गलतियों का मुख्य कारण?",
+      Q14: "दोहराए गए विषय?",
+      Q15: "आज का सबसे कठिन विषय?",
+      Q16: "स्वयं प्रतिधारण स्तर (0-100%)",
+      Q17: "पिछले रिवीजन से समग्र समझ का स्तर?",
+      Q18: "क्या आप कल के लिए कोई चुनौती लेना चाहते हैं?",
+      Q18a: "अपनी चुनौती समझाएं?",
+      Q19: "मेंटॉर के लिए सामान्य प्रतिक्रिया",
+      Q19a: "कृपया अपनी प्रतिक्रिया समझाएं",
     },
     options: {
       yes: "हाँ",
@@ -163,12 +153,9 @@ export default function DailyLogForm({ medium = "English" }: { medium?: string }
   const [formData, setFormData] = useState({
     primaryGoal: "",
     feeling: "",
-    mentalHealthSupport: false,
-    supportType: "",
     wakeUpTime: "06:00",
     sleepDuration: "6-8",
     currentAffairsDone: false,
-    attemptedCaTest: false,
     pyqAnalysisDone: false,
     subjectsStudied: [] as string[],
     studyHours: "6-8",
@@ -176,10 +163,6 @@ export default function DailyLogForm({ medium = "English" }: { medium?: string }
     focusLevel: "Moderate",
     biggestDistraction: "",
     reductionPlan: "",
-    productiveTime: "Morning",
-    startDifficulty: "Moderate",
-    breaksEffect: "Sometimes",
-    effortSatisfaction: "Moderately",
     answerWritingDone: false,
     answersCount: 0,
     reviewedAnswers: false,
@@ -187,32 +170,18 @@ export default function DailyLogForm({ medium = "English" }: { medium?: string }
     testName: "",
     testScore: "",
     mistakeType: "",
+    mistakeReason: "",
     subjectsRevised: [] as string[],
-    topicsRevised: "",
     hardestTopic: "",
-    difficultyReason: "",
     retentionScore: 70,
     understandingLevel: "Basic",
-    recallLevel: "Half",
-    confidenceUPSC: "Moderate",
-    rememberAfter3Days: "Maybe",
-    mentalOverload: "Slight",
-    weakestSubject: "",
-    urgentRevisionTopic: "",
-    studyEffectiveness: "Effective",
-    dayRating: "Average",
-    smallWin: "",
-    buildingBacklog: "No",
-    tasksForward: false,
-    clarityTomorrow: "Somewhat",
-    mentorInteractionDone: false,
-    stuckInTopic: false,
-    stuckTopicDetails: "",
-    feedbackCategory: "General",
+    takeChallenge: false,
+    challengeExplanation: "",
     feedback: "",
+    feedbackExplanation: "",
   });
 
-  const totalSteps = 12;
+  const totalSteps = 10;
   const t = (key: string, section?: string) => {
     const lang = translations[medium] || translations.English;
     if (section) return lang[section][key] || key;
@@ -274,18 +243,6 @@ export default function DailyLogForm({ medium = "English" }: { medium?: string }
                 </button>
               ))}
             </div>
-            {(formData.feeling === "Sad" || formData.feeling === "Depressed") && (
-              <div className="mt-6 p-6 bg-red-50 border border-red-100 space-y-4">
-                <p className="text-xs font-bold uppercase tracking-widest text-red-900 italic">{t("Q1a", "questions")}</p>
-                <div className="flex gap-4">
-                  {["Yes", "No"].map(opt => (
-                    <button key={opt} onClick={() => setFormData({...formData, mentalHealthSupport: opt === "Yes"})} className={`px-8 py-3 border text-[10px] font-bold uppercase tracking-widest transition-all ${(formData.mentalHealthSupport && opt === "Yes") || (!formData.mentalHealthSupport && opt === "No") ? "bg-red-600 text-white border-red-600" : "bg-white text-red-600 border-red-200"}`}>
-                      {t(opt.toLowerCase())}
-                    </button>
-                  ))}
-                </div>
-              </div>
-            )}
           </QuestionBlock>
         </div>
       );
@@ -379,7 +336,8 @@ export default function DailyLogForm({ medium = "English" }: { medium?: string }
                   <QuestionBlock q="Q13b" label={t("Q13b", "questions")}>
                      <input type="number" className="p-4 border border-stone-200 outline-none text-xl font-bold w-32" value={formData.testScore} onChange={(e) => setFormData({...formData, testScore: e.target.value})} />
                   </QuestionBlock>
-                  <VerticalSelection q="Q13c" label={t("Q13c", "questions")} options={["Conceptual", "Lack of revision", "Silly mistakes", "Time issue", "Misinterpretation"]} value={formData.mistakeType} onChange={(v: string) => setFormData({...formData, mistakeType: v})} />
+                  <VerticalSelection q="Q13c" label={t("Q13c", "questions")} options={["Factual Mistakes", "Conceptual Mistakes", "Logical Mistakes", "Silly Mistakes"]} value={formData.mistakeType} onChange={(v: string) => setFormData({...formData, mistakeType: v})} />
+                  <VerticalSelection q="Q13d" label={t("Q13d", "questions")} options={["Lack of Revision", "Misinterpretation", "Time Pressure", "All above Reasons"]} value={formData.mistakeReason} onChange={(v: string) => setFormData({...formData, mistakeReason: v})} />
                </div>
              )}
           </QuestionBlock>
@@ -410,43 +368,33 @@ export default function DailyLogForm({ medium = "English" }: { medium?: string }
       case 8: return (
         <div className="space-y-12">
           <SectionHeader title={t("8", "sections")} />
-          <VerticalSelection q="Q18" label={t("Q18", "questions")} options={["Very ineffective", "Neutral", "Highly effective"]} value={formData.studyEffectiveness} onChange={(v: string) => setFormData({...formData, studyEffectiveness: v})} />
-          <QuestionBlock q="Q19" label={t("Q19", "questions")}>
-             <textarea className="w-full p-4 border border-stone-200 outline-none min-h-[100px] italic" value={formData.smallWin} onChange={(e) => setFormData({...formData, smallWin: e.target.value})} />
+          <QuestionBlock q="Q18" label={t("Q18", "questions")}>
+             <VerticalToggle active={formData.takeChallenge} onClick={(v) => setFormData({...formData, takeChallenge: v})} medium={medium} />
+             {formData.takeChallenge && (
+               <div className="mt-8 space-y-8 pl-8 border-l border-primary/10">
+                 <QuestionBlock q="Q18a" label={t("Q18a", "questions")}>
+                    <textarea className="w-full p-4 border border-stone-200 outline-none italic min-h-[100px]" value={formData.challengeExplanation} onChange={(e) => setFormData({...formData, challengeExplanation: e.target.value})} />
+                 </QuestionBlock>
+               </div>
+             )}
           </QuestionBlock>
         </div>
       );
       case 9: return (
         <div className="space-y-12">
           <SectionHeader title={t("9", "sections")} />
-          <VerticalSelection q="Q20" label={t("Q20", "questions")} options={["Yes", "No", "Not sure"]} value={formData.buildingBacklog} onChange={(v: string) => setFormData({...formData, buildingBacklog: v})} />
-          <QuestionBlock q="Q21" label={t("Q21", "questions")}>
-             <VerticalToggle active={formData.tasksForward} onClick={(v) => setFormData({...formData, tasksForward: v})} medium={medium} />
-          </QuestionBlock>
-        </div>
-      );
-      case 10: return (
-        <div className="space-y-8">
-          <SectionHeader title={t("10", "sections")} />
-          <VerticalSelection q="Q22" label={t("Q22", "questions")} options={["Yes", "Somewhat", "Not yet"]} value={formData.clarityTomorrow} onChange={(v: string) => setFormData({...formData, clarityTomorrow: v})} />
-        </div>
-      );
-      case 11: return (
-        <div className="space-y-12">
-          <SectionHeader title={t("11", "sections")} />
-          <QuestionBlock q="Q23" label={t("Q23", "questions")}>
-             <VerticalToggle active={formData.stuckInTopic} onClick={(v) => setFormData({...formData, stuckInTopic: v})} medium={medium} />
-             {formData.stuckInTopic && (
-               <textarea className="w-full p-4 border border-stone-200 outline-none mt-4 italic" placeholder="Details..." value={formData.stuckTopicDetails} onChange={(e) => setFormData({...formData, stuckTopicDetails: e.target.value})} />
-             )}
-          </QuestionBlock>
           <VerticalSelection 
-            q="Q24" 
-            label={t("Q24", "questions")} 
+            q="Q19" 
+            label={t("Q19", "questions")} 
             options={["Excellent", "Good", "Average", "Poor"]} 
             value={formData.feedback} 
             onChange={(v: string) => setFormData({...formData, feedback: v})} 
           />
+          {(formData.feedback === "Poor" || formData.feedback === "Average") && (
+            <QuestionBlock q="Q19a" label={t("Q19a", "questions")}>
+               <textarea className="w-full p-4 border border-stone-200 outline-none mt-4 italic min-h-[100px]" placeholder="Please provide an explanation..." value={formData.feedbackExplanation} onChange={(e) => setFormData({...formData, feedbackExplanation: e.target.value})} />
+            </QuestionBlock>
+          )}
         </div>
       );
       default: return null;
