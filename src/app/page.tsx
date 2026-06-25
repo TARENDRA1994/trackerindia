@@ -94,42 +94,27 @@ export default function HomePage() {
                    fill="#138808" 
                    d="M 0 666 C 333 466, 666 866, 1000 666 C 1333 466, 1666 866, 2000 666 L 2000 1000 L 0 1000 Z" 
                  />
-                 
-                 {/* Ashoka Chakra 1 (First Period) */}
-                 <g transform="translate(500, 500)">
-                   <g>
-                     <animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="20s" repeatCount="indefinite" />
-                     <circle cx="0" cy="0" r="110" stroke="#000080" strokeWidth="12" fill="none" />
-                     <circle cx="0" cy="0" r="18" fill="#000080" />
-                     {[...Array(24)].map((_, i) => (
-                       <path 
-                         key={`chakra1-${i}`}
-                         d="M 0 0 L -5 -110 L 5 -110 Z" 
-                         fill="#000080" 
-                         transform={`rotate(${i * 15})`} 
-                       />
-                     ))}
-                   </g>
-                 </g>
-
-                 {/* Ashoka Chakra 2 (Second Period - Seamless Loop) */}
-                 <g transform="translate(1500, 500)">
-                   <g>
-                     <animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="20s" repeatCount="indefinite" />
-                     <circle cx="0" cy="0" r="110" stroke="#000080" strokeWidth="12" fill="none" />
-                     <circle cx="0" cy="0" r="18" fill="#000080" />
-                     {[...Array(24)].map((_, i) => (
-                       <path 
-                         key={`chakra2-${i}`}
-                         d="M 0 0 L -5 -110 L 5 -110 Z" 
-                         fill="#000080" 
-                         transform={`rotate(${i * 15})`} 
-                       />
-                     ))}
-                   </g>
-                 </g>
                </svg>
              </motion.div>
+
+             {/* Stationary Centered Ashoka Chakra */}
+             <div className="absolute inset-0 flex justify-center items-center opacity-80">
+               <svg viewBox="-150 -150 300 300" className="h-1/2 max-h-[300px]">
+                 <g>
+                   <animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="25s" repeatCount="indefinite" />
+                   <circle cx="0" cy="0" r="110" stroke="#000080" strokeWidth="12" fill="none" />
+                   <circle cx="0" cy="0" r="18" fill="#000080" />
+                   {[...Array(24)].map((_, i) => (
+                     <path 
+                       key={`chakra-${i}`}
+                       d="M 0 0 L -5 -110 L 5 -110 Z" 
+                       fill="#000080" 
+                       transform={`rotate(${i * 15})`} 
+                     />
+                   ))}
+                 </g>
+               </svg>
+             </div>
            </div>
            
            <motion.div 
