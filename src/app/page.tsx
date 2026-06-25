@@ -71,19 +71,32 @@ export default function HomePage() {
       <main>
         {/* Abstract Indian Governance Motif Hero */}
         <section className="relative pt-20 pb-32 px-6 overflow-hidden border-b border-stone-200">
-           {/* Animated Faded Indian Flag Background */}
-           <motion.div 
-             className="absolute inset-0 opacity-10 pointer-events-none z-0"
-             animate={{
-               background: [
-                 "linear-gradient(120deg, #FF9933 0%, #FFFFFF 50%, #138808 100%)",
-                 "linear-gradient(240deg, #FF9933 0%, #FFFFFF 50%, #138808 100%)",
-                 "linear-gradient(360deg, #FF9933 0%, #FFFFFF 50%, #138808 100%)",
-                 "linear-gradient(120deg, #FF9933 0%, #FFFFFF 50%, #138808 100%)",
-               ]
-             }}
-             transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
-           />
+           {/* Majestic Animated Indian Flag Wavy Background */}
+           <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden opacity-[0.15]">
+             <motion.div
+               animate={{ x: ["0%", "-50%"] }}
+               transition={{ repeat: Infinity, ease: "linear", duration: 20 }}
+               className="w-[200%] h-full flex"
+             >
+               <svg viewBox="0 0 2000 1000" className="w-full h-full" preserveAspectRatio="none">
+                 {/* Saffron Band */}
+                 <path 
+                   fill="#FF9933" 
+                   d="M 0 0 L 2000 0 L 2000 333 C 1666 533, 1333 133, 1000 333 C 666 533, 333 133, 0 333 Z" 
+                 />
+                 {/* White Band */}
+                 <path 
+                   fill="#FFFFFF" 
+                   d="M 0 333 C 333 133, 666 533, 1000 333 C 1333 133, 1666 533, 2000 333 L 2000 666 C 1666 866, 1333 466, 1000 666 C 666 866, 333 466, 0 666 Z" 
+                 />
+                 {/* Green Band */}
+                 <path 
+                   fill="#138808" 
+                   d="M 0 666 C 333 466, 666 866, 1000 666 C 1333 466, 1666 866, 2000 666 L 2000 1000 L 0 1000 Z" 
+                 />
+               </svg>
+             </motion.div>
+           </div>
 
            <motion.div 
              animate={{ rotate: 360 }}
