@@ -221,6 +221,22 @@ export default function DailyLogForm({ medium = "English" }: { medium?: string }
     }
   };
 
+  const isStepValid = () => {
+    switch(step) {
+      case 0: return formData.primaryGoal.trim() !== "";
+      case 1: return formData.feeling !== "";
+      case 2: return formData.wakeUpTime !== "";
+      case 3: return formData.subjectsStudied.length > 0;
+      case 4: return formData.biggestDistraction !== "" && formData.reductionPlan.trim() !== "";
+      case 5: return !formData.answerWritingDone || formData.answersCount > 0;
+      case 6: return !formData.testAttempted || (formData.testName.trim() !== "" && formData.testScore !== "" && formData.mistakeType !== "" && formData.mistakeReason !== "");
+      case 7: return formData.subjectsRevised.length > 0 && formData.hardestTopic.trim() !== "";
+      case 8: return !formData.takeChallenge || formData.challengeExplanation.trim() !== "";
+      case 9: return formData.feedback !== "" && ((formData.feedback !== "Poor" && formData.feedback !== "Average") || formData.feedbackExplanation.trim() !== "");
+      default: return true;
+    }
+  };
+
   const renderStep = () => {
     switch(step) {
       case 0: return (
@@ -443,9 +459,9 @@ export default function DailyLogForm({ medium = "English" }: { medium?: string }
           <div className="flex gap-4">
             {step > 0 && <button onClick={() => setStep(step - 1)} className="px-8 py-3 border border-stone-200 text-[10px] font-bold uppercase tracking-widest hover:bg-white transition-all"><ChevronLeft className="inline w-4 h-4 mr-2" /> {t("previous")}</button>}
             {step < totalSteps - 1 ? (
-              <button onClick={() => setStep(step + 1)} className="px-12 py-3 bg-primary text-white text-[10px] font-bold uppercase tracking-widest shadow-xl shadow-primary/20 hover:translate-y-[-2px] transition-all">{t("continue")} <ChevronRight className="inline w-4 h-4 ml-2" /></button>
+              <button onClick={() => setStep(step + 1)} disabled={!isStepValid()} className={`px-12 py-3 text-[10px] font-bold uppercase tracking-widest transition-all ${isStepValid() ? "bg-primary text-white shadow-xl shadow-primary/20 hover:translate-y-[-2px]" : "bg-stone-200 text-stone-400 cursor-not-allowed"}`}>{t("continue")} <ChevronRight className="inline w-4 h-4 ml-2" /></button>
             ) : (
-              <button onClick={handleSubmit} disabled={loading} className="px-12 py-3 bg-accent text-accent-foreground text-[10px] font-bold uppercase tracking-widest shadow-xl shadow-accent/20 transition-all">{loading ? <Loader2 className="animate-spin" /> : <><Save className="inline w-4 h-4 mr-2" /> {t("submit")}</>}</button>
+              <button onClick={handleSubmit} disabled={loading || !isStepValid()} className={`px-12 py-3 text-[10px] font-bold uppercase tracking-widest transition-all ${isStepValid() && !loading ? "bg-accent text-accent-foreground shadow-xl shadow-accent/20" : "bg-stone-200 text-stone-400 cursor-not-allowed"}`}>{loading ? <Loader2 className="animate-spin" /> : <><Save className="inline w-4 h-4 mr-2" /> {t("submit")}</>}</button>
             )}
           </div>
         </div>
