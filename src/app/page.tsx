@@ -137,9 +137,9 @@ export default function HomePage() {
                   initial={{ opacity: 0, scale: 0.8 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ delay: 0.8, duration: 0.8, type: "spring" }}
-                  className="italic text-accent inline-block"
+                  className="text-3xl md:text-4xl text-accent inline-block font-sans font-medium tracking-wide mt-4"
                 >
-                  Ecosystem
+                  A Unit of Mentorship India
                 </motion.span>
               </motion.h1>
 
@@ -213,9 +213,9 @@ export default function HomePage() {
       >
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-16 border-b border-white/10 pb-20">
           <div className="space-y-6">
-            <h4 className="text-2xl font-serif font-bold">UPSC Tracker India</h4>
+            <h4 className="text-2xl font-serif font-bold">UPSC Mentorship</h4>
             <p className="text-white/60 leading-relaxed">
-              Empowering the next generation of civil servants through scientific tracking and humane mentorship.
+              A Unit of Mentorship India. Empowering the next generation of civil servants through scientific tracking and humane mentorship.
             </p>
           </div>
           <div>
@@ -241,7 +241,7 @@ export default function HomePage() {
           </div>
         </div>
         <div className="max-w-7xl mx-auto pt-10 text-center">
-            <p className="text-xs font-bold text-white/30 uppercase tracking-widest">© 2026 UPSC Tracker India • Built for Government Exam Aspirants</p>
+            <p className="text-xs font-bold text-white/30 uppercase tracking-widest">© 2026 UPSC Mentorship • Built for Government Exam Aspirants</p>
         </div>
       </motion.footer>
     </div>
