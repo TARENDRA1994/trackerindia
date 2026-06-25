@@ -1,6 +1,9 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
 import { ShieldCheck, Users, GraduationCap, ArrowRight, Award, BookOpen, Clock } from "lucide-react";
+import { motion } from "framer-motion";
 
 export default function HomePage() {
   const portalCards = [
@@ -24,10 +27,35 @@ export default function HomePage() {
     }
   ];
 
+  // Animation variants
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: { 
+      opacity: 1, 
+      y: 0, 
+      transition: { duration: 0.6, ease: "easeOut" } 
+    },
+  };
+
   return (
     <div className="min-h-screen bg-[#FDFCF8] text-[#1A1A1A]">
       {/* Hero Section */}
-      <nav className="border-b border-stone-200 bg-white/80 backdrop-blur-md sticky top-0 z-50">
+      <motion.nav 
+        initial={{ y: -100 }}
+        animate={{ y: 0 }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
+        className="border-b border-stone-200 bg-white/80 backdrop-blur-md sticky top-0 z-50"
+      >
         <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
           <div className="flex items-center">
             <Image src="/logo.png" alt="UPSC Mentorship Logo" width={180} height={50} priority />
@@ -38,54 +66,89 @@ export default function HomePage() {
             <Link href="/register" className="text-primary border-b-2 border-primary">Get Started</Link>
           </div>
         </div>
-      </nav>
+      </motion.nav>
 
       <main>
         {/* Abstract Indian Governance Motif Hero */}
         <section className="relative pt-20 pb-32 px-6 overflow-hidden border-b border-stone-200">
-           <div className="absolute top-0 right-0 w-1/2 h-full opacity-5 pointer-events-none">
+           <motion.div 
+             animate={{ rotate: 360 }}
+             transition={{ duration: 150, repeat: Infinity, ease: "linear" }}
+             className="absolute top-0 right-0 w-1/2 h-full opacity-5 pointer-events-none flex justify-center items-center"
+           >
               <BookOpen className="w-[800px] h-[800px] -rotate-12 absolute -top-40 -right-40" />
-           </div>
+           </motion.div>
            
-           <div className="max-w-5xl mx-auto text-center space-y-10 relative z-10">
-              <div className="inline-flex items-center gap-2 bg-primary/5 border border-primary/10 px-4 py-2 rounded-full text-primary text-xs font-bold uppercase tracking-widest">
+           <motion.div 
+             variants={containerVariants}
+             initial="hidden"
+             animate="visible"
+             className="max-w-5xl mx-auto text-center space-y-10 relative z-10"
+           >
+              <motion.div variants={itemVariants} className="inline-flex items-center gap-2 bg-primary/5 border border-primary/10 px-4 py-2 rounded-full text-primary text-xs font-bold uppercase tracking-widest">
                 <Clock className="w-4 h-4" /> Consistency is the Hallmark of a Civil Servant
-              </div>
-              <div className="flex justify-center mb-4">
+              </motion.div>
+              
+              <motion.div variants={itemVariants} className="flex justify-center mb-4">
                 <Image src="/logo.png" alt="UPSC Mentorship Logo" width={220} height={60} priority />
-              </div>
-              <h1 className="text-6xl md:text-8xl font-serif font-bold tracking-tighter text-primary leading-tight">
-                UPSC Mentorship <br /> <span className="italic text-accent">Ecosystem</span>
-              </h1>
-              <p className="max-w-2xl mx-auto text-xl text-stone-600 leading-relaxed font-medium">
+              </motion.div>
+
+              <motion.h1 variants={itemVariants} className="text-6xl md:text-8xl font-serif font-bold tracking-tighter text-primary leading-tight">
+                UPSC Mentorship <br /> 
+                <motion.span 
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ delay: 0.8, duration: 0.8, type: "spring" }}
+                  className="italic text-accent inline-block"
+                >
+                  Ecosystem
+                </motion.span>
+              </motion.h1>
+
+              <motion.p variants={itemVariants} className="max-w-2xl mx-auto text-xl text-stone-600 leading-relaxed font-medium">
                 The most advanced tracking engine for India's premier exam. Powered by human intuition and data-driven insights.
-              </p>
-              <div className="flex flex-col md:flex-row justify-center gap-4 pt-6">
+              </motion.p>
+
+              <motion.div variants={itemVariants} className="flex flex-col md:flex-row justify-center gap-4 pt-6">
                 <Link href="/register" className="px-10 py-5 bg-primary text-white font-bold uppercase tracking-widest rounded-sm hover:shadow-2xl hover:-translate-y-1 transition-all flex items-center justify-center gap-3 group">
                   New Student Registration <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </Link>
                 <Link href="#portals" className="px-10 py-5 bg-white border-2 border-primary text-primary font-bold uppercase tracking-widest rounded-sm hover:bg-stone-50 transition-all flex items-center justify-center">
                   Login to Portal
                 </Link>
-              </div>
-           </div>
+              </motion.div>
+           </motion.div>
         </section>
 
         {/* Portal Selection */}
         <section id="portals" className="py-32 px-6 bg-white">
-          <div className="max-w-7xl mx-auto space-y-16">
-            <div className="text-center space-y-4">
+          <motion.div 
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={containerVariants}
+            className="max-w-7xl mx-auto space-y-16"
+          >
+            <motion.div variants={itemVariants} className="text-center space-y-4">
               <h2 className="text-4xl font-serif font-bold text-primary">Unified Control Center</h2>
               <p className="text-stone-500 uppercase font-bold tracking-widest text-xs">Select your gateway to the mentorship program</p>
-            </div>
+            </motion.div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
               {portalCards.map((portal) => (
-                <div key={portal.title} className={`group p-10 border-2 ${portal.color} flex flex-col justify-between transition-all hover:shadow-3xl hover:-translate-y-2 relative overflow-hidden`}>
+                <motion.div 
+                  key={portal.title}
+                  variants={itemVariants}
+                  whileHover={{ y: -8, transition: { duration: 0.2 } }}
+                  className={`group p-10 border-2 ${portal.color} flex flex-col justify-between transition-shadow hover:shadow-2xl relative overflow-hidden`}
+                >
                   <div className="relative z-10 space-y-8">
-                    <div className="p-4 inline-block bg-white rounded-lg shadow-sm">
+                    <motion.div 
+                      whileHover={{ scale: 1.1, rotate: 5 }}
+                      className="p-4 inline-block bg-white rounded-lg shadow-sm"
+                    >
                       <portal.icon className="w-10 h-10" />
-                    </div>
+                    </motion.div>
                     <div>
                       <h3 className="text-2xl font-serif font-bold mb-4">{portal.title}</h3>
                       <p className="text-stone-600 leading-relaxed font-medium">{portal.description}</p>
@@ -95,15 +158,21 @@ export default function HomePage() {
                     </Link>
                   </div>
                   {/* Decorative faint background icon */}
-                  <portal.icon className="absolute -bottom-10 -right-10 w-40 h-40 opacity-5 group-hover:scale-110 transition-transform" />
-                </div>
+                  <portal.icon className="absolute -bottom-10 -right-10 w-40 h-40 opacity-5 group-hover:scale-110 group-hover:rotate-12 transition-all duration-500" />
+                </motion.div>
               ))}
             </div>
-          </div>
+          </motion.div>
         </section>
       </main>
 
-      <footer className="bg-primary text-white pt-20 pb-10 px-6">
+      <motion.footer 
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 1 }}
+        className="bg-primary text-white pt-20 pb-10 px-6"
+      >
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-16 border-b border-white/10 pb-20">
           <div className="space-y-6">
             <h4 className="text-2xl font-serif font-bold">UPSC Tracker India</h4>
@@ -136,7 +205,7 @@ export default function HomePage() {
         <div className="max-w-7xl mx-auto pt-10 text-center">
             <p className="text-xs font-bold text-white/30 uppercase tracking-widest">© 2026 UPSC Tracker India • Built for Government Exam Aspirants</p>
         </div>
-      </footer>
+      </motion.footer>
     </div>
   );
 }
