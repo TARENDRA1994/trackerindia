@@ -137,9 +137,9 @@ export default function HomePage() {
                   initial={{ opacity: 0, scale: 0.8 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ delay: 0.8, duration: 0.8, type: "spring" }}
-                  className="text-3xl md:text-4xl text-accent inline-block font-sans font-medium tracking-wide mt-4"
+                  className="italic text-accent inline-block"
                 >
-                  A Unit of Mentorship India
+                  Ecosystem
                 </motion.span>
               </motion.h1>
 
