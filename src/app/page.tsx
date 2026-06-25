@@ -94,17 +94,43 @@ export default function HomePage() {
                    fill="#138808" 
                    d="M 0 666 C 333 466, 666 866, 1000 666 C 1333 466, 1666 866, 2000 666 L 2000 1000 L 0 1000 Z" 
                  />
+                 
+                 {/* Ashoka Chakra 1 (First Period) */}
+                 <g transform="translate(500, 500)">
+                   <g>
+                     <animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="20s" repeatCount="indefinite" />
+                     <circle cx="0" cy="0" r="110" stroke="#000080" strokeWidth="12" fill="none" />
+                     <circle cx="0" cy="0" r="18" fill="#000080" />
+                     {[...Array(24)].map((_, i) => (
+                       <path 
+                         key={`chakra1-${i}`}
+                         d="M 0 0 L -5 -110 L 5 -110 Z" 
+                         fill="#000080" 
+                         transform={`rotate(${i * 15})`} 
+                       />
+                     ))}
+                   </g>
+                 </g>
+
+                 {/* Ashoka Chakra 2 (Second Period - Seamless Loop) */}
+                 <g transform="translate(1500, 500)">
+                   <g>
+                     <animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="20s" repeatCount="indefinite" />
+                     <circle cx="0" cy="0" r="110" stroke="#000080" strokeWidth="12" fill="none" />
+                     <circle cx="0" cy="0" r="18" fill="#000080" />
+                     {[...Array(24)].map((_, i) => (
+                       <path 
+                         key={`chakra2-${i}`}
+                         d="M 0 0 L -5 -110 L 5 -110 Z" 
+                         fill="#000080" 
+                         transform={`rotate(${i * 15})`} 
+                       />
+                     ))}
+                   </g>
+                 </g>
                </svg>
              </motion.div>
            </div>
-
-           <motion.div 
-             animate={{ rotate: 360 }}
-             transition={{ duration: 150, repeat: Infinity, ease: "linear" }}
-             className="absolute top-0 right-0 w-1/2 h-full opacity-5 pointer-events-none flex justify-center items-center z-0"
-           >
-              <BookOpen className="w-[800px] h-[800px] -rotate-12 absolute -top-40 -right-40" />
-           </motion.div>
            
            <motion.div 
              variants={containerVariants}
