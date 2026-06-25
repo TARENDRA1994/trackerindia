@@ -71,10 +71,24 @@ export default function HomePage() {
       <main>
         {/* Abstract Indian Governance Motif Hero */}
         <section className="relative pt-20 pb-32 px-6 overflow-hidden border-b border-stone-200">
+           {/* Animated Faded Indian Flag Background */}
+           <motion.div 
+             className="absolute inset-0 opacity-10 pointer-events-none z-0"
+             animate={{
+               background: [
+                 "linear-gradient(120deg, #FF9933 0%, #FFFFFF 50%, #138808 100%)",
+                 "linear-gradient(240deg, #FF9933 0%, #FFFFFF 50%, #138808 100%)",
+                 "linear-gradient(360deg, #FF9933 0%, #FFFFFF 50%, #138808 100%)",
+                 "linear-gradient(120deg, #FF9933 0%, #FFFFFF 50%, #138808 100%)",
+               ]
+             }}
+             transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
+           />
+
            <motion.div 
              animate={{ rotate: 360 }}
              transition={{ duration: 150, repeat: Infinity, ease: "linear" }}
-             className="absolute top-0 right-0 w-1/2 h-full opacity-5 pointer-events-none flex justify-center items-center"
+             className="absolute top-0 right-0 w-1/2 h-full opacity-5 pointer-events-none flex justify-center items-center z-0"
            >
               <BookOpen className="w-[800px] h-[800px] -rotate-12 absolute -top-40 -right-40" />
            </motion.div>
