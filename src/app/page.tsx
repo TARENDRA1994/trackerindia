@@ -126,10 +126,6 @@ export default function HomePage() {
               <motion.div variants={itemVariants} className="inline-flex items-center gap-2 bg-primary/5 border border-primary/10 px-4 py-2 rounded-full text-primary text-xs font-bold uppercase tracking-widest">
                 <Clock className="w-4 h-4" /> Consistency is the Hallmark of a Civil Servant
               </motion.div>
-              
-              <motion.div variants={itemVariants} className="flex justify-center mb-4">
-                <Image src="/logo.png" alt="UPSC Mentorship Logo" width={220} height={60} priority />
-              </motion.div>
 
               <motion.h1 variants={itemVariants} className="text-6xl md:text-8xl font-serif font-bold tracking-tighter text-primary leading-tight">
                 UPSC Mentorship <br /> 
