@@ -1,6 +1,7 @@
 import { prisma } from "@/lib/prisma";
 import { NextResponse } from "next/server";
 import crypto from "crypto";
+import { sendCredentialsEmail } from "@/lib/email";
 
 export async function POST(req: Request) {
   try {
@@ -29,7 +30,12 @@ export async function POST(req: Request) {
         },
       });
 
-      // 3. Mock WhatsApp Message Trigger
+      // 3. Send Email Notification via AWS SES
+      if (user.email) {
+        await sendCredentialsEmail(user.email, user.role || "STUDENT", loginId, password);
+      }
+
+      // 4. Mock WhatsApp Message Trigger
       console.log(`
         ---------- WHATSAPP TRIGGER ----------
         To: ${user.whatsapp}

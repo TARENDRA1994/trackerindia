@@ -13,6 +13,7 @@
     "seed": "npx tsx prisma/seed.ts"
   },
   "dependencies": {
+    "@aws-sdk/client-ses": "^3.1075.0",
     "@google/generative-ai": "^0.24.1",
     "@prisma/client": "^6.4.1",
     "bcrypt": "^6.0.0",
