@@ -58,7 +58,7 @@ export default function HomePage() {
       >
         <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
           <div className="flex items-center">
-            <Image src="/logo.png" alt="UPSC Mentorship Logo" width={180} height={50} priority />
+            <Image src="/logo.png" alt="UPSC Mentorship Logo" width={150} height={42} className="w-auto h-10 md:h-12 object-contain" priority />
           </div>
           <div className="hidden md:flex gap-8 text-sm font-bold uppercase tracking-widest text-muted-foreground">
             <Link href="#features" className="hover:text-primary transition-colors">Features</Link>
