@@ -46,7 +46,7 @@ export default function HomePage() {
     <div className="min-h-screen bg-[#0f141e] text-white font-sans selection:bg-[#00E676]/30">
       
       {/* Header */}
-      <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-stone-200 px-6 py-4 flex items-center justify-between">
+      <header className="sticky top-0 z-50 bg-white border-b border-stone-200 px-6 py-4 flex items-center justify-between">
         <div className="flex items-center gap-2">
           {/* Logo */}
           <div className="flex items-center">
