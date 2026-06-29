@@ -50,7 +50,7 @@ export default function HomePage() {
         <div className="flex items-center gap-2">
           {/* Logo */}
           <div className="flex items-center bg-white/95 px-3 py-1.5 rounded-lg shadow-sm">
-             <Image src="/logo.png" alt="Tracker India Logo" width={140} height={45} className="h-[40px] w-auto object-contain" />
+             <Image src="/logo.png" alt="Tracker India Logo" width={140} height={45} className="h-[40px] w-auto object-contain" unoptimized={true} />
           </div>
         </div>
         
@@ -218,7 +218,7 @@ export default function HomePage() {
            <div className="max-w-sm">
              <div className="flex items-center gap-2 mb-6">
                 <div className="opacity-90 hover:opacity-100 transition-opacity bg-white/95 px-4 py-2 rounded-xl shadow-sm inline-block">
-                   <Image src="/logo.png" alt="Tracker India Logo" width={120} height={38} className="h-[38px] w-auto object-contain" />
+                   <Image src="/logo.png" alt="Tracker India Logo" width={120} height={38} className="h-[38px] w-auto object-contain" unoptimized={true} />
                 </div>
              </div>
              <p className="text-stone-500 text-sm leading-relaxed">
