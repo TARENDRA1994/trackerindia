@@ -59,9 +59,9 @@ export async function sendCredentialsEmail(toEmail: string, role: string, loginI
     const command = new SendEmailCommand(params);
     const response = await sesClient.send(command);
     console.log("Email sent successfully:", response.MessageId);
-    return true;
-  } catch (error) {
+    return { success: true, error: null };
+  } catch (error: any) {
     console.error("Error sending SES email:", error);
-    return false;
+    return { success: false, error: error.message || error.toString() };
   }
 }

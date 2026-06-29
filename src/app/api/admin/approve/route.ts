@@ -31,8 +31,9 @@ export async function POST(req: Request) {
       });
 
       // 3. Send Email Notification via AWS SES
+      let emailResult = { success: false, error: "No email provided" };
       if (user.email) {
-        await sendCredentialsEmail(user.email, user.role || "STUDENT", loginId, password);
+        emailResult = await sendCredentialsEmail(user.email, user.role || "STUDENT", loginId, password);
       }
 
       // 4. Mock WhatsApp Message Trigger
@@ -49,10 +50,14 @@ export async function POST(req: Request) {
         --------------------------------------
       `);
 
-      return NextResponse.json({ message: "User approved and credentials generated", credentials: { loginId, password } });
+      return NextResponse.json({ 
+        message: "User approved successfully",
+        emailSent: emailResult.success,
+        emailError: emailResult.error
+      });
     }
 
-    return NextResponse.json({ error: "Invalid action" }, { status: 400 });
+    return NextResponse.json({ message: "Invalid action" }, { status: 400 });
   } catch (error: any) {
     console.error("Admin action error:", error);
     return NextResponse.json({ error: "Internal server error" }, { status: 500 });
