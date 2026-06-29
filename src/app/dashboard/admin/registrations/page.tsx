@@ -199,21 +199,39 @@ function RegistrationsContent() {
                    <h3 className="text-xl font-serif font-bold italic">Credential Management</h3>
                    <div className="space-y-2">
                       <label className="text-[10px] font-bold uppercase tracking-widest text-stone-400">Assign/Reset Password</label>
-                      <input 
-                         type="text" 
-                         className="w-full p-4 bg-stone-50 border border-stone-200 outline-none focus:border-primary font-mono text-sm"
-                         onBlur={(e) => {
-                            const newPass = e.target.value;
-                            if (newPass) {
-                               fetch("/api/admin/users", {
-                                  method: "PATCH",
-                                  headers: { "Content-Type": "application/json" },
-                                  body: JSON.stringify({ userId: selectedUser.id, password: newPass }),
-                                }).then(r => r.ok && alert("Password updated successfully"));
-                            }
-                         }}
-                      />
-                   </div>
+                       <input 
+                          type="text" 
+                          placeholder="Type manual password..."
+                          className="w-full p-4 bg-stone-50 border border-stone-200 outline-none focus:border-primary font-mono text-sm"
+                          onBlur={(e) => {
+                             const newPass = e.target.value;
+                             if (newPass) {
+                                fetch("/api/admin/users", {
+                                   method: "PATCH",
+                                   headers: { "Content-Type": "application/json" },
+                                   body: JSON.stringify({ userId: selectedUser.id, password: newPass }),
+                                 }).then(r => r.ok && alert("Manual password saved and email sent successfully!"));
+                             }
+                          }}
+                       />
+                       <button
+                          onClick={() => {
+                             const randomPass = Math.random().toString(36).slice(-8);
+                             fetch("/api/admin/users", {
+                                method: "PATCH",
+                                headers: { "Content-Type": "application/json" },
+                                body: JSON.stringify({ userId: selectedUser.id, password: randomPass }),
+                             }).then(r => {
+                               if (r.ok) {
+                                 alert(`Password auto-generated (${randomPass}) and email sent successfully!`);
+                               }
+                             });
+                          }}
+                          className="mt-2 w-full p-4 bg-stone-800 text-white font-bold uppercase tracking-widest text-[10px] hover:bg-stone-700 transition-colors"
+                       >
+                         Auto-Generate & Send Welcome Email
+                       </button>
+                    </div>
                 </div>
               </div>
             </motion.div>
