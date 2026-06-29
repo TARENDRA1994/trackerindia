@@ -33,7 +33,7 @@ export async function POST(req: Request) {
       // 3. Send Email Notification via AWS SES
       let emailResult = { success: false, error: "No email provided" };
       if (user.email) {
-        emailResult = await sendCredentialsEmail(user.email, user.role || "STUDENT", loginId, password);
+        emailResult = await sendCredentialsEmail(user.email, user.role || "STUDENT", loginId, password, user.name);
       }
 
       // 4. Mock WhatsApp Message Trigger
