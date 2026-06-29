@@ -83,7 +83,7 @@ export default function HomePage() {
           Next-Gen UPSC Preparation Platform
         </div>
         
-        <h1 className="text-5xl md:text-7xl font-bold tracking-tight text-white mb-6 leading-tight">
+        <h1 className="text-5xl md:text-7xl font-bold tracking-tight !text-white !font-sans mb-6 leading-tight">
           Tracking System for <br />
           <span className="bg-gradient-to-r from-cyan-400 to-[#00E676] bg-clip-text text-transparent">UPSC Aspirants</span>
         </h1>
@@ -105,7 +105,7 @@ export default function HomePage() {
       {/* Features Section */}
       <section id="features" className="py-24 px-6 max-w-7xl mx-auto">
         <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold mb-4">Intelligent Preparation Arsenal</h2>
+          <h2 className="text-4xl font-bold mb-4 !text-white !font-sans">Intelligent Preparation Arsenal</h2>
           <p className="text-stone-400">Everything you need to streamline your UPSC journey, packed into one powerful ecosystem.</p>
         </div>
 
@@ -122,7 +122,7 @@ export default function HomePage() {
               <div className="w-12 h-12 bg-[#1a212e] rounded-xl flex items-center justify-center mb-6 text-[#00E676] group-hover:scale-110 transition-transform">
                 <feature.icon className="w-6 h-6" />
               </div>
-              <h3 className="text-xl font-bold text-white mb-3">{feature.title}</h3>
+              <h3 className="text-xl font-bold !text-white !font-sans mb-3">{feature.title}</h3>
               <p className="text-stone-400 text-sm leading-relaxed">{feature.description}</p>
             </motion.div>
           ))}
@@ -132,7 +132,7 @@ export default function HomePage() {
       {/* Portals Section */}
       <section id="portals" className="py-24 px-6 max-w-6xl mx-auto border-t border-white/5">
         <div className="text-center mb-16">
-          <h2 className="text-3xl font-bold mb-4">Unified Ecosystem</h2>
+          <h2 className="text-3xl font-bold mb-4 !text-white !font-sans">Unified Ecosystem</h2>
           <p className="text-stone-400 text-sm">Dedicated environments tailored for every role in the preparation journey.</p>
         </div>
 
@@ -145,7 +145,7 @@ export default function HomePage() {
               </div>
               <div>
                 <div className="text-cyan-400 text-[10px] font-bold uppercase tracking-widest mb-1">Aspirant</div>
-                <h3 className="text-xl font-bold text-white">Student Portal</h3>
+                <h3 className="text-xl font-bold !text-white !font-sans">Student Portal</h3>
               </div>
             </div>
             <ul className="space-y-4 mb-8 text-sm text-stone-400 flex-1">
@@ -167,7 +167,7 @@ export default function HomePage() {
               </div>
               <div>
                 <div className="text-[#00E676] text-[10px] font-bold uppercase tracking-widest mb-1">Guide</div>
-                <h3 className="text-xl font-bold text-white">Mentor Portal</h3>
+                <h3 className="text-xl font-bold !text-white !font-sans">Mentor Portal</h3>
               </div>
             </div>
             <ul className="space-y-4 mb-8 text-sm text-stone-400 flex-1">
@@ -189,7 +189,7 @@ export default function HomePage() {
               </div>
               <div>
                 <div className="text-purple-400 text-[10px] font-bold uppercase tracking-widest mb-1">Management</div>
-                <h3 className="text-xl font-bold text-white">Admin Portal</h3>
+                <h3 className="text-xl font-bold !text-white !font-sans">Admin Portal</h3>
               </div>
             </div>
             <ul className="space-y-4 mb-8 text-sm text-stone-400 flex-1">
@@ -210,7 +210,7 @@ export default function HomePage() {
       <section className="py-32 px-6 relative overflow-hidden flex justify-center border-t border-white/5">
          <div className="absolute inset-0 bg-[#00E676]/10 blur-[120px] w-[80%] max-w-4xl mx-auto rounded-full pointer-events-none" />
          <div className="relative z-10 text-center">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6">Ready to Transform Your Prep?</h2>
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 !text-white !font-sans">Ready to Transform Your Prep?</h2>
             <p className="text-stone-400 mb-10 text-lg">Join thousands of serious aspirants leveraging data to conquer the examination.</p>
             <Link href="/register" className="bg-[#00E676] hover:bg-[#00E676]/90 text-[#0f141e] px-10 py-4 rounded-full font-bold text-base transition-all shadow-[0_0_20px_rgba(0,230,118,0.4)]">
               Join UPSC Aspirants Community
@@ -239,7 +239,7 @@ export default function HomePage() {
            
            <div className="flex gap-16">
              <div>
-               <h4 className="font-bold text-white mb-6 text-sm uppercase tracking-widest">Quick Links</h4>
+               <h4 className="font-bold !text-white !font-sans mb-6 text-sm uppercase tracking-widest">Quick Links</h4>
                <ul className="space-y-4 text-sm text-stone-500">
                  <li><Link href="/" className="hover:text-[#00E676] transition-colors">Home</Link></li>
                  <li><Link href="#features" className="hover:text-[#00E676] transition-colors">Features</Link></li>
@@ -247,7 +247,7 @@ export default function HomePage() {
                </ul>
              </div>
              <div>
-               <h4 className="font-bold text-white mb-6 text-sm uppercase tracking-widest">Contact Us</h4>
+               <h4 className="font-bold !text-white !font-sans mb-6 text-sm uppercase tracking-widest">Contact Us</h4>
                <ul className="space-y-4 text-sm text-stone-500">
                  <li className="hover:text-white transition-colors">support@trackerindia.com</li>
                  <li className="hover:text-white transition-colors">+91 99999 99999</li>
