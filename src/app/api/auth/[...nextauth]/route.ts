@@ -51,7 +51,7 @@ export const authOptions: NextAuthOptions = {
         if (!isPasswordValid) return null;
 
         // 3. Admin Restriction Check
-        if (user.role === "ADMIN" && user.email !== "tarendra.gadhewal2024@gmail.com") {
+        if (user.role === "ADMIN" && user.email !== "tarendra.garhewal2024@gmail.com") {
            console.warn("RESTRICTED: Admin login attempt by", user.email);
            return null;
         }
