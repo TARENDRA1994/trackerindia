@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { 
   Target, BarChart2, Users, Zap, BookOpen, Brain, 
   GraduationCap, Settings, ArrowRight 
@@ -47,16 +48,9 @@ export default function HomePage() {
       {/* Header */}
       <header className="sticky top-0 z-50 bg-[#0f141e]/80 backdrop-blur-md border-b border-white/5 px-6 py-4 flex items-center justify-between">
         <div className="flex items-center gap-2">
-          {/* Logo Recreation */}
-          <div className="bg-white px-2 py-1 flex items-center rounded">
-             <div className="font-serif italic font-black text-2xl text-[#000080] leading-none tracking-tighter relative">
-                T
-                <div className="absolute top-0 right-[-4px] w-2 h-2 bg-[#00E676] rounded-full"></div>
-             </div>
-             <div className="ml-2 flex flex-col justify-center">
-                <span className="font-bold text-[10px] text-[#000080] leading-none uppercase tracking-widest">Tracker India</span>
-                <span className="text-[6px] text-stone-500 leading-none mt-[2px]">A unit of Mentorship India</span>
-             </div>
+          {/* Logo */}
+          <div className="flex items-center">
+             <Image src="/logo.png" alt="Tracker India Logo" width={140} height={45} className="h-[45px] w-auto object-contain" />
           </div>
         </div>
         
@@ -223,13 +217,8 @@ export default function HomePage() {
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between gap-12">
            <div className="max-w-sm">
              <div className="flex items-center gap-2 mb-6">
-                <div className="bg-white px-2 py-1 flex items-center rounded opacity-80 hover:opacity-100 transition-opacity">
-                   <div className="font-serif italic font-black text-xl text-[#000080] leading-none tracking-tighter">
-                      T
-                   </div>
-                   <div className="ml-2 flex flex-col justify-center">
-                      <span className="font-bold text-[8px] text-[#000080] leading-none uppercase tracking-widest">Tracker India</span>
-                   </div>
+                <div className="opacity-80 hover:opacity-100 transition-opacity">
+                   <Image src="/logo.png" alt="Tracker India Logo" width={120} height={38} className="h-[38px] w-auto object-contain" />
                 </div>
              </div>
              <p className="text-stone-500 text-sm leading-relaxed">
