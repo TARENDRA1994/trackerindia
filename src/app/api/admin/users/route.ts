@@ -3,6 +3,7 @@ import { getServerSession } from "next-auth/next";
 import { NextResponse } from "next/server";
 import { authOptions } from "../../auth/[...nextauth]/route";
 import bcrypt from "bcrypt";
+import { sendCredentialsEmail } from "@/lib/email";
 
 export async function GET(req: Request) {
   try {
@@ -61,10 +62,19 @@ export async function PATCH(req: Request) {
       };
     }
 
+    let rawPasswordToUse = undefined;
+
     // Handle Password Update (Hashed)
     if (password && password.trim() !== "") {
        const hashedPassword = await bcrypt.hash(password, 10);
        updateData.password = hashedPassword;
+       rawPasswordToUse = password;
+
+       // Generate loginId if they don't have one
+       const currentUser = await prisma.user.findUnique({ where: { id: userId } });
+       if (currentUser && !currentUser.loginId) {
+         updateData.loginId = `TI-${Math.floor(100000 + Math.random() * 900000)}`;
+       }
     }
 
     const updatedUser = await prisma.user.update({
@@ -72,7 +82,26 @@ export async function PATCH(req: Request) {
       data: updateData,
     });
 
-    return NextResponse.json({ message: "User updated successfully", user: updatedUser });
+    let emailSent = false;
+    let emailError = null;
+
+    if (rawPasswordToUse && updatedUser.email) {
+      const result = await sendCredentialsEmail(
+         updatedUser.email,
+         updatedUser.role || "STUDENT",
+         updatedUser.loginId || "N/A",
+         rawPasswordToUse
+      );
+      emailSent = result.success;
+      emailError = result.error;
+    }
+
+    return NextResponse.json({ 
+      message: "User updated successfully", 
+      user: updatedUser,
+      emailSent,
+      emailError 
+    });
   } catch (error) {
     console.error("Admin user patch error:", error);
     return NextResponse.json({ error: "Failed to update user" }, { status: 500 });
