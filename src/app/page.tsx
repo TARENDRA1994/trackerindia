@@ -46,18 +46,18 @@ export default function HomePage() {
     <div className="min-h-screen bg-[#0f141e] text-white font-sans selection:bg-[#00E676]/30">
       
       {/* Header */}
-      <header className="sticky top-0 z-50 bg-[#0f141e]/80 backdrop-blur-md border-b border-white/5 px-6 py-4 flex items-center justify-between">
+      <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-stone-200 px-6 py-4 flex items-center justify-between">
         <div className="flex items-center gap-2">
           {/* Logo */}
-          <div className="flex items-center bg-white/95 px-3 py-1.5 rounded-lg shadow-sm">
+          <div className="flex items-center">
              <Image src="/logo.png" alt="Tracker India Logo" width={140} height={45} className="h-[40px] w-auto object-contain" unoptimized={true} />
           </div>
         </div>
         
-        <nav className="hidden md:flex items-center gap-8 text-sm font-semibold text-stone-300">
-          <Link href="/" className="text-[#00E676] border-b-2 border-[#00E676] pb-1">Home</Link>
-          <Link href="#features" className="hover:text-white transition-colors">Features</Link>
-          <Link href="#portals" className="hover:text-white transition-colors">Portals</Link>
+        <nav className="hidden md:flex items-center gap-8 text-sm font-semibold text-stone-600">
+          <Link href="/" className="text-[#0f141e] border-b-2 border-[#00E676] pb-1">Home</Link>
+          <Link href="#features" className="hover:text-[#0f141e] transition-colors">Features</Link>
+          <Link href="#portals" className="hover:text-[#0f141e] transition-colors">Portals</Link>
         </nav>
 
         <div>
