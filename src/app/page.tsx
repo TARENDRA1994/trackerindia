@@ -72,14 +72,14 @@ export default function HomePage() {
   ];
 
   return (
-    <div className="min-h-screen bg-[#0f141e] text-white font-sans selection:bg-[#00E676]/30">
+    <div className="min-h-screen bg-[#0f141e] text-white font-sans selection:bg-[#00E676]/30 overflow-x-hidden">
       
       {/* Header */}
       <header className="sticky top-0 z-50 bg-[#0f141e]/80 backdrop-blur-md border-b border-white/5 px-6 py-4 flex items-center justify-between">
         <div className="flex items-center gap-2">
           {/* Logo */}
           <div className="flex items-center">
-             <Image src="/logo.png" alt="Tracker India Logo" width={180} height={55} className="h-[52px] w-auto object-contain" unoptimized={true} />
+             <Image src="/logo.png" alt="Tracker India Logo" width={180} height={55} className="h-[36px] md:h-[52px] w-auto object-contain" unoptimized={true} />
           </div>
         </div>
         
@@ -106,7 +106,7 @@ export default function HomePage() {
           Next-Gen UPSC Preparation Platform
         </div>
         
-        <h1 className="text-5xl md:text-7xl font-bold tracking-tight !text-white !font-sans mb-6 leading-tight">
+        <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold tracking-tight !text-white !font-sans mb-6 leading-tight">
           Tracking System for <br />
           <span className="bg-gradient-to-r from-cyan-400 to-[#00E676] bg-clip-text text-transparent">UPSC Aspirants</span>
         </h1>
@@ -247,7 +247,7 @@ export default function HomePage() {
            <div className="max-w-sm">
              <div className="flex items-center gap-2 mb-6">
                 <div className="opacity-90 hover:opacity-100 transition-opacity inline-block">
-                   <Image src="/logo.png" alt="Tracker India Logo" width={160} height={48} className="h-[46px] w-auto object-contain" unoptimized={true} />
+                   <Image src="/logo.png" alt="Tracker India Logo" width={160} height={48} className="h-[32px] md:h-[46px] w-auto object-contain" unoptimized={true} />
                 </div>
              </div>
              <p className="text-stone-500 text-sm leading-relaxed">
