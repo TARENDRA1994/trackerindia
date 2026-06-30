@@ -2,16 +2,19 @@
 
 import { useState } from "react";
 import { signIn } from "next-auth/react";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { motion } from "framer-motion";
-import { LogIn, Loader2, AlertCircle } from "lucide-react";
+import { LogIn, Loader2, AlertCircle, Eye, EyeOff } from "lucide-react";
 
 export default function LoginForm() {
   const [loginId, setLoginId] = useState("");
   const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const router = useRouter();
+  const searchParams = useSearchParams();
+  const isMentor = searchParams.get("role") === "MENTOR";
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -42,7 +45,9 @@ export default function LoginForm() {
       <div className="absolute top-0 left-0 w-full h-1 bg-primary" />
       
       <div className="text-center mb-8">
-        <h1 className="text-3xl font-serif font-bold text-primary mb-2">Aspirant Login</h1>
+        <h1 className="text-3xl font-serif font-bold text-primary mb-2">
+          {isMentor ? "Mentor Login" : "Aspirant Login"}
+        </h1>
         <p className="text-xs uppercase tracking-widest text-muted-foreground">Tracker India 🇮🇳</p>
       </div>
 
@@ -68,14 +73,23 @@ export default function LoginForm() {
 
         <div className="space-y-2">
           <label className="text-sm font-semibold text-foreground/80">Password</label>
-          <input
-            required
-            type="password"
-            className="w-full p-3 bg-white border-b-2 border-border focus:border-primary outline-none transition-colors"
-            placeholder="••••••••"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
+          <div className="relative">
+            <input
+              required
+              type={showPassword ? "text" : "password"}
+              className="w-full p-3 pr-10 bg-white border-b-2 border-border focus:border-primary outline-none transition-colors"
+              placeholder="••••••••"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            <button
+              type="button"
+              onClick={() => setShowPassword(!showPassword)}
+              className="absolute right-3 top-1/2 -translate-y-1/2 text-stone-400 hover:text-stone-600"
+            >
+              {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
+            </button>
+          </div>
         </div>
 
         <button

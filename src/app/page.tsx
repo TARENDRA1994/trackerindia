@@ -267,9 +267,9 @@ export default function HomePage() {
              <div>
                <h4 className="font-bold !text-white !font-sans mb-6 text-sm uppercase tracking-widest">Contact Us</h4>
                <ul className="space-y-4 text-sm text-stone-500">
-                 <li className="hover:text-white transition-colors">support@trackerindia.com</li>
-                 <li className="hover:text-white transition-colors">+91 99999 99999</li>
-                 <li className="hover:text-white transition-colors">New Delhi, India</li>
+                  <li className="hover:text-white transition-colors">info@trackerindia.com</li>
+                  <li className="hover:text-white transition-colors">+91 9211085216</li>
+                  <li className="hover:text-white transition-colors">C-106 Sector 2 Noida 201301</li>
                </ul>
              </div>
            </div>

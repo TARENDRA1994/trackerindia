@@ -56,10 +56,10 @@ export default function RegistrationForm() {
       }
 
       setSuccess(true);
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      setTimeout(() => window.scrollTo({ top: 0, behavior: 'smooth' }), 50);
     } catch (err: any) {
       setError(err.message);
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      setTimeout(() => window.scrollTo({ top: 0, behavior: 'smooth' }), 50);
       // Fallback alert for mobile browsers if scroll is missed
       if (typeof window !== "undefined" && window.innerWidth < 768) {
         alert("Registration Error: " + err.message);

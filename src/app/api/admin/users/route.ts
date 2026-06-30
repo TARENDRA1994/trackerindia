@@ -70,13 +70,9 @@ export async function PATCH(req: Request) {
        updateData.password = hashedPassword;
        rawPasswordToUse = password;
 
-       // Generate loginId using user's first name if they don't have one
        const currentUser = await prisma.user.findUnique({ where: { id: userId } });
        if (currentUser && !currentUser.loginId) {
-         // Extract first name and remove special characters
-         const firstName = currentUser.name.split(' ')[0].replace(/[^a-zA-Z0-9]/g, '');
-         const uniqueNum = Math.floor(1000 + Math.random() * 9000);
-         updateData.loginId = `${firstName}-${uniqueNum}`;
+         updateData.loginId = currentUser.email;
        }
     }
 
@@ -92,7 +88,7 @@ export async function PATCH(req: Request) {
       const result = await sendCredentialsEmail(
          updatedUser.email,
          updatedUser.role || "STUDENT",
-         updatedUser.loginId || "N/A",
+         updatedUser.email || "N/A", // Tell them to login with their email!
          rawPasswordToUse,
          updatedUser.name
       );
