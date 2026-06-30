@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
+import { useState, useEffect } from "react";
 import { 
   Target, BarChart2, Users, Zap, BookOpen, Brain, 
   GraduationCap, Settings, ArrowRight 
@@ -9,6 +10,34 @@ import {
 import { motion } from "framer-motion";
 
 export default function HomePage() {
+  const [activeSection, setActiveSection] = useState("home");
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const sections = ["home", "features", "portals"];
+      const scrollPosition = window.scrollY + 200;
+
+      for (const section of sections) {
+        const element = document.getElementById(section);
+        if (element) {
+          const offsetTop = element.offsetTop;
+          const offsetHeight = element.offsetHeight;
+
+          if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
+            setActiveSection(section);
+          }
+        }
+      }
+      
+      if (window.scrollY < 100) {
+        setActiveSection("home");
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   const features = [
     {
       title: "Progress Tracking",
@@ -46,7 +75,7 @@ export default function HomePage() {
     <div className="min-h-screen bg-[#0f141e] text-white font-sans selection:bg-[#00E676]/30">
       
       {/* Header */}
-      <header className="sticky top-0 z-50 bg-white border-b border-stone-200 px-6 py-4 flex items-center justify-between">
+      <header className="sticky top-0 z-50 bg-[#0f141e]/80 backdrop-blur-md border-b border-white/5 px-6 py-4 flex items-center justify-between">
         <div className="flex items-center gap-2">
           {/* Logo */}
           <div className="flex items-center">
@@ -54,10 +83,10 @@ export default function HomePage() {
           </div>
         </div>
         
-        <nav className="hidden md:flex items-center gap-8 text-sm font-semibold text-stone-600">
-          <Link href="/" className="text-[#0f141e] border-b-2 border-[#00E676] pb-1">Home</Link>
-          <Link href="#features" className="hover:text-[#0f141e] transition-colors">Features</Link>
-          <Link href="#portals" className="hover:text-[#0f141e] transition-colors">Portals</Link>
+        <nav className="hidden md:flex items-center gap-8 text-sm font-semibold text-stone-300">
+          <Link href="#home" onClick={() => setActiveSection("home")} className={`pb-1 transition-colors ${activeSection === 'home' ? 'text-[#00E676] border-b-2 border-[#00E676]' : 'hover:text-white'}`}>Home</Link>
+          <Link href="#features" onClick={() => setActiveSection("features")} className={`pb-1 transition-colors ${activeSection === 'features' ? 'text-[#00E676] border-b-2 border-[#00E676]' : 'hover:text-white'}`}>Features</Link>
+          <Link href="#portals" onClick={() => setActiveSection("portals")} className={`pb-1 transition-colors ${activeSection === 'portals' ? 'text-[#00E676] border-b-2 border-[#00E676]' : 'hover:text-white'}`}>Portals</Link>
         </nav>
 
         <div>
@@ -68,7 +97,7 @@ export default function HomePage() {
       </header>
 
       {/* Hero Section */}
-      <section className="relative pt-32 pb-20 px-6 max-w-5xl mx-auto text-center flex flex-col items-center">
+      <section id="home" className="relative pt-32 pb-20 px-6 max-w-5xl mx-auto text-center flex flex-col items-center">
         {/* Glow effect behind text */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] bg-[#00E676]/10 blur-[120px] rounded-full pointer-events-none" />
 
