@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { 
   Smile, Frown, Meh, Trophy, Heart, Coffee, 
@@ -149,6 +149,11 @@ export default function DailyLogForm({ medium = "English" }: { medium?: string }
   const [step, setStep] = useState(0);
   const [loading, setLoading] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  
+  // Auto-scroll to top when step changes
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, [step, submitted]);
   const [aiResult, setAiResult] = useState<{diagnosis: string, improvements: string} | null>(null);
   const [formData, setFormData] = useState({
     primaryGoal: "",
