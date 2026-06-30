@@ -90,7 +90,7 @@ export default function HomePage() {
         </nav>
 
         <div>
-          <Link href="/register" className="bg-[#00E676] hover:bg-[#00E676]/90 text-[#0f141e] px-6 py-2.5 rounded-full font-bold text-sm transition-all shadow-[0_0_15px_rgba(0,230,118,0.3)]">
+          <Link prefetch={false} href="/register" className="bg-[#00E676] hover:bg-[#00E676]/90 text-[#0f141e] px-6 py-2.5 rounded-full font-bold text-sm transition-all shadow-[0_0_15px_rgba(0,230,118,0.3)]">
             Register
           </Link>
         </div>
@@ -116,7 +116,7 @@ export default function HomePage() {
         </p>
         
         <div className="flex flex-col sm:flex-row items-center gap-4">
-          <Link href="/register" className="bg-[#00E676] hover:bg-[#00E676]/90 text-[#0f141e] px-8 py-4 rounded-xl font-bold text-base transition-all flex items-center gap-2 shadow-[0_0_20px_rgba(0,230,118,0.2)] hover:scale-105">
+          <Link prefetch={false} href="/register" className="bg-[#00E676] hover:bg-[#00E676]/90 text-[#0f141e] px-8 py-4 rounded-xl font-bold text-base transition-all flex items-center gap-2 shadow-[0_0_20px_rgba(0,230,118,0.2)] hover:scale-105">
             Get Started Free <ArrowRight className="w-4 h-4" />
           </Link>
           <Link href="#features" className="bg-white/5 hover:bg-white/10 border border-white/10 text-white px-8 py-4 rounded-xl font-bold text-base transition-all">
@@ -177,7 +177,7 @@ export default function HomePage() {
               <li className="flex items-center gap-3"><div className="w-1.5 h-1.5 bg-cyan-400 rounded-full"/> Mentor Interaction</li>
               <li className="flex items-center gap-3"><div className="w-1.5 h-1.5 bg-cyan-400 rounded-full"/> Resource Vault</li>
             </ul>
-            <Link href="/login?role=STUDENT" className="w-full py-3.5 bg-white/5 hover:bg-white/10 border border-white/5 rounded-xl text-center text-sm font-semibold transition-colors flex items-center justify-center gap-2">
+            <Link prefetch={false} href="/login?role=STUDENT" className="w-full py-3.5 bg-white/5 hover:bg-white/10 border border-white/5 rounded-xl text-center text-sm font-semibold transition-colors flex items-center justify-center gap-2">
               Access Portal <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
@@ -199,7 +199,7 @@ export default function HomePage() {
               <li className="flex items-center gap-3"><div className="w-1.5 h-1.5 bg-[#00E676] rounded-full"/> Session Scheduling</li>
               <li className="flex items-center gap-3"><div className="w-1.5 h-1.5 bg-[#00E676] rounded-full"/> Feedback System</li>
             </ul>
-            <Link href="/login?role=MENTOR" className="w-full py-3.5 bg-white/5 hover:bg-white/10 border border-white/5 rounded-xl text-center text-sm font-semibold transition-colors flex items-center justify-center gap-2">
+            <Link prefetch={false} href="/login?role=MENTOR" className="w-full py-3.5 bg-white/5 hover:bg-white/10 border border-white/5 rounded-xl text-center text-sm font-semibold transition-colors flex items-center justify-center gap-2">
               Access Portal <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
@@ -235,7 +235,7 @@ export default function HomePage() {
          <div className="relative z-10 text-center">
             <h2 className="text-4xl md:text-5xl font-bold mb-6 !text-white !font-sans">Ready to Transform Your Prep?</h2>
             <p className="text-stone-400 mb-10 text-lg">Join thousands of serious aspirants leveraging data to conquer the examination.</p>
-            <Link href="/register" className="bg-[#00E676] hover:bg-[#00E676]/90 text-[#0f141e] px-10 py-4 rounded-full font-bold text-base transition-all shadow-[0_0_20px_rgba(0,230,118,0.4)]">
+            <Link prefetch={false} href="/register" className="bg-[#00E676] hover:bg-[#00E676]/90 text-[#0f141e] px-10 py-4 rounded-full font-bold text-base transition-all shadow-[0_0_20px_rgba(0,230,118,0.4)]">
               Join UPSC Aspirants Community
             </Link>
          </div>
