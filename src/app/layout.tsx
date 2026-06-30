@@ -1,6 +1,7 @@
+import "./globals.css";
 import type { Metadata } from "next";
 import { Lora, Inter } from "next/font/google";
-import "./globals.css";
+import { Providers } from "@/components/Providers";
 
 const lora = Lora({
   subsets: ["latin"],
@@ -16,8 +17,6 @@ export const metadata: Metadata = {
   title: "Tracker India | UPSC & Government Exam Companion",
   description: "A professional, AI-powered platform for Civil Services aspirants to track progress, analyze performance, and stay consistent.",
 };
-
-import { Providers } from "@/components/Providers";
 
 export default function RootLayout({
   children,
