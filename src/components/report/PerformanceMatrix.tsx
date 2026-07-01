@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { Target, TrendingUp, Star, Award, Clock, Moon, CheckCircle2, HeartPulse, Lightbulb, Brain, Sun } from "lucide-react";
+import { Target, TrendingUp, Star, Award, Clock, Moon, CheckCircle2, HeartPulse, Lightbulb, Brain } from "lucide-react";
 import { PieChart, Pie, Cell, ResponsiveContainer } from "recharts";
 
 export default function PerformanceMatrix({ data }: { data: any }) {

@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { BarChart as BarChartIcon, Brain, Activity, Scale, Lightbulb, Star, Target, CheckCircle2, TrendingUp, CalendarCheck } from "lucide-react";
+import { BarChart as BarChartIcon, Brain, Activity, Scale, Lightbulb, Star, Target, CheckCircle2, TrendingUp } from "lucide-react";
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, ResponsiveContainer, Cell, LineChart, Line } from "recharts";
 
 export default function PerformanceInsights({ data }: { data: any }) {
