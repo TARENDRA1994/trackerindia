@@ -7,7 +7,10 @@ import { PieChart, Pie, Cell, ResponsiveContainer, LineChart as RechartsLineChar
 export default function WellBeingConsistency({ data }: { data: any }) {
   if (!data) return null;
 
-  const { wellBeing, consistencyTracker, backlogManagement, nextDayPlanning } = data;
+  const wellBeing = data.wellBeing || {};
+  const consistencyTracker = data.consistencyTracker || {};
+  const backlogManagement = data.backlogManagement || {};
+  const nextDayPlanning = data.nextDayPlanning || {};
 
   const getScoreColor = (score: number) => {
     if (score >= 80) return "#15803D"; // Green

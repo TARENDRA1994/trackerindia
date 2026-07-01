@@ -1,13 +1,17 @@
 "use client";
 
 import React from "react";
-import { BarChart as BarChartIcon, Brain, Activity, Scale, Lightbulb, Star, Target, CheckCircle2, TrendingUp } from "lucide-react";
+import { BarChart as BarChartIcon, Brain, Activity, Scale, Lightbulb, Star, Target, CheckCircle2, TrendingUp, CalendarCheck } from "lucide-react";
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, ResponsiveContainer, Cell, LineChart, Line } from "recharts";
 
 export default function PerformanceInsights({ data }: { data: any }) {
   if (!data) return null;
 
-  const { subjectWiseScore, subjectCoverage, retentionEffectiveness, performanceTrend, batchAverageComparison } = data;
+  const subjectWiseScore = data.subjectWiseScore || [];
+  const subjectCoverage = data.subjectCoverage || [];
+  const retentionEffectiveness = data.retentionEffectiveness || { overallScore: 0, strongTopics: [], weakTopics: [] };
+  const performanceTrend = data.performanceTrend || [];
+  const batchAverageComparison = data.batchAverageComparison || [];
 
   const getRetentionColor = (score: number) => {
     if (score >= 75) return "#15803D"; // High

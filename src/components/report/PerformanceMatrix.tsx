@@ -1,13 +1,15 @@
 "use client";
 
 import React from "react";
-import { Target, TrendingUp, Star, Award, Clock, Moon, CheckCircle2, HeartPulse, Lightbulb, Brain } from "lucide-react";
+import { Target, TrendingUp, Star, Award, Clock, Moon, CheckCircle2, HeartPulse, Lightbulb, Brain, Sun } from "lucide-react";
 import { PieChart, Pie, Cell, ResponsiveContainer } from "recharts";
 
 export default function PerformanceMatrix({ data }: { data: any }) {
   if (!data) return null;
 
-  const { studyPerformanceMatrix, dailyRoutineAnalysis, focusDistraction } = data;
+  const studyPerformanceMatrix = data.studyPerformanceMatrix || {};
+  const dailyRoutineAnalysis = data.dailyRoutineAnalysis || {};
+  const focusDistraction = data.focusDistraction || { distractions: [] };
 
   // Colors
   const scoreColor = (score: number) => {

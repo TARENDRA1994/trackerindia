@@ -7,7 +7,10 @@ import { PieChart, Pie, Cell, ResponsiveContainer, LineChart, Line, XAxis, YAxis
 export default function ImprovementMap({ data }: { data: any }) {
   if (!data) return null;
 
-  const { focusDistraction, timeUtilization, strengthWeakness, overallPreparationIndex } = data;
+  const focusDistraction = data.focusDistraction || {};
+  const timeUtilization = data.timeUtilization || {};
+  const strengthWeakness = data.strengthWeakness || {};
+  const overallPreparationIndex = data.overallPreparationIndex || {};
 
   const prepColor = (score: number) => {
     if (score >= 90) return "#15803D"; // Excellent

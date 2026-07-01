@@ -2,17 +2,14 @@ import React from "react";
 import { User, Calendar, Award } from "lucide-react";
 
 export default function ReportHeader({
-  studentName,
-  mentorName,
-  enrolledDate,
-  reportDate,
-  title,
-  pageNumber,
-  totalPages
+  studentName = "",
+  mentorName = "",
+  enrolledDate = "",
+  reportDate = "",
+  title = "",
+  pageNumber = 1,
+  totalPages = 1
 }: {
-  studentName: string;
-  mentorName: string;
-  enrolledDate: string;
   reportDate: string;
   title: string;
   pageNumber: number;

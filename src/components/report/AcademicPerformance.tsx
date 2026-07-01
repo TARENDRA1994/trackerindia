@@ -7,7 +7,10 @@ import { PieChart, Pie, Cell, ResponsiveContainer, LineChart as RechartsLineChar
 export default function AcademicPerformance({ data }: { data: any }) {
   if (!data) return null;
 
-  const { coreStudyActivity, testPerformance, answerWriting, revisionRetention } = data;
+  const coreStudyActivity = data.coreStudyActivity || { breakdown: [] };
+  const testPerformance = data.testPerformance || { scoreTrend: [], testWise: [] };
+  const answerWriting = data.answerWriting || {};
+  const revisionRetention = data.revisionRetention || {};
 
   return (
     <div className="space-y-6">
