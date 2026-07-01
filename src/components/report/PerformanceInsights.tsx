@@ -7,7 +7,7 @@ import { BarChart, Bar, XAxis, YAxis, CartesianGrid, ResponsiveContainer, Cell, 
 export default function PerformanceInsights({ data }: { data: any }) {
   if (!data) return null;
 
-  const { subjectWiseScore, retentionEffectiveness, performanceTrend, batchAverageComparison } = data;
+  const { subjectWiseScore, subjectCoverage, retentionEffectiveness, performanceTrend, batchAverageComparison } = data;
 
   const getRetentionColor = (score: number) => {
     if (score >= 75) return "#15803D"; // High
@@ -15,6 +15,11 @@ export default function PerformanceInsights({ data }: { data: any }) {
     if (score >= 25) return "#F59E0B"; // Below Average
     return "#EF4444"; // Low
   };
+
+  const chartData = subjectWiseScore || (subjectCoverage || []).map((s: any) => ({
+    subject: s.subjectName || s.subject,
+    score: s.totalDays ? Math.round((s.studyDays / s.totalDays) * 100) : 0
+  }));
 
   return (
     <div className="space-y-6">
@@ -34,12 +39,12 @@ export default function PerformanceInsights({ data }: { data: any }) {
 
           <div className="flex-1 w-full h-48 mb-4">
             <ResponsiveContainer width="100%" height="100%">
-              <BarChart data={subjectWiseScore} margin={{ top: 10, right: 0, left: -20, bottom: 0 }}>
+              <BarChart data={chartData} margin={{ top: 10, right: 0, left: -20, bottom: 0 }}>
                 <CartesianGrid strokeDasharray="3 3" vertical={false} />
                 <XAxis dataKey="subject" axisLine={false} tickLine={false} tick={{fontSize: 9, fill: '#6B7280'}} interval={0} />
                 <YAxis axisLine={false} tickLine={false} tick={{fontSize: 9, fill: '#6B7280'}} />
                 <Bar dataKey="score" radius={[4, 4, 0, 0]} barSize={24} label={{ position: 'top', fill: '#1F2937', fontSize: 10, formatter: (val: any) => `${val}%` }}>
-                  {subjectWiseScore.map((entry: any, index: number) => (
+                  {chartData.map((entry: any, index: number) => (
                     <Cell key={`cell-${index}`} fill="#6B21A8" />
                   ))}
                 </Bar>

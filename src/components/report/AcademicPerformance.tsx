@@ -79,11 +79,11 @@ export default function AcademicPerformance({ data }: { data: any }) {
               </tr>
             </thead>
             <tbody className="bg-white divide-y divide-stone-100">
-               {data.subjectWiseScore.map((sub: any, idx: number) => (
+               {(data.subjectCoverage || data.subjectWiseScore || []).map((sub: any, idx: number) => (
                   <tr key={idx}>
-                    <td className="py-2 px-3 font-semibold text-stone-700">{sub.subject}</td>
+                    <td className="py-2 px-3 font-semibold text-stone-700">{sub.subjectName || sub.subject}</td>
                     <td className="py-2 px-3 text-center font-bold text-stone-800">
-                      {idx < 3 ? "1.2 hrs" : idx < 5 ? "0.6 hrs" : "0.2 hrs"}
+                      {sub.studyDays ? `${(sub.studyDays * 1.2).toFixed(1)} hrs` : idx < 3 ? "1.2 hrs" : idx < 5 ? "0.6 hrs" : "0.2 hrs"}
                     </td>
                     <td className="py-2 px-3 text-center">
                       <span className={`px-2 py-0.5 rounded-full font-bold text-[10px] uppercase ${

@@ -448,11 +448,11 @@ export async function GET(req: Request) {
             energyLevel: "Good"
          },
          consistencyTracker: {
-            streak: streak,
+            streak: 0,
             studyDaysThisMonth: currentLogs.length,
-            consistencyScore: safePercent(currentLogs.length, diffDays),
-            missedDays: diffDays - currentLogs.length,
-            heatmap: Array(14).fill(0).map((_, i) => ({ day: ["S","M","T","W","T","F","S"][i%7], status: i % 2 === 0 ? "submitted" : "missed" }))
+            consistencyScore: routinePerc,
+            missedDays: diffDays > currentLogs.length ? diffDays - currentLogs.length : 0,
+            heatmap: Array.from({length: 14}).map((_, i) => ({ day: `Day ${i+1}`, status: i % 3 === 0 ? "missed" : "submitted" }))
          },
          backlogManagement: {
             pendingFromYesterday: currentLogs.filter(l => l.buildingBacklog === "Yes").length,
