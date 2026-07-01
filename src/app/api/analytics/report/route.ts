@@ -387,7 +387,9 @@ export async function GET(req: Request) {
                { name: "Sleep", hrs: currentAverages.sleep, percent: Math.round(currentAverages.sleepPct), color: "#3B82F6" },
                { name: "Free/Other", hrs: currentAverages.free, percent: Math.round(currentAverages.freePct), color: "#F59E0B" }
             ],
-            trend: dayCycleData.reverse().map(d => ({ date: d.date, hrs: d.Study }))
+            trend: dayCycleData.reverse().map(d => ({ date: d.date, hrs: d.Study })),
+            current: currentAverages,
+            previous: prevAverages
          },
          emotionalStatus: { counts: emotionCounts, overall: overallEmotion, totalLogs: currentLogs.length },
          dayCycle: dayCycleData,
