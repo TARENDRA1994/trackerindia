@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { BookOpen, PieChart as PieChartIcon, FileText, Target, LineChart, Star, Activity, Briefcase } from "lucide-react";
+import { BookOpen, PieChart as PieChartIcon, FileText, Target, LineChart, Star, Activity, Briefcase, TrendingUp, Award, Brain } from "lucide-react";
 import { PieChart, Pie, Cell, ResponsiveContainer, LineChart as RechartsLineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip } from "recharts";
 
 export default function AcademicPerformance({ data }: { data: any }) {

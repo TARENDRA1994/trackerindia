@@ -271,51 +271,7 @@ export async function GET(req: Request) {
       };
     });
 
-    // Return report package
-    return NextResponse.json({
-      metadata: {
-        aspirantId: student.id,
-        aspirantName: student.name,
-        enrolledOn: student.createdAt,
-        mentorName: student.mentors[0]?.name || "Govind Singh",
-        medium: student.medium,
-        targetYear: student.targetYear
-      },
-      ranges: {
-        current: {
-          start: currentStart,
-          end: currentEnd,
-          days: diffDays
-        },
-        previous: {
-          start: prevStart,
-          end: prevEnd,
-          days: diffDays
-        }
-      },
-      timeUtilization: {
-        current: currentAverages,
-        previous: prevAverages
-      },
-      emotionalStatus: {
-        counts: emotionCounts,
-        overall: overallEmotion,
-        totalLogs: currentLogs.length
-      },
-      dayCycle: dayCycleData,
-      dnaAndChallenges: {
-        dna: {
-          current: currentDnaDays,
-          previous: prevDnaDays
-        },
-        challenges: {
-          current: currentChallenges,
-          previous: prevChallenges
-        }
-      },
-      subjectCoverage,
-      // Calculate dynamic data based on currentLogs
-      
+    // Calculate dynamic data based on currentLogs
       const safePercent = (val: number, max: number) => max > 0 ? Math.round((val / max) * 100) : 0;
       
       // Study Performance Matrix

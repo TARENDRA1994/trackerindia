@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { HeartPulse, CalendarCheck, ClipboardList, PenTool, CheckCircle2, TrendingUp, AlertTriangle } from "lucide-react";
+import { HeartPulse, ClipboardList, PenTool, CheckCircle2, TrendingUp, AlertTriangle, Target, FileText, AlertCircle } from "lucide-react";
 import { PieChart, Pie, Cell, ResponsiveContainer, LineChart as RechartsLineChart, Line, XAxis, YAxis, CartesianGrid } from "recharts";
 
 export default function WellBeingConsistency({ data }: { data: any }) {
@@ -355,11 +355,7 @@ function Lightbulb(props: any) {
   );
 }
 
-function AlertCircle(props: any) {
-  return (
-    <svg {...props} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-  );
-}
+
 
 function Star(props: any) {
    return (
