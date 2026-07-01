@@ -10,6 +10,9 @@ export default function ReportHeader({
   pageNumber = 1,
   totalPages = 1
 }: {
+  studentName: string;
+  mentorName: string;
+  enrolledDate: string;
   reportDate: string;
   title: string;
   pageNumber: number;
