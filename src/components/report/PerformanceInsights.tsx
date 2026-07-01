@@ -265,7 +265,7 @@ export default function PerformanceInsights({ data }: { data: any }) {
                      </td>
                      <td className="py-3 px-4 text-center font-bold text-[#1E3A8A]">{item.student}</td>
                      <td className="py-3 px-4 text-center font-bold text-stone-500">{item.batch}</td>
-                     <td className={`py-3 px-4 text-center font-bold ${item.diff.startsWith('+') ? 'text-[#15803D]' : 'text-[#EF4444]'}`}>{item.diff}</td>
+                     <td className={`py-3 px-4 text-center font-bold ${String(item.diff).startsWith('+') ? 'text-[#15803D]' : 'text-red-600'}`}>{item.diff}</td>
                      <td className="py-3 px-4 text-center font-bold text-[#15803D]">{item.status}</td>
                   </tr>
                ))}
