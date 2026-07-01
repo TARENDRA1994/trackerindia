@@ -138,7 +138,7 @@ export default function WellBeingConsistency({ data }: { data: any }) {
           <div className="bg-white border border-stone-200 rounded-lg p-4 mb-4">
             <h4 className="text-[9px] font-bold text-stone-500 uppercase tracking-widest text-center mb-3">DAILY CONSISTENCY (Last 14 Days)</h4>
             <div className="flex justify-between items-center px-2">
-               {consistencyTracker.heatmap.map((d: any, i: number) => (
+               {(consistencyTracker?.heatmap || []).map((d: any, i: number) => (
                   <div key={i} className="flex flex-col items-center gap-1">
                      <span className="text-[9px] font-bold text-stone-400">{d.day}</span>
                      {d.status === "submitted" && <CheckCircle2 className="w-4 h-4 text-[#15803D] fill-green-100" />}
@@ -331,7 +331,7 @@ export default function WellBeingConsistency({ data }: { data: any }) {
                   <h4 className="text-[10px] font-bold text-stone-700 uppercase tracking-widest">TOMORROW'S TOP PRIORITIES</h4>
                </div>
                <ul className="space-y-2">
-                  {nextDayPlanning.priorities.map((item: string, idx: number) => (
+                  {(nextDayPlanning?.priorities || []).map((item: string, idx: number) => (
                      <li key={idx} className="flex items-start gap-2 text-xs font-semibold text-stone-700">
                         <CheckCircle2 className="w-3 h-3 text-[#15803D] shrink-0 mt-0.5" /> {item}
                      </li>

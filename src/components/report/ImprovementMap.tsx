@@ -72,7 +72,7 @@ export default function ImprovementMap({ data }: { data: any }) {
              <div>
                 <h4 className="text-[9px] font-bold text-[#15803D] uppercase tracking-widest flex items-center gap-1 mb-2"><CheckCircle2 className="w-3 h-3"/> Top 3 Things That Helped You Focus</h4>
                 <ul className="space-y-1.5">
-                   {focusDistraction.helpedFocus.map((item: string, idx: number) => (
+                   {(focusDistraction?.helpedFocus || []).map((item: string, idx: number) => (
                       <li key={idx} className="flex justify-between items-center text-[10px] font-semibold text-stone-700">
                          {idx + 1}. {item}
                          <div className="w-4 h-1 bg-[#15803D] rounded-full"></div>
@@ -83,7 +83,7 @@ export default function ImprovementMap({ data }: { data: any }) {
              <div>
                 <h4 className="text-[9px] font-bold text-[#EF4444] uppercase tracking-widest flex items-center gap-1 mb-2"><EyeOff className="w-3 h-3"/> Top 3 Biggest Distractions</h4>
                 <ul className="space-y-1.5">
-                   {focusDistraction.distractions.map((item: any, idx: number) => (
+                   {(focusDistraction?.distractions || []).map((item: any, idx: number) => (
                       <li key={idx} className="flex justify-between items-center text-[10px] font-semibold text-stone-700">
                          {idx + 1}. {item.name}
                          <div className={`w-4 h-1 rounded-full ${item.severity === 'High' ? 'bg-[#EF4444]' : 'bg-[#F59E0B]'}`}></div>
@@ -129,7 +129,7 @@ export default function ImprovementMap({ data }: { data: any }) {
                      </tr>
                   </thead>
                   <tbody className="bg-white divide-y divide-stone-100 font-semibold">
-                     {timeUtilization.categories.map((cat: any, i: number) => (
+                     {(timeUtilization?.categories || []).map((cat: any, i: number) => (
                         <tr key={i}>
                            <td className="py-1.5 px-2 text-stone-700" style={{ color: cat.color === '#EF4444' ? '#EF4444' : undefined }}>{cat.name}</td>
                            <td className="py-1.5 px-2 text-center text-stone-800" style={{ color: cat.color === '#EF4444' ? '#EF4444' : undefined }}>{cat.hrs} hrs</td>
@@ -183,7 +183,7 @@ export default function ImprovementMap({ data }: { data: any }) {
                      </tr>
                   </thead>
                   <tbody className="bg-white divide-y divide-stone-100">
-                     {strengthWeakness.strengths.map((item: any, i: number) => (
+                     {(strengthWeakness?.strengths || []).map((item: any, i: number) => (
                         <tr key={i}>
                            <td className="py-2.5 px-3 font-semibold text-stone-700 flex items-center gap-2"><Trophy className="w-3.5 h-3.5 text-[#15803D]"/> {item.area}</td>
                            <td className="py-2.5 px-3 text-center font-bold text-[#15803D]">
@@ -211,7 +211,7 @@ export default function ImprovementMap({ data }: { data: any }) {
                      </tr>
                   </thead>
                   <tbody className="bg-white divide-y divide-stone-100">
-                     {strengthWeakness.weaknesses.map((item: any, i: number) => (
+                   {(strengthWeakness?.weaknesses || []).map((item: any, i: number) => (
                         <tr key={i}>
                            <td className="py-2.5 px-3 font-semibold text-stone-700 flex items-center gap-2"><Target className="w-3.5 h-3.5 text-[#EF4444]"/> {item.area}</td>
                            <td className="py-2.5 px-3 text-center font-bold text-[#EF4444]">
@@ -277,7 +277,7 @@ export default function ImprovementMap({ data }: { data: any }) {
                         </tr>
                      </thead>
                      <tbody className="bg-white divide-y divide-stone-100">
-                        {overallPreparationIndex.parameters.map((p: any, i: number) => (
+                        {(overallPreparationIndex?.parameters || []).map((p: any, i: number) => (
                            <tr key={i}>
                               <td className="py-1.5 px-3 font-semibold text-stone-700 flex items-center gap-1.5">
                                  <CheckCircle2 className="w-3 h-3 text-[#D97706]"/> {p.name}

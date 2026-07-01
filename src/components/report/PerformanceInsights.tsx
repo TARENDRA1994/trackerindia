@@ -254,7 +254,7 @@ export default function PerformanceInsights({ data }: { data: any }) {
                </tr>
             </thead>
             <tbody className="bg-white divide-y divide-stone-100">
-               {batchAverageComparison.map((item: any, idx: number) => (
+               {(batchAverageComparison || []).map((item: any, idx: number) => (
                   <tr key={idx}>
                      <td className="py-3 px-4 font-semibold text-stone-700 flex items-center gap-2">
                         <CheckCircle2 className="w-3.5 h-3.5 text-stone-400" /> {item.parameter}
