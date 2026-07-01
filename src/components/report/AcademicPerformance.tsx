@@ -164,7 +164,7 @@ export default function AcademicPerformance({ data }: { data: any }) {
                      </tr>
                   </thead>
                   <tbody className="bg-white divide-y divide-stone-100">
-                     {testPerformance.testWise.map((tw: any, i: number) => (
+                     {(testPerformance?.testWise || []).map((tw: any, i: number) => (
                         <tr key={i}>
                            <td className="py-3 px-3 font-semibold text-stone-700">{tw.name}</td>
                            <td className="py-3 px-3 text-center font-bold text-stone-800">{tw.score}</td>

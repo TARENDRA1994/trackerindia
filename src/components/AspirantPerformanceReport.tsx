@@ -192,7 +192,7 @@ export default function AspirantPerformanceReport({ studentId }: APRReportProps)
             reportDate={new Date().toISOString()}
             title="DAILY PERFORMANCE SUMMARY"
             pageNumber={1}
-            totalPages={5}
+            totalPages={12}
           />
           <PerformanceMatrix data={data} />
           
@@ -202,7 +202,7 @@ export default function AspirantPerformanceReport({ studentId }: APRReportProps)
               <p className="text-[10px] font-bold uppercase tracking-widest text-stone-500">TRACKER INDIA</p>
               <p className="text-[9px] font-medium">Empowering UPSC Aspirants</p>
             </div>
-            <div className="ml-auto text-[10px] font-bold uppercase text-[#1E3A8A]">Page 1 of 5</div>
+            <div className="ml-auto text-[10px] font-bold uppercase text-[#1E3A8A]">Page 1 of 12</div>
           </div>
         </div>
 
@@ -215,7 +215,7 @@ export default function AspirantPerformanceReport({ studentId }: APRReportProps)
             reportDate={new Date().toISOString()}
             title="STUDY PROGRESS & ACADEMIC PERFORMANCE"
             pageNumber={2}
-            totalPages={5}
+            totalPages={12}
           />
           <div className="flex-1">
              <AcademicPerformance data={data} />
@@ -227,7 +227,7 @@ export default function AspirantPerformanceReport({ studentId }: APRReportProps)
               <p className="text-[10px] font-bold uppercase tracking-widest text-stone-500">TRACKER INDIA</p>
               <p className="text-[9px] font-medium">Empowering UPSC Aspirants</p>
             </div>
-            <div className="ml-auto text-[10px] font-bold uppercase text-[#1E3A8A]">Page 2 of 5</div>
+            <div className="ml-auto text-[10px] font-bold uppercase text-[#1E3A8A]">Page 2 of 12</div>
           </div>
         </div>
 
@@ -240,7 +240,7 @@ export default function AspirantPerformanceReport({ studentId }: APRReportProps)
             reportDate={new Date().toISOString()}
             title="HABITS, WELL-BEING & CONSISTENCY ANALYSIS"
             pageNumber={3}
-            totalPages={5}
+            totalPages={12}
           />
           <div className="flex-1">
              <WellBeingConsistency data={data} />
@@ -252,7 +252,7 @@ export default function AspirantPerformanceReport({ studentId }: APRReportProps)
               <p className="text-[10px] font-bold uppercase tracking-widest text-stone-500">TRACKER INDIA</p>
               <p className="text-[9px] font-medium">Empowering UPSC Aspirants</p>
             </div>
-            <div className="ml-auto text-[10px] font-bold uppercase text-[#1E3A8A]">Page 3 of 5</div>
+            <div className="ml-auto text-[10px] font-bold uppercase text-[#1E3A8A]">Page 3 of 12</div>
           </div>
         </div>
 
@@ -265,7 +265,7 @@ export default function AspirantPerformanceReport({ studentId }: APRReportProps)
             reportDate={new Date().toISOString()}
             title="DETAILED PERFORMANCE INSIGHTS"
             pageNumber={4}
-            totalPages={5}
+            totalPages={12}
           />
           <div className="flex-1">
              <PerformanceInsights data={data} />
@@ -277,7 +277,7 @@ export default function AspirantPerformanceReport({ studentId }: APRReportProps)
               <p className="text-[10px] font-bold uppercase tracking-widest text-stone-500">TRACKER INDIA</p>
               <p className="text-[9px] font-medium">Empowering UPSC Aspirants</p>
             </div>
-            <div className="ml-auto text-[10px] font-bold uppercase text-[#1E3A8A]">Page 4 of 5</div>
+            <div className="ml-auto text-[10px] font-bold uppercase text-[#1E3A8A]">Page 4 of 12</div>
           </div>
         </div>
 
@@ -290,7 +290,7 @@ export default function AspirantPerformanceReport({ studentId }: APRReportProps)
             reportDate={new Date().toISOString()}
             title="DETAILED ANALYSIS & IMPROVEMENT MAP"
             pageNumber={5}
-            totalPages={5}
+            totalPages={12}
           />
           <div className="flex-1">
              <ImprovementMap data={data} />
@@ -302,7 +302,7 @@ export default function AspirantPerformanceReport({ studentId }: APRReportProps)
               <p className="text-[10px] font-bold uppercase tracking-widest text-stone-500">TRACKER INDIA</p>
               <p className="text-[9px] font-medium">Empowering UPSC Aspirants</p>
             </div>
-            <div className="ml-auto text-[10px] font-bold uppercase text-[#1E3A8A]">Page 5 of 5</div>
+            <div className="ml-auto text-[10px] font-bold uppercase text-[#1E3A8A]">Page 5 of 12</div>
           </div>
         </div>
 

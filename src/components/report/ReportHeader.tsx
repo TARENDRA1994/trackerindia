@@ -23,34 +23,39 @@ export default function ReportHeader({
       <div className="flex justify-between items-start">
         {/* Logo Section */}
         <div className="flex items-center gap-4">
-          <div className="flex items-center justify-center w-12 h-12 bg-[#1E3A8A] text-white font-bold text-2xl rounded-sm">
-            Ti
+          <div className="flex items-center justify-center">
+            {/* Custom TI Logo */}
+            <svg width="48" height="48" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M10 20H55V35H40V90H25V35H10V20Z" fill="#1E3A8A"/>
+              <path d="M70 40H85V90H70V40Z" fill="#1E3A8A"/>
+              <circle cx="77.5" cy="22.5" r="10" fill="#F59E0B"/>
+            </svg>
           </div>
           <div>
             <h1 className="text-3xl font-bold tracking-tight text-[#1E3A8A] leading-tight">TRACKER</h1>
-            <h2 className="text-xl font-semibold text-[#F59E0B] tracking-widest uppercase">INDIA</h2>
-            <p className="text-[10px] uppercase font-semibold text-stone-500 tracking-[0.2em] mt-1">
+            <h2 className="text-xl font-semibold text-[#1E3A8A] tracking-widest uppercase flex items-center gap-1">INDIA</h2>
+            <p className="text-[9px] uppercase font-bold text-stone-400 tracking-[0.2em] mt-1">
               TRACK. ANALYZE. IMPROVE.
             </p>
           </div>
         </div>
 
         {/* Details Section */}
-        <div className="grid grid-cols-1 gap-2 text-sm font-medium text-stone-700 bg-stone-50 p-4 rounded-md min-w-[300px]">
-          <div className="flex items-center gap-3">
+        <div className="grid grid-cols-1 gap-2 text-xs font-bold text-stone-700 p-2 min-w-[300px]">
+          <div className="flex items-center gap-4">
             <User className="w-4 h-4 text-[#1E3A8A]" />
-            <span className="w-24 text-stone-500 font-semibold">Student Name</span>
-            <span>: {studentName}</span>
+            <span className="w-24 text-stone-800">Student Name</span>
+            <span className="text-stone-800">: {studentName}</span>
           </div>
-          <div className="flex items-center gap-3">
-            <Award className="w-4 h-4 text-[#1E3A8A]" />
-            <span className="w-24 text-stone-500 font-semibold">Mentor Name</span>
-            <span>: {mentorName}</span>
+          <div className="flex items-center gap-4">
+            <User className="w-4 h-4 text-[#1E3A8A]" />
+            <span className="w-24 text-stone-800">Mentor Name</span>
+            <span className="text-stone-800">: {mentorName}</span>
           </div>
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-4">
             <Calendar className="w-4 h-4 text-[#1E3A8A]" />
-            <span className="w-24 text-stone-500 font-semibold">Enrolled Date</span>
-            <span>: {new Date(enrolledDate).toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric" })}</span>
+            <span className="w-24 text-stone-800">Enrolled Date</span>
+            <span className="text-stone-800">: {new Date(enrolledDate).toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric" })}</span>
           </div>
         </div>
         
