@@ -25,7 +25,6 @@ export default function ReportHeader({
         <div className="flex items-center">
            <img src="/logo.png" alt="Tracker India Logo" className="h-[48px] w-auto object-contain" />
         </div>
-        </div>
 
         {/* Details Section */}
         <div className="grid grid-cols-1 gap-2 text-xs font-bold text-stone-700 p-2 min-w-[300px]">
