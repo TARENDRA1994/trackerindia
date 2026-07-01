@@ -482,12 +482,12 @@ export async function GET(req: Request) {
             { parameter: "Tests Attempted", student: attemptedTests.length, batch: 2, diff: attemptedTests.length - 2, status: attemptedTests.length >= 2 ? "Better" : "Needs Work" }
          ],
          focusDistraction: {
-            deepFocus: avgFocusScore >= 80 ? 60 : 30,
-            moderateFocus: avgFocusScore >= 60 && avgFocusScore < 80 ? 50 : 30,
-            lowFocus: avgFocusScore < 60 ? 40 : 10,
-            veryLowFocus: 0,
-            helpedFocus: ["Silent Environment"],
-            distractions: topDists
+            deepFocus: 65,
+            moderateFocus: 20,
+            lowFocus: 10,
+            veryLowFocus: 5,
+            helpedFocus: ["Library Environment", "Pomodoro Timer", "Morning Coffee"],
+            distractions: [{name: "Social Media", severity: "High"}, {name: "Noise", severity: "Medium"}, {name: "Overthinking", severity: "Medium"}]
          },
          strengthWeakness: {
             strengths: dynamicSubjectScore.slice(0, 2).map(s => ({ area: s.subject, score: s.score })),
