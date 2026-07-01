@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { CheckCircle2, Award, BookOpen, Clock, Target, Star, Trophy, ArrowRight, Heart } from "lucide-react";
+import { CheckCircle2, Award, BookOpen, Clock, Target, Star, Trophy, ArrowRight, Heart, PenTool } from "lucide-react";
 
 export default function FinalSummary({ data }: { data: any }) {
   if (!data || !data.finalSummary) return null;
