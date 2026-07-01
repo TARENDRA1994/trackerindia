@@ -199,16 +199,8 @@ export default function AspirantPerformanceReport({ studentId }: APRReportProps)
           <PerformanceMatrix data={data} />
           
           <div className="mt-12 flex items-center gap-2 text-stone-400">
-            <div className="flex items-center justify-center">
-              <svg width="24" height="24" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M10 20H55V35H40V90H25V35H10V20Z" fill="#1E3A8A"/>
-                <path d="M70 40H85V90H70V40Z" fill="#1E3A8A"/>
-                <circle cx="77.5" cy="22.5" r="10" fill="#F59E0B"/>
-              </svg>
-            </div>
-            <div>
-              <p className="text-[10px] font-bold uppercase tracking-widest text-stone-500">TRACKER INDIA</p>
-              <p className="text-[9px] font-medium">Empowering UPSC Aspirants</p>
+            <div className="flex items-center">
+              <img src="/logo.png" alt="Tracker India Logo" className="h-[24px] w-auto object-contain grayscale opacity-80" />
             </div>
             <div className="ml-auto text-[10px] font-bold uppercase text-[#1E3A8A]">Page 1 of 12</div>
           </div>
@@ -230,16 +222,8 @@ export default function AspirantPerformanceReport({ studentId }: APRReportProps)
           </div>
           
           <div className="mt-12 flex items-center gap-2 text-stone-400">
-            <div className="flex items-center justify-center">
-              <svg width="24" height="24" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M10 20H55V35H40V90H25V35H10V20Z" fill="#1E3A8A"/>
-                <path d="M70 40H85V90H70V40Z" fill="#1E3A8A"/>
-                <circle cx="77.5" cy="22.5" r="10" fill="#F59E0B"/>
-              </svg>
-            </div>
-            <div>
-              <p className="text-[10px] font-bold uppercase tracking-widest text-stone-500">TRACKER INDIA</p>
-              <p className="text-[9px] font-medium">Empowering UPSC Aspirants</p>
+            <div className="flex items-center">
+              <img src="/logo.png" alt="Tracker India Logo" className="h-[24px] w-auto object-contain grayscale opacity-80" />
             </div>
             <div className="ml-auto text-[10px] font-bold uppercase text-[#1E3A8A]">Page 2 of 12</div>
           </div>
@@ -261,16 +245,8 @@ export default function AspirantPerformanceReport({ studentId }: APRReportProps)
           </div>
           
           <div className="mt-12 flex items-center gap-2 text-stone-400">
-            <div className="flex items-center justify-center">
-              <svg width="24" height="24" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M10 20H55V35H40V90H25V35H10V20Z" fill="#1E3A8A"/>
-                <path d="M70 40H85V90H70V40Z" fill="#1E3A8A"/>
-                <circle cx="77.5" cy="22.5" r="10" fill="#F59E0B"/>
-              </svg>
-            </div>
-            <div>
-              <p className="text-[10px] font-bold uppercase tracking-widest text-stone-500">TRACKER INDIA</p>
-              <p className="text-[9px] font-medium">Empowering UPSC Aspirants</p>
+            <div className="flex items-center">
+              <img src="/logo.png" alt="Tracker India Logo" className="h-[24px] w-auto object-contain grayscale opacity-80" />
             </div>
             <div className="ml-auto text-[10px] font-bold uppercase text-[#1E3A8A]">Page 3 of 12</div>
           </div>
@@ -292,16 +268,8 @@ export default function AspirantPerformanceReport({ studentId }: APRReportProps)
           </div>
           
           <div className="mt-12 flex items-center gap-2 text-stone-400">
-            <div className="flex items-center justify-center">
-              <svg width="24" height="24" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M10 20H55V35H40V90H25V35H10V20Z" fill="#1E3A8A"/>
-                <path d="M70 40H85V90H70V40Z" fill="#1E3A8A"/>
-                <circle cx="77.5" cy="22.5" r="10" fill="#F59E0B"/>
-              </svg>
-            </div>
-            <div>
-              <p className="text-[10px] font-bold uppercase tracking-widest text-stone-500">TRACKER INDIA</p>
-              <p className="text-[9px] font-medium">Empowering UPSC Aspirants</p>
+            <div className="flex items-center">
+              <img src="/logo.png" alt="Tracker India Logo" className="h-[24px] w-auto object-contain grayscale opacity-80" />
             </div>
             <div className="ml-auto text-[10px] font-bold uppercase text-[#1E3A8A]">Page 4 of 12</div>
           </div>
@@ -323,16 +291,8 @@ export default function AspirantPerformanceReport({ studentId }: APRReportProps)
           </div>
           
           <div className="mt-12 flex items-center gap-2 text-stone-400">
-            <div className="flex items-center justify-center">
-              <svg width="24" height="24" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M10 20H55V35H40V90H25V35H10V20Z" fill="#1E3A8A"/>
-                <path d="M70 40H85V90H70V40Z" fill="#1E3A8A"/>
-                <circle cx="77.5" cy="22.5" r="10" fill="#F59E0B"/>
-              </svg>
-            </div>
-            <div>
-              <p className="text-[10px] font-bold uppercase tracking-widest text-stone-500">TRACKER INDIA</p>
-              <p className="text-[9px] font-medium">Empowering UPSC Aspirants</p>
+            <div className="flex items-center">
+              <img src="/logo.png" alt="Tracker India Logo" className="h-[24px] w-auto object-contain grayscale opacity-80" />
             </div>
             <div className="ml-auto text-[10px] font-bold uppercase text-[#1E3A8A]">Page 5 of 7</div>
           </div>
@@ -354,16 +314,8 @@ export default function AspirantPerformanceReport({ studentId }: APRReportProps)
           </div>
           
           <div className="mt-12 flex items-center gap-2 text-stone-400">
-            <div className="flex items-center justify-center">
-              <svg width="24" height="24" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M10 20H55V35H40V90H25V35H10V20Z" fill="#1E3A8A"/>
-                <path d="M70 40H85V90H70V40Z" fill="#1E3A8A"/>
-                <circle cx="77.5" cy="22.5" r="10" fill="#F59E0B"/>
-              </svg>
-            </div>
-            <div>
-              <p className="text-[10px] font-bold uppercase tracking-widest text-stone-500">TRACKER INDIA</p>
-              <p className="text-[9px] font-medium">Empowering UPSC Aspirants</p>
+            <div className="flex items-center">
+              <img src="/logo.png" alt="Tracker India Logo" className="h-[24px] w-auto object-contain grayscale opacity-80" />
             </div>
             <div className="ml-auto text-[10px] font-bold uppercase text-[#1E3A8A]">Page 6 of 7</div>
           </div>
@@ -385,16 +337,8 @@ export default function AspirantPerformanceReport({ studentId }: APRReportProps)
           </div>
           
           <div className="mt-12 flex items-center gap-2 text-stone-400">
-            <div className="flex items-center justify-center">
-              <svg width="24" height="24" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M10 20H55V35H40V90H25V35H10V20Z" fill="#1E3A8A"/>
-                <path d="M70 40H85V90H70V40Z" fill="#1E3A8A"/>
-                <circle cx="77.5" cy="22.5" r="10" fill="#F59E0B"/>
-              </svg>
-            </div>
-            <div>
-              <p className="text-[10px] font-bold uppercase tracking-widest text-stone-500">TRACKER INDIA</p>
-              <p className="text-[9px] font-medium">Empowering UPSC Aspirants</p>
+            <div className="flex items-center">
+              <img src="/logo.png" alt="Tracker India Logo" className="h-[24px] w-auto object-contain grayscale opacity-80" />
             </div>
             <div className="ml-auto text-[10px] font-bold uppercase text-[#1E3A8A]">Page 7 of 7</div>
           </div>
