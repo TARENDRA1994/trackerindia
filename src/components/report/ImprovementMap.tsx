@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { EyeOff, Clock, Award, Compass, Brain, CheckCircle2, Trophy, Target } from "lucide-react";
+import { EyeOff, Clock, Award, Compass, Brain, CheckCircle2, Trophy, Target, Star } from "lucide-react";
 import { PieChart, Pie, Cell, ResponsiveContainer, LineChart, Line, XAxis, YAxis, CartesianGrid } from "recharts";
 
 export default function ImprovementMap({ data }: { data: any }) {

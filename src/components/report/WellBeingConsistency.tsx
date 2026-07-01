@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { HeartPulse, ClipboardList, PenTool, CheckCircle2, TrendingUp, AlertTriangle, Target, FileText, AlertCircle } from "lucide-react";
+import { HeartPulse, ClipboardList, PenTool, CheckCircle2, TrendingUp, AlertTriangle, Target, FileText, AlertCircle, CalendarCheck } from "lucide-react";
 import { PieChart, Pie, Cell, ResponsiveContainer, LineChart as RechartsLineChart, Line, XAxis, YAxis, CartesianGrid } from "recharts";
 
 export default function WellBeingConsistency({ data }: { data: any }) {
