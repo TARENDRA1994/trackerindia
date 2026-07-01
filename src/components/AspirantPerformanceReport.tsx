@@ -197,7 +197,13 @@ export default function AspirantPerformanceReport({ studentId }: APRReportProps)
           <PerformanceMatrix data={data} />
           
           <div className="mt-12 flex items-center gap-2 text-stone-400">
-            <div className="bg-stone-200 p-1 rounded-full"><div className="w-3 h-3 bg-stone-400 rounded-full"/></div>
+            <div className="flex items-center justify-center">
+              <svg width="24" height="24" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M10 20H55V35H40V90H25V35H10V20Z" fill="#1E3A8A"/>
+                <path d="M70 40H85V90H70V40Z" fill="#1E3A8A"/>
+                <circle cx="77.5" cy="22.5" r="10" fill="#F59E0B"/>
+              </svg>
+            </div>
             <div>
               <p className="text-[10px] font-bold uppercase tracking-widest text-stone-500">TRACKER INDIA</p>
               <p className="text-[9px] font-medium">Empowering UPSC Aspirants</p>
@@ -222,7 +228,13 @@ export default function AspirantPerformanceReport({ studentId }: APRReportProps)
           </div>
           
           <div className="mt-12 flex items-center gap-2 text-stone-400">
-            <div className="bg-stone-200 p-1 rounded-full"><div className="w-3 h-3 bg-stone-400 rounded-full"/></div>
+            <div className="flex items-center justify-center">
+              <svg width="24" height="24" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M10 20H55V35H40V90H25V35H10V20Z" fill="#1E3A8A"/>
+                <path d="M70 40H85V90H70V40Z" fill="#1E3A8A"/>
+                <circle cx="77.5" cy="22.5" r="10" fill="#F59E0B"/>
+              </svg>
+            </div>
             <div>
               <p className="text-[10px] font-bold uppercase tracking-widest text-stone-500">TRACKER INDIA</p>
               <p className="text-[9px] font-medium">Empowering UPSC Aspirants</p>
@@ -247,7 +259,13 @@ export default function AspirantPerformanceReport({ studentId }: APRReportProps)
           </div>
           
           <div className="mt-12 flex items-center gap-2 text-stone-400">
-            <div className="bg-stone-200 p-1 rounded-full"><div className="w-3 h-3 bg-stone-400 rounded-full"/></div>
+            <div className="flex items-center justify-center">
+              <svg width="24" height="24" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M10 20H55V35H40V90H25V35H10V20Z" fill="#1E3A8A"/>
+                <path d="M70 40H85V90H70V40Z" fill="#1E3A8A"/>
+                <circle cx="77.5" cy="22.5" r="10" fill="#F59E0B"/>
+              </svg>
+            </div>
             <div>
               <p className="text-[10px] font-bold uppercase tracking-widest text-stone-500">TRACKER INDIA</p>
               <p className="text-[9px] font-medium">Empowering UPSC Aspirants</p>
@@ -272,7 +290,13 @@ export default function AspirantPerformanceReport({ studentId }: APRReportProps)
           </div>
           
           <div className="mt-12 flex items-center gap-2 text-stone-400">
-            <div className="bg-stone-200 p-1 rounded-full"><div className="w-3 h-3 bg-stone-400 rounded-full"/></div>
+            <div className="flex items-center justify-center">
+              <svg width="24" height="24" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M10 20H55V35H40V90H25V35H10V20Z" fill="#1E3A8A"/>
+                <path d="M70 40H85V90H70V40Z" fill="#1E3A8A"/>
+                <circle cx="77.5" cy="22.5" r="10" fill="#F59E0B"/>
+              </svg>
+            </div>
             <div>
               <p className="text-[10px] font-bold uppercase tracking-widest text-stone-500">TRACKER INDIA</p>
               <p className="text-[9px] font-medium">Empowering UPSC Aspirants</p>
@@ -297,7 +321,13 @@ export default function AspirantPerformanceReport({ studentId }: APRReportProps)
           </div>
           
           <div className="mt-12 flex items-center gap-2 text-stone-400">
-            <div className="bg-stone-200 p-1 rounded-full"><div className="w-3 h-3 bg-stone-400 rounded-full"/></div>
+            <div className="flex items-center justify-center">
+              <svg width="24" height="24" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M10 20H55V35H40V90H25V35H10V20Z" fill="#1E3A8A"/>
+                <path d="M70 40H85V90H70V40Z" fill="#1E3A8A"/>
+                <circle cx="77.5" cy="22.5" r="10" fill="#F59E0B"/>
+              </svg>
+            </div>
             <div>
               <p className="text-[10px] font-bold uppercase tracking-widest text-stone-500">TRACKER INDIA</p>
               <p className="text-[9px] font-medium">Empowering UPSC Aspirants</p>
