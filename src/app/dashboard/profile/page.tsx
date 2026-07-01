@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { User, Mail, Phone, MapPin, Calendar, BookOpen, Clock, Camera, Save, Loader2, ChevronLeft, AlertCircle, Send } from "lucide-react";
+import { User, Mail, Phone, MapPin, Calendar, BookOpen, Clock, Camera, Save, Loader2, ChevronLeft, AlertCircle, Send, FileText } from "lucide-react";
 import { useRouter } from "next/navigation";
 
 export default function ProfilePage() {
@@ -84,14 +84,22 @@ export default function ProfilePage() {
 
   return (
     <div className="max-w-5xl mx-auto space-y-10 pb-20">
-      <div className="flex items-center gap-4 mb-2">
-         <button onClick={() => router.back()} className="p-2 hover:bg-stone-100 transition-all border border-transparent hover:border-stone-200">
-            <ChevronLeft className="w-5 h-5 text-stone-400" />
-         </button>
-         <div>
-            <h1 className="text-4xl font-serif font-bold text-primary italic">Citizen Identity</h1>
-            <p className="text-[10px] uppercase font-bold tracking-[0.3em] text-stone-400">Manage your official credentials</p>
+      <div className="flex items-center gap-4 mb-2 justify-between">
+         <div className="flex items-center gap-4">
+            <button onClick={() => router.back()} className="p-2 hover:bg-stone-100 transition-all border border-transparent hover:border-stone-200">
+               <ChevronLeft className="w-5 h-5 text-stone-400" />
+            </button>
+            <div>
+               <h1 className="text-4xl font-serif font-bold text-primary italic">Citizen Identity</h1>
+               <p className="text-[10px] uppercase font-bold tracking-[0.3em] text-stone-400">Manage your official credentials</p>
+            </div>
          </div>
+         <button
+            onClick={() => router.push("/dashboard/profile/report")}
+            className="bg-[#1E3A8A] text-white px-6 py-3 font-bold uppercase text-[10px] tracking-widest shadow-xl shadow-primary/20 hover:translate-y-[-2px] transition-all flex items-center gap-3"
+         >
+            <FileText className="w-4 h-4" /> Generate APR Report
+         </button>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
