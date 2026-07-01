@@ -186,9 +186,9 @@ export default function AspirantPerformanceReport({ studentId }: APRReportProps)
         {/* PAGE 1: DAILY PERFORMANCE SUMMARY */}
         <div className="bg-white w-[210mm] min-h-[297mm] shadow-xl mx-auto p-12 print:shadow-none print:p-8 page-break-after">
           <ReportHeader 
-            studentName={data.metadata.aspirantName}
-            mentorName={data.metadata.mentorName}
-            enrolledDate={data.metadata.enrolledOn}
+            studentName={data?.metadata?.aspirantName || "Student"}
+            mentorName={data?.metadata?.mentorName || "Unassigned"}
+            enrolledDate={data?.metadata?.enrolledOn || ""}
             reportDate={new Date().toISOString()}
             title="DAILY PERFORMANCE SUMMARY"
             pageNumber={1}
@@ -209,9 +209,9 @@ export default function AspirantPerformanceReport({ studentId }: APRReportProps)
         {/* PAGE 2: STUDY PROGRESS & ACADEMIC PERFORMANCE */}
         <div className="bg-white w-[210mm] min-h-[297mm] shadow-xl mx-auto p-12 print:shadow-none print:p-8 page-break-after flex flex-col">
           <ReportHeader 
-            studentName={data.metadata.aspirantName}
-            mentorName={data.metadata.mentorName}
-            enrolledDate={data.metadata.enrolledOn}
+            studentName={data?.metadata?.aspirantName || "Student"}
+            mentorName={data?.metadata?.mentorName || "Unassigned"}
+            enrolledDate={data?.metadata?.enrolledOn || ""}
             reportDate={new Date().toISOString()}
             title="STUDY PROGRESS & ACADEMIC PERFORMANCE"
             pageNumber={2}
@@ -234,9 +234,9 @@ export default function AspirantPerformanceReport({ studentId }: APRReportProps)
         {/* PAGE 3: HABITS, WELL-BEING & CONSISTENCY ANALYSIS */}
         <div className="bg-white w-[210mm] min-h-[297mm] shadow-xl mx-auto p-12 print:shadow-none print:p-8 page-break-after flex flex-col">
           <ReportHeader 
-            studentName={data.metadata.aspirantName}
-            mentorName={data.metadata.mentorName}
-            enrolledDate={data.metadata.enrolledOn}
+            studentName={data?.metadata?.aspirantName || "Student"}
+            mentorName={data?.metadata?.mentorName || "Unassigned"}
+            enrolledDate={data?.metadata?.enrolledOn || ""}
             reportDate={new Date().toISOString()}
             title="HABITS, WELL-BEING & CONSISTENCY ANALYSIS"
             pageNumber={3}
@@ -259,9 +259,9 @@ export default function AspirantPerformanceReport({ studentId }: APRReportProps)
         {/* PAGE 4: DETAILED PERFORMANCE INSIGHTS */}
         <div className="bg-white w-[210mm] min-h-[297mm] shadow-xl mx-auto p-12 print:shadow-none print:p-8 page-break-after flex flex-col">
           <ReportHeader 
-            studentName={data.metadata.aspirantName}
-            mentorName={data.metadata.mentorName}
-            enrolledDate={data.metadata.enrolledOn}
+            studentName={data?.metadata?.aspirantName || "Student"}
+            mentorName={data?.metadata?.mentorName || "Unassigned"}
+            enrolledDate={data?.metadata?.enrolledOn || ""}
             reportDate={new Date().toISOString()}
             title="DETAILED PERFORMANCE INSIGHTS"
             pageNumber={4}
@@ -284,9 +284,9 @@ export default function AspirantPerformanceReport({ studentId }: APRReportProps)
         {/* PAGE 5: DETAILED ANALYSIS & IMPROVEMENT MAP */}
         <div className="bg-white w-[210mm] min-h-[297mm] shadow-xl mx-auto p-12 print:shadow-none print:p-8 page-break-after flex flex-col">
           <ReportHeader 
-            studentName={data.metadata.aspirantName}
-            mentorName={data.metadata.mentorName}
-            enrolledDate={data.metadata.enrolledOn}
+            studentName={data?.metadata?.aspirantName || "Student"}
+            mentorName={data?.metadata?.mentorName || "Unassigned"}
+            enrolledDate={data?.metadata?.enrolledOn || ""}
             reportDate={new Date().toISOString()}
             title="DETAILED ANALYSIS & IMPROVEMENT MAP"
             pageNumber={5}
