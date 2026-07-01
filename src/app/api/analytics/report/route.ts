@@ -501,6 +501,79 @@ export async function GET(req: Request) {
                { name: "Study Effectiveness", score: perfRating, weight: 20 }
             ],
             readiness: { prelims: overallPrep, mains: overallPrep - 10, interview: overallPrep - 20 }
+         },
+         topperComparison: {
+            percentile: 25,
+            yourScore: overallPrep,
+            topperScore: 89,
+            habits: [
+               { parameter: "Wake-up Time", icon: "Clock", you: "6:00 AM", topper: "5:15 AM", difference: "-45 min", insight: "Topper wake up earlier" },
+               { parameter: "Daily Study Hours", icon: "BookOpen", you: `${currentAverages.study} hrs`, topper: "8.2 hrs", difference: `-${(8.2 - currentAverages.study).toFixed(1)} hrs`, insight: "Topper study more consistently" },
+               { parameter: "Tests Per Month", icon: "CheckCircle2", you: attemptedTests.length, topper: 10, difference: `-${10 - attemptedTests.length}`, insight: "Topper attempt more tests" },
+               { parameter: "Answer Writing", icon: "PenTool", you: "18 Answers", topper: "32 Answers", difference: "-14", insight: "Topper write & review more" },
+               { parameter: "Retention Score", icon: "RotateCw", you: `${Math.round(avgRetention * 10)}%`, topper: "82%", difference: `-${82 - Math.round(avgRetention * 10)}%`, insight: "Topper retain better" }
+            ],
+            subjects: [
+               { subject: "Polity", you: 78, topper: 92 },
+               { subject: "Economy", you: 70, topper: 88 },
+               { subject: "Geography", you: 72, topper: 90 },
+               { subject: "History", you: 54, topper: 80 },
+               { subject: "S&T", you: 44, topper: 76 },
+               { subject: "Environment", you: 48, topper: 78 }
+            ],
+            patterns: [
+               { icon: "Sun", title: "Morning Routine", desc: "Early wake up & fixed schedule", percentage: "90%" },
+               { icon: "Book", title: "Daily Revision", desc: "At least 1-2 hrs daily", percentage: "92%" },
+               { icon: "Test", title: "Test Practice", desc: "4+ tests every month", percentage: "88%" },
+               { icon: "Pen", title: "Answer Writing", desc: "20+ answers per month", percentage: "91%" }
+            ],
+            gapAnalysis: {
+               strength: { name: "Polity", desc: "Close to Topper Level", stat: "78% vs 92%" },
+               gap1: { name: "Science & Tech", desc: "Need More Focus", stat: "-32%" },
+               gap2: { name: "Revision Time", desc: "Daily", stat: "-0.9 hrs" }
+            },
+            actionPlan: [
+               "Wake up 45 minutes earlier.",
+               "Increase daily study time by 1-1.5 hrs.",
+               "Attempt 2 more tests every month.",
+               "Write 12-14 more answers every month and review.",
+               "Revise weak topics daily for 1 hr.",
+               "Keep backlog at zero."
+            ]
+         },
+         finalSummary: {
+            metrics: [
+               { label: "Overall Performance", score: overallPrep, status: "Good", icon: "Target" },
+               { label: "Study Effectiveness", score: perfRating, status: "Good", icon: "BookOpen" },
+               { label: "Routine Discipline", score: routinePerc, status: "Excellent", icon: "Clock" },
+               { label: "Consistency Score", score: 82, status: "Good", icon: "BarChart" },
+               { label: "Topper Comparison", score: 25, scoreText: "Top 25%", status: "of your batch", icon: "Trophy" }
+            ],
+            takeaways: [
+               "You are performing better than 72% of students in your batch.",
+               "Your routine discipline and consistency are strong areas.",
+               "Study effectiveness is good but can be improved further.",
+               "Retention and revision are the key areas to focus more.",
+               "Top 10% students are ~18% ahead of you overall."
+            ],
+            strengths: [
+               { name: "Polity", desc: "Strong Concept Clarity", icon: "Book" },
+               { name: "Economy", desc: "Good Analytical Understanding", icon: "Chart" },
+               { name: "Daily Consistency", desc: "Maintaining good discipline", icon: "Check" }
+            ],
+            improvements: [
+               { name: "Science & Tech", desc: "Increase study time & practice more tests", icon: "Clipboard" },
+               { name: "Answer Writing", desc: "Write 12-14 more answers per month", icon: "Pen" },
+               { name: "Revision Time", desc: "Revise weak topics daily", icon: "Clock" }
+            ],
+            actionPlan: [
+               "Wake up 45 minutes earlier every day.",
+               "Increase daily focused study time by 1-1.5 hours.",
+               "Attempt 2 more tests each week and analyze mistakes.",
+               "Write 12-14 answers every month and review.",
+               "Revise weak topics daily for at least 1 hour.",
+               "Focus more on Science & Tech and Environment."
+            ]
          }
       });
 

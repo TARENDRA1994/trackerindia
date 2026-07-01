@@ -9,6 +9,8 @@ import AcademicPerformance from "@/components/report/AcademicPerformance";
 import WellBeingConsistency from "@/components/report/WellBeingConsistency";
 import PerformanceInsights from "@/components/report/PerformanceInsights";
 import ImprovementMap from "@/components/report/ImprovementMap";
+import TopperComparison from "@/components/report/TopperComparison";
+import FinalSummary from "@/components/report/FinalSummary";
 
 interface APRReportProps {
   studentId?: string;
@@ -192,7 +194,7 @@ export default function AspirantPerformanceReport({ studentId }: APRReportProps)
             reportDate={new Date().toISOString()}
             title="DAILY PERFORMANCE SUMMARY"
             pageNumber={1}
-            totalPages={12}
+            totalPages={7}
           />
           <PerformanceMatrix data={data} />
           
@@ -221,7 +223,7 @@ export default function AspirantPerformanceReport({ studentId }: APRReportProps)
             reportDate={new Date().toISOString()}
             title="STUDY PROGRESS & ACADEMIC PERFORMANCE"
             pageNumber={2}
-            totalPages={12}
+            totalPages={7}
           />
           <div className="flex-1">
              <AcademicPerformance data={data} />
@@ -252,7 +254,7 @@ export default function AspirantPerformanceReport({ studentId }: APRReportProps)
             reportDate={new Date().toISOString()}
             title="HABITS, WELL-BEING & CONSISTENCY ANALYSIS"
             pageNumber={3}
-            totalPages={12}
+            totalPages={7}
           />
           <div className="flex-1">
              <WellBeingConsistency data={data} />
@@ -283,7 +285,7 @@ export default function AspirantPerformanceReport({ studentId }: APRReportProps)
             reportDate={new Date().toISOString()}
             title="DETAILED PERFORMANCE INSIGHTS"
             pageNumber={4}
-            totalPages={12}
+            totalPages={7}
           />
           <div className="flex-1">
              <PerformanceInsights data={data} />
@@ -314,7 +316,7 @@ export default function AspirantPerformanceReport({ studentId }: APRReportProps)
             reportDate={new Date().toISOString()}
             title="DETAILED ANALYSIS & IMPROVEMENT MAP"
             pageNumber={5}
-            totalPages={12}
+            totalPages={7}
           />
           <div className="flex-1">
              <ImprovementMap data={data} />
@@ -332,7 +334,69 @@ export default function AspirantPerformanceReport({ studentId }: APRReportProps)
               <p className="text-[10px] font-bold uppercase tracking-widest text-stone-500">TRACKER INDIA</p>
               <p className="text-[9px] font-medium">Empowering UPSC Aspirants</p>
             </div>
-            <div className="ml-auto text-[10px] font-bold uppercase text-[#1E3A8A]">Page 5 of 12</div>
+            <div className="ml-auto text-[10px] font-bold uppercase text-[#1E3A8A]">Page 5 of 7</div>
+          </div>
+        </div>
+
+        {/* PAGE 6: TOPPER COMPARISON REPORT */}
+        <div className="bg-white w-[210mm] min-h-[297mm] shadow-xl mx-auto p-12 print:shadow-none print:p-8 page-break-after flex flex-col">
+          <ReportHeader 
+            studentName={data?.metadata?.aspirantName || "Student"}
+            mentorName={data?.metadata?.mentorName || "Unassigned"}
+            enrolledDate={data?.metadata?.enrolledOn || ""}
+            reportDate={new Date().toISOString()}
+            title="TOPPER COMPARISON REPORT"
+            pageNumber={6}
+            totalPages={7}
+          />
+          <div className="flex-1">
+             <TopperComparison data={data} />
+          </div>
+          
+          <div className="mt-12 flex items-center gap-2 text-stone-400">
+            <div className="flex items-center justify-center">
+              <svg width="24" height="24" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M10 20H55V35H40V90H25V35H10V20Z" fill="#1E3A8A"/>
+                <path d="M70 40H85V90H70V40Z" fill="#1E3A8A"/>
+                <circle cx="77.5" cy="22.5" r="10" fill="#F59E0B"/>
+              </svg>
+            </div>
+            <div>
+              <p className="text-[10px] font-bold uppercase tracking-widest text-stone-500">TRACKER INDIA</p>
+              <p className="text-[9px] font-medium">Empowering UPSC Aspirants</p>
+            </div>
+            <div className="ml-auto text-[10px] font-bold uppercase text-[#1E3A8A]">Page 6 of 7</div>
+          </div>
+        </div>
+
+        {/* PAGE 7: FINAL SUMMARY & CONCLUSION */}
+        <div className="bg-white w-[210mm] min-h-[297mm] shadow-xl mx-auto p-12 print:shadow-none print:p-8 flex flex-col">
+          <ReportHeader 
+            studentName={data?.metadata?.aspirantName || "Student"}
+            mentorName={data?.metadata?.mentorName || "Unassigned"}
+            enrolledDate={data?.metadata?.enrolledOn || ""}
+            reportDate={new Date().toISOString()}
+            title="FINAL SUMMARY & CONCLUSION"
+            pageNumber={7}
+            totalPages={7}
+          />
+          <div className="flex-1">
+             <FinalSummary data={data} />
+          </div>
+          
+          <div className="mt-12 flex items-center gap-2 text-stone-400">
+            <div className="flex items-center justify-center">
+              <svg width="24" height="24" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M10 20H55V35H40V90H25V35H10V20Z" fill="#1E3A8A"/>
+                <path d="M70 40H85V90H70V40Z" fill="#1E3A8A"/>
+                <circle cx="77.5" cy="22.5" r="10" fill="#F59E0B"/>
+              </svg>
+            </div>
+            <div>
+              <p className="text-[10px] font-bold uppercase tracking-widest text-stone-500">TRACKER INDIA</p>
+              <p className="text-[9px] font-medium">Empowering UPSC Aspirants</p>
+            </div>
+            <div className="ml-auto text-[10px] font-bold uppercase text-[#1E3A8A]">Page 7 of 7</div>
           </div>
         </div>
 
