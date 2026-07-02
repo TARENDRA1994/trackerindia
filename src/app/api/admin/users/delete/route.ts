@@ -1,7 +1,7 @@
 import { prisma } from "@/lib/prisma";
 import { getServerSession } from "next-auth/next";
 import { NextResponse } from "next/server";
-import { authOptions } from "../../auth/[...nextauth]/route";
+import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 
 export async function DELETE(req: Request) {
   try {
@@ -55,7 +55,7 @@ export async function DELETE(req: Request) {
       await tx.notification.deleteMany({ where: { userId: user.id } });
       
       // 8. WhatsApp Message Logs
-      await tx.whatsappMessageLog.deleteMany({ where: { userId: user.id } });
+      await tx.whatsAppMessageLog.deleteMany({ where: { userId: user.id } });
 
       // Note: Implicit Many-to-Many relations (mentors, students) are automatically handled by Prisma when the user is deleted
       
