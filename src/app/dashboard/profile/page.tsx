@@ -94,12 +94,14 @@ export default function ProfilePage() {
                <p className="text-[10px] uppercase font-bold tracking-[0.3em] text-stone-400">Manage your official credentials</p>
             </div>
          </div>
-         <button
-            onClick={() => router.push("/dashboard/profile/report")}
-            className="bg-[#1E3A8A] text-white px-6 py-3 font-bold uppercase text-[10px] tracking-widest shadow-xl shadow-primary/20 hover:translate-y-[-2px] transition-all flex items-center gap-3"
-         >
-            <FileText className="w-4 h-4" /> Generate APR Report
-         </button>
+         {user?.role === "STUDENT" && (
+            <button
+               onClick={() => router.push("/dashboard/profile/report")}
+               className="bg-[#1E3A8A] text-white px-6 py-3 font-bold uppercase text-[10px] tracking-widest shadow-xl shadow-primary/20 hover:translate-y-[-2px] transition-all flex items-center gap-3"
+            >
+               <FileText className="w-4 h-4" /> Generate APR Report
+            </button>
+         )}
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">

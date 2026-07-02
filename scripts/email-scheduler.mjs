@@ -114,17 +114,24 @@ async function runBroadcast() {
 // Minimal Cron Implementation
 console.log("Starting Email Scheduler. Waiting for 10:00 PM...");
 
+let hasRunToday = false;
+
 setInterval(() => {
   const now = new Date();
   const hours = now.getHours();
   const minutes = now.getMinutes();
-  const seconds = now.getSeconds();
 
-  // Trigger at exactly 22:00:00 local machine time (10 PM)
-  if (hours === 22 && minutes === 0 && seconds === 0) {
-    runBroadcast();
+  // Trigger at 22:00 (10:00 PM) local machine time
+  if (hours === 22 && minutes === 0) {
+    if (!hasRunToday) {
+      runBroadcast();
+      hasRunToday = true;
+    }
+  } else {
+    // Reset the flag once it's no longer 10:00 PM
+    hasRunToday = false;
   }
-}, 1000); // check every second for exact trigger
+}, 30000); // check every 30 seconds
 
 // Optional: you can uncomment the next line to send one immediately on startup for testing!
 // runBroadcast();

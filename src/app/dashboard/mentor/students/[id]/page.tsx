@@ -253,11 +253,15 @@ export default function StudentReportPage() {
                      <div className="space-y-3">
                         <label className="text-[10px] font-bold uppercase tracking-widest text-primary/40">Instructions / Advice</label>
                         <textarea 
-                           className="w-full p-6 bg-stone-50 border-b-2 border-stone-100 focus:border-primary outline-none transition-all italic text-lg font-serif min-h-[250px]"
-                           placeholder="Enter your clinical advice or operational directives here..."
+                           className="w-full p-6 bg-stone-50 border-b-2 border-stone-100 focus:border-primary outline-none transition-all italic text-lg font-serif min-h-[250px] resize-none"
+                           placeholder="Enter your clinical advice or operational directives here... (max 500 chars)"
                            value={directiveContent}
+                           maxLength={500}
                            onChange={(e) => setDirectiveContent(e.target.value)}
                         />
+                        <div className="text-right text-[10px] font-bold text-stone-400 mt-1">
+                           {directiveContent.length} / 500 max characters
+                        </div>
                      </div>
                      <div className="flex justify-end pt-4">
                         <button 

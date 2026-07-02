@@ -27,7 +27,7 @@ export default async function DashboardPage() {
   const startOfDay = new Date(now.getFullYear(), now.getMonth(), now.getDate());
 
   // Fetch real data from Prisma
-  const [todayLog, allLogs, testResults] = await Promise.all([
+  const [todayLog, allLogs, testResults, feedback] = await Promise.all([
     prisma.dailyLog.findFirst({
       where: {
         userId,
@@ -39,6 +39,11 @@ export default async function DashboardPage() {
     }),
     prisma.testResult.findMany({
       where: { userId }
+    }),
+    prisma.feedback.findMany({
+      where: { toId: userId, type: "CRITIQUE" },
+      orderBy: { createdAt: 'desc' },
+      take: 5
     })
   ]);
 
@@ -174,6 +179,40 @@ export default async function DashboardPage() {
           </div>
         </div>
       </section>
+
+      {/* Mentor Directives Section */}
+      {feedback[0] && (
+        <section className="bg-white border border-stone-200 shadow-xl overflow-hidden mt-12">
+          <div className="p-8 border-b border-stone-100 flex items-center gap-3 bg-stone-50/50">
+            <div className="p-2 bg-primary/10 rounded-sm">
+              <ClipboardCheck className="w-5 h-5 text-primary" />
+            </div>
+            <div>
+              <h2 className="text-xl font-serif font-bold text-primary italic">Mentor Directives</h2>
+              <p className="text-[10px] uppercase font-bold tracking-widest text-stone-400">Recent Guidance & Feedback</p>
+            </div>
+          </div>
+          <div className="divide-y divide-stone-100">
+            {feedback.map((fb) => (
+              <div key={fb.id} className="p-8 hover:bg-stone-50/50 transition-colors">
+                <div className="flex justify-between items-start mb-4">
+                  <div className="flex items-center gap-2">
+                    <span className="px-2 py-1 bg-accent text-accent-foreground text-[8px] font-bold uppercase tracking-widest rounded-sm shadow-sm">
+                      Official Directive
+                    </span>
+                  </div>
+                  <span className="text-[10px] font-bold text-stone-400 font-mono">
+                    {new Date(fb.createdAt).toLocaleDateString()} at {new Date(fb.createdAt).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}
+                  </span>
+                </div>
+                <p className="text-stone-700 italic font-serif text-lg leading-relaxed whitespace-pre-wrap">
+                  "{fb.content}"
+                </p>
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
     </div>
   );
 }

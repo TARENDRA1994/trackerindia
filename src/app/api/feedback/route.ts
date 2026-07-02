@@ -11,6 +11,10 @@ export async function POST(req: Request) {
     const body = await req.json();
     const { toId, content, type } = body;
 
+    if (!content || content.length > 500) {
+      return NextResponse.json({ error: "Message must be between 1 and 500 characters." }, { status: 400 });
+    }
+
     const feedback = await prisma.feedback.create({
       data: {
         fromId: (session.user as any).id,

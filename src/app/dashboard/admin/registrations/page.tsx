@@ -6,7 +6,7 @@ import {
   Search, Filter, CheckCircle, XCircle, 
   PauseCircle, Edit3, MoreHorizontal, 
   MapPin, Clock, Calendar, Mail, 
-  Phone, Book, Target, Users
+  Phone, Book, Target, Users, Trash2
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -54,6 +54,26 @@ function RegistrationsContent() {
       }
     } catch (err) {
       console.error(err);
+    }
+  };
+
+  const handleDeleteUser = async (email: string) => {
+    if (!confirm("Are you ABSOLUTELY sure? This will delete the user and ALL related data forever. This action cannot be undone.")) return;
+    
+    try {
+      const res = await fetch(`/api/admin/users/delete?identifier=${encodeURIComponent(email)}`, {
+        method: "DELETE",
+      });
+      if (res.ok) {
+        setSelectedUser(null);
+        fetchUsers();
+      } else {
+        const data = await res.json();
+        alert(data.error || "Failed to delete user");
+      }
+    } catch (err) {
+      console.error(err);
+      alert("Something went wrong");
     }
   };
 
@@ -214,7 +234,7 @@ function RegistrationsContent() {
                              }
                           }}
                        />
-                       <button
+                        <button
                           onClick={() => {
                              const randomPass = Math.random().toString(36).slice(-8);
                              fetch("/api/admin/users", {
@@ -233,6 +253,20 @@ function RegistrationsContent() {
                        </button>
                     </div>
                 </div>
+
+                <div className="space-y-6 pt-10 border-t border-stone-100">
+                   <h3 className="text-xl font-serif font-bold italic text-red-600">Danger Zone</h3>
+                   <div className="space-y-2">
+                       <p className="text-[10px] font-bold uppercase tracking-widest text-stone-400">Permanently Delete Account</p>
+                       <button
+                          onClick={() => handleDeleteUser(selectedUser.email)}
+                          className="w-full p-4 bg-red-50 text-red-600 border border-red-200 font-bold uppercase tracking-widest text-[10px] hover:bg-red-600 hover:text-white transition-colors flex items-center justify-center gap-2"
+                       >
+                         <Trash2 className="w-4 h-4" /> Delete User Permanently
+                       </button>
+                    </div>
+                </div>
+
               </div>
             </motion.div>
           </>

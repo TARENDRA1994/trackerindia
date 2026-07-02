@@ -16,6 +16,31 @@ export default function MentorDashboard() {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedStudent, setSelectedStudent] = useState<any>(null);
 
+  const [showDirective, setShowDirective] = useState(false);
+  const [directiveContent, setDirectiveContent] = useState("");
+  const [sending, setSending] = useState(false);
+
+  const handleSendDirective = async () => {
+    if (!directiveContent || !selectedStudent) return;
+    setSending(true);
+    try {
+      const res = await fetch("/api/feedback", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ toId: selectedStudent.id, content: directiveContent, type: "CRITIQUE" }),
+      });
+      if (res.ok) {
+        setShowDirective(false);
+        setDirectiveContent("");
+        alert("Pedagogical Directive transmitted successfully.");
+      }
+    } catch (e) {
+      console.error(e);
+    } finally {
+      setSending(false);
+    }
+  };
+
   const fetchStudents = async () => {
     setLoading(true);
     try {
@@ -203,10 +228,56 @@ export default function MentorDashboard() {
                            </div>
                         </div>
 
-                        <div className="pt-10 flex justify-end gap-4 border-t border-stone-100">
-                           <button className="px-10 py-4 border border-stone-200 text-[10px] font-bold uppercase tracking-widest italic hover:bg-stone-50 transition-all">Send Direct Directive</button>
+                         <div className="pt-10 flex justify-end gap-4 border-t border-stone-100">
+                           <button 
+                             onClick={() => setShowDirective(true)}
+                             className="px-10 py-4 border border-stone-200 text-[10px] font-bold uppercase tracking-widest italic hover:bg-stone-50 transition-all"
+                           >
+                             Send Direct Directive
+                           </button>
                            <Link href={`/dashboard/mentor/students/${selectedStudent.id}`} className="px-10 py-4 bg-primary text-white text-[10px] font-bold uppercase tracking-widest shadow-xl shadow-primary/20 hover:scale-105 transition-all">Full Graph Review</Link>
+                         </div>
+                     </div>
+                  </div>
+               </motion.div>
+             </motion.div>
+          )}
+      </AnimatePresence>
+
+      {/* Directive Modal */}
+      <AnimatePresence>
+         {showDirective && selectedStudent && (
+            <motion.div initial={{opacity:0}} animate={{opacity:1}} exit={{opacity:0}} className="fixed inset-0 bg-primary/40 backdrop-blur-md z-[60] flex items-center justify-center p-6">
+               <motion.div initial={{scale:0.9, y:20}} animate={{scale:1, y:0}} exit={{scale:0.9, y:20}} className="bg-white w-full max-w-2xl shadow-3xl border border-stone-200 relative">
+                  <div className="p-10 border-b border-stone-50 flex justify-between items-center bg-stone-50/50">
+                     <div>
+                        <h3 className="text-2xl font-serif font-bold text-primary italic">Pedagogical Directive</h3>
+                        <p className="text-[10px] font-bold text-stone-400 uppercase tracking-widest mt-1">Transmitting guidance to {selectedStudent.name}</p>
+                     </div>
+                     <button onClick={() => setShowDirective(false)}><X className="w-6 h-6 text-stone-300 hover:text-stone-800" /></button>
+                  </div>
+                  <div className="p-10 space-y-6">
+                     <div className="space-y-3">
+                        <label className="text-[10px] font-bold uppercase tracking-widest text-primary/40">Instructions / Advice</label>
+                        <textarea 
+                           className="w-full p-6 bg-stone-50 border-b-2 border-stone-100 focus:border-primary outline-none transition-all italic text-lg font-serif min-h-[250px] resize-none"
+                           placeholder="Enter your clinical advice or operational directives here... (max 500 chars)"
+                           value={directiveContent}
+                           maxLength={500}
+                           onChange={(e) => setDirectiveContent(e.target.value)}
+                        />
+                        <div className="text-right text-[10px] font-bold text-stone-400 mt-1">
+                           {directiveContent.length} / 500 max characters
                         </div>
+                     </div>
+                     <div className="flex justify-end pt-4">
+                        <button 
+                           disabled={sending || !directiveContent}
+                           onClick={handleSendDirective}
+                           className="px-12 py-5 bg-primary text-white font-bold uppercase text-[10px] tracking-widest shadow-2xl flex items-center gap-3 disabled:opacity-50"
+                        >
+                           {sending ? "TRANSMITTING..." : "TRANSMIT DIRECTIVE"}
+                        </button>
                      </div>
                   </div>
                </motion.div>
