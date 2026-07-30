@@ -59,8 +59,12 @@ async function sendReminderEmail(toEmail: string, userName: string, role: string
 export async function GET(req: Request) {
   try {
     // Optional: Protect the route so only you or your cron service can trigger it
+    const url = new URL(req.url);
+    const key = url.searchParams.get('key');
     const authHeader = req.headers.get('authorization');
-    if (authHeader !== `Bearer ${process.env.CRON_SECRET || 'tracker-cron-key'}`) {
+    const validKey = process.env.CRON_SECRET || 'tracker-cron-key';
+
+    if (key !== validKey && authHeader !== `Bearer ${validKey}`) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 

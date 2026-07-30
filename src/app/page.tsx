@@ -159,7 +159,7 @@ export default function HomePage() {
           <p className="text-stone-400 text-sm">Dedicated environments tailored for every role in the preparation journey.</p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
           {/* Student Portal */}
           <div className="bg-[#121824] border border-white/5 rounded-2xl p-8 flex flex-col hover:border-cyan-400/30 transition-all group">
             <div className="flex items-center gap-4 mb-8 pb-6 border-b border-white/5">
@@ -202,29 +202,6 @@ export default function HomePage() {
             <Link prefetch={false} href="/login?role=MENTOR" className="w-full py-3.5 bg-white/5 hover:bg-white/10 border border-white/5 rounded-xl text-center text-sm font-semibold transition-colors flex items-center justify-center gap-2">
               Access Portal <ArrowRight className="w-4 h-4" />
             </Link>
-          </div>
-
-          {/* Admin Portal */}
-          <div className="bg-[#121824] border border-white/5 rounded-2xl p-8 flex flex-col hover:border-purple-400/30 transition-all group">
-            <div className="flex items-center gap-4 mb-8 pb-6 border-b border-white/5">
-              <div className="w-12 h-12 bg-purple-500/10 rounded-xl flex items-center justify-center text-purple-400 group-hover:scale-110 transition-transform">
-                <Settings className="w-6 h-6" />
-              </div>
-              <div>
-                <div className="text-purple-400 text-[10px] font-bold uppercase tracking-widest mb-1">Management</div>
-                <h3 className="text-xl font-bold !text-white !font-sans">Admin Portal</h3>
-              </div>
-            </div>
-            <ul className="space-y-4 mb-8 text-sm text-stone-400 flex-1">
-              <li className="flex items-center gap-3"><div className="w-1.5 h-1.5 bg-purple-400 rounded-full"/> System-Wide Analytics</li>
-              <li className="flex items-center gap-3"><div className="w-1.5 h-1.5 bg-purple-400 rounded-full"/> User Management</li>
-              <li className="flex items-center gap-3"><div className="w-1.5 h-1.5 bg-purple-400 rounded-full"/> Content Distribution</li>
-              <li className="flex items-center gap-3"><div className="w-1.5 h-1.5 bg-purple-400 rounded-full"/> Revenue Tracking</li>
-            </ul>
-            {/* NO ACCESS BUTTON FOR ADMIN, AS REQUESTED */}
-            <div className="w-full py-3.5 opacity-0 cursor-default">
-              Hidden Button Placeholder
-            </div>
           </div>
         </div>
       </section>

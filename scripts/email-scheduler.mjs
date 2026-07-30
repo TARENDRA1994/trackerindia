@@ -111,27 +111,12 @@ async function runBroadcast() {
   }
 }
 
-// Minimal Cron Implementation
-console.log("Starting Email Scheduler. Waiting for 10:00 PM...");
+// Execute once and exit (for use with external Cron Jobs like Hostinger)
+async function main() {
+  console.log(`[${new Date().toISOString()}] Executing Scheduled Email Broadcast...`);
+  await runBroadcast();
+  console.log(`[${new Date().toISOString()}] Scheduled Email Broadcast finished.`);
+  process.exit(0);
+}
 
-let hasRunToday = false;
-
-setInterval(() => {
-  const now = new Date();
-  const hours = now.getHours();
-  const minutes = now.getMinutes();
-
-  // Trigger at 22:00 (10:00 PM) local machine time
-  if (hours === 22 && minutes === 0) {
-    if (!hasRunToday) {
-      runBroadcast();
-      hasRunToday = true;
-    }
-  } else {
-    // Reset the flag once it's no longer 10:00 PM
-    hasRunToday = false;
-  }
-}, 30000); // check every 30 seconds
-
-// Optional: you can uncomment the next line to send one immediately on startup for testing!
-// runBroadcast();
+main();
