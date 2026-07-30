@@ -12,6 +12,7 @@ import {
   CheckCircle2
 } from "lucide-react";
 import Link from "next/link";
+import StudyChart from "@/components/StudyChart";
 
 export default async function DashboardPage() {
   const session = await getServerSession();
@@ -64,6 +65,22 @@ export default async function DashboardPage() {
   const avgAccuracy = testResults.length > 0 
     ? Math.round(testResults.reduce((acc, test) => acc + test.accuracy, 0) / testResults.length) 
     : 0;
+
+  // Generate last 7 days chart data
+  const chartData = Array.from({ length: 7 }).map((_, i) => {
+    const d = new Date();
+    d.setDate(d.getDate() - (6 - i));
+    const dateStr = d.toLocaleDateString();
+    
+    // Find logs for this specific date
+    const logsForDate = allLogs.filter(log => new Date(log.timestamp).toLocaleDateString() === dateStr);
+    const hours = logsForDate.reduce((sum, log) => sum + parseStudyHours(log.studyHours), 0);
+    
+    return {
+      name: d.toLocaleDateString('en-US', { weekday: 'short' }), // "Mon", "Tue"
+      hours: hours
+    };
+  });
 
   const modules = [
     {
@@ -164,7 +181,7 @@ export default async function DashboardPage() {
       {/* Quick Summary Section */}
       <section className="bg-primary text-white p-10 shadow-xl overflow-hidden relative">
         <Target className="absolute -top-10 -right-10 w-64 h-64 text-white/5 opacity-20 rotate-12" />
-        <div className="relative z-10 grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
+        <div className="relative z-10 grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left mb-8">
           <div>
             <p className="text-white/60 text-xs uppercase font-bold tracking-widest mb-1">Study Hours (Total)</p>
             <p className="text-3xl font-serif font-bold">{totalStudyHours.toFixed(1)}h</p>
@@ -177,6 +194,14 @@ export default async function DashboardPage() {
             <p className="text-white/60 text-xs uppercase font-bold tracking-widest mb-1">Avg Accuracy</p>
             <p className="text-3xl font-serif font-bold">{avgAccuracy}%</p>
           </div>
+        </div>
+        
+        {/* Interactive Chart */}
+        <div className="relative z-10 border-t border-white/10 pt-8">
+          <div className="flex justify-between items-center mb-2">
+             <h3 className="text-xl font-serif font-bold text-white italic">Study Trend (Last 7 Days)</h3>
+          </div>
+          <StudyChart data={chartData} />
         </div>
       </section>
 

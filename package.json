@@ -16,7 +16,7 @@
     "@aws-sdk/client-ses": "^3.1075.0",
     "@google/generative-ai": "^0.24.1",
     "@prisma/client": "^6.4.1",
-    "bcrypt": "^6.0.0",
+    "bcryptjs": "^3.0.3",
     "clsx": "^2.1.1",
     "dotenv": "^17.4.2",
     "framer-motion": "^12.38.0",
@@ -32,7 +32,7 @@
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
-    "@types/bcrypt": "^6.0.0",
+    "@types/bcryptjs": "^2.4.6",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
