@@ -45,17 +45,17 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
   const navigation = navItems[role as keyof typeof navItems] || [];
 
   return (
-    <div className="dashboard-theme min-h-screen bg-background text-foreground flex flex-col md:flex-row">
+    <div className="min-h-screen bg-[#FDFCF8] flex flex-col md:flex-row">
       {/* Mobile Top Bar */}
-      <div className="md:hidden bg-background/80 backdrop-blur-md border-b border-border text-foreground p-4 flex items-center justify-between sticky top-0 z-40">
+      <div className="md:hidden bg-primary text-white p-4 flex items-center justify-between sticky top-0 z-40 shadow-md">
         <div className="flex items-center gap-3">
-           <div className="w-8 h-8 bg-primary/20 text-primary rounded-lg flex items-center justify-center font-bold text-sm shadow-[0_0_15px_rgba(139,92,246,0.3)]">🇮🇳</div>
+           <div className="w-8 h-8 bg-white/10 rounded flex items-center justify-center font-bold text-sm">🇮🇳</div>
            <div>
-              <h1 className="text-lg font-bold text-foreground tracking-tight">Tracker India</h1>
+              <h1 className="text-lg font-serif font-bold text-white tracking-widest uppercase italic">Tracker India</h1>
            </div>
         </div>
-        <button onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} className="p-2 bg-muted rounded-lg hover:bg-muted/80 transition-colors">
-          {isMobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+        <button onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} className="p-2 bg-white/10 rounded-sm">
+          {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
         </button>
       </div>
 
@@ -68,38 +68,38 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
       )}
 
       {/* Sidebar */}
-      <aside className={`w-72 bg-background/95 backdrop-blur-xl border-r border-border text-foreground flex flex-col fixed h-full z-50 transition-transform duration-300 ease-in-out ${
+      <aside className={`w-72 bg-primary text-white flex flex-col fixed h-full shadow-2xl z-50 transition-transform duration-300 ease-in-out ${
         isMobileMenuOpen ? "translate-x-0" : "-translate-x-full md:translate-x-0"
       }`}>
-        <div className="p-8 hidden md:block">
+        <div className="p-10 hidden md:block">
           <div className="flex items-center gap-3">
-             <div className="w-10 h-10 bg-primary/10 text-primary rounded-xl flex items-center justify-center font-bold shadow-[0_0_20px_rgba(139,92,246,0.15)] ring-1 ring-primary/20">🇮🇳</div>
+             <div className="w-8 h-8 bg-white/10 rounded flex items-center justify-center font-bold">🇮🇳</div>
              <div>
-                <h1 className="text-xl font-bold text-foreground tracking-tight">Tracker India</h1>
-                <p className="text-xs text-muted-foreground font-medium">Ecosystem Control</p>
+                <h1 className="text-xl font-serif font-bold text-white tracking-widest uppercase italic">Tracker India</h1>
+                <p className="text-[8px] text-white/30 tracking-[0.4em] uppercase">Ecosystem Control</p>
              </div>
           </div>
         </div>
 
         {/* Mobile Sidebar Header */}
-        <div className="md:hidden p-6 flex justify-between items-center border-b border-border bg-background">
+        <div className="md:hidden p-6 flex justify-between items-center border-b border-white/10 bg-primary">
            <div className="flex items-center gap-3">
-              <div className="w-8 h-8 bg-primary/20 text-primary rounded-lg flex items-center justify-center font-bold">🇮🇳</div>
-              <h1 className="text-lg font-bold tracking-tight text-foreground">Menu</h1>
+              <div className="w-8 h-8 bg-white/10 rounded flex items-center justify-center font-bold">🇮🇳</div>
+              <h1 className="text-lg font-serif font-bold italic tracking-widest uppercase text-white">Menu</h1>
            </div>
            <button onClick={() => setIsMobileMenuOpen(false)}>
-             <X className="w-5 h-5 text-muted-foreground hover:text-foreground transition-colors" />
+             <X className="w-6 h-6 text-white/50 hover:text-white transition-colors" />
            </button>
         </div>
 
-        <div className="px-6 py-4 mb-2 mt-4 md:mt-0">
-           <div className="p-4 bg-muted/30 border border-border rounded-xl backdrop-blur-sm">
-              <p className="text-xs font-medium text-muted-foreground mb-1">Signed in as</p>
-              <p className="text-sm font-semibold truncate text-primary">{role}</p>
+        <div className="px-6 py-4 mb-4 mt-4 md:mt-0">
+           <div className="p-4 bg-white/5 border border-white/10 rounded-sm">
+              <p className="text-[10px] font-bold text-white/40 uppercase tracking-widest mb-1">Signed in as</p>
+              <p className="text-sm font-bold truncate text-accent italic">{role}</p>
            </div>
         </div>
 
-        <nav className="flex-1 px-4 space-y-1 overflow-y-auto">
+        <nav className="flex-1 px-6 space-y-1 overflow-y-auto">
           {navigation.map((item) => {
             const isActive = pathname === item.href;
             return (
@@ -107,23 +107,23 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
                 key={item.name}
                 href={item.href}
                 onClick={() => setIsMobileMenuOpen(false)}
-                className={`flex items-center gap-3 px-4 py-3 text-sm font-medium transition-all rounded-xl ${
-                  isActive ? "bg-primary/10 text-primary shadow-[0_0_15px_rgba(139,92,246,0.1)] ring-1 ring-primary/20" : "text-muted-foreground hover:bg-muted/50 hover:text-foreground"
+                className={`flex items-center gap-4 px-5 py-4 text-[10px] font-bold uppercase tracking-[0.2em] transition-all rounded-sm ${
+                  isActive ? "bg-white text-primary shadow-xl translate-x-2" : "text-white/50 hover:bg-white/5 hover:text-white"
                 }`}
               >
-                <item.icon className={`w-4 h-4 ${isActive ? "text-primary" : "text-muted-foreground"}`} />
+                <item.icon className={`w-4 h-4 ${isActive ? "text-primary" : "text-white/30"}`} />
                 {item.name}
               </Link>
             );
           })}
         </nav>
 
-        <div className="p-6 border-t border-border space-y-2 pb-safe">
+        <div className="p-8 border-t border-white/5 space-y-3 pb-safe">
           <Link 
             href="/dashboard/profile"
             onClick={() => setIsMobileMenuOpen(false)}
-            className={`w-full flex items-center gap-3 px-4 py-3 text-sm font-medium transition-all rounded-xl border ${
-               pathname === '/dashboard/profile' ? "bg-accent/10 text-accent border-accent/20" : "text-muted-foreground border-transparent hover:text-foreground hover:bg-muted/50"
+            className={`w-full flex items-center gap-4 px-5 py-4 text-[10px] font-bold uppercase tracking-[0.2em] transition-all border border-white/5 rounded-sm ${
+               pathname === '/dashboard/profile' ? "bg-accent text-white" : "text-white/40 hover:text-white hover:bg-white/5"
             }`}
           >
             <User className="w-4 h-4" />
@@ -131,7 +131,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
           </Link>
           <button
             onClick={() => signOut({ callbackUrl: window.location.origin })}
-            className="w-full flex items-center gap-3 px-4 py-3 text-sm font-medium text-rose-500 bg-rose-500/5 hover:bg-rose-500/10 transition-all rounded-xl border border-rose-500/10"
+            className="w-full flex items-center gap-4 px-5 py-4 text-[10px] font-bold uppercase tracking-[0.2em] text-rose-300 bg-rose-500/5 hover:bg-rose-500/20 transition-all border border-rose-500/10"
           >
             <LogOut className="w-4 h-4" />
             Sign Out
@@ -139,11 +139,8 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
         </div>
       </aside>
 
-      <main className="flex-1 md:ml-72 min-h-screen bg-background relative overflow-hidden">
-        <div className="absolute top-0 left-0 right-0 h-96 bg-gradient-to-b from-primary/5 to-transparent pointer-events-none" />
-        <div className="relative z-10 p-4 md:p-8">
-          {children}
-        </div>
+      <main className="flex-1 md:ml-72 min-h-screen">
+        {children}
       </main>
     </div>
   );
