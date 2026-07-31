@@ -8,7 +8,7 @@ import {
   MessageSquare, UserRoundPlus
 } from "lucide-react";
 import Link from "next/link";
-import WhatsAppBroadcastButton from "@/components/WhatsAppBroadcastButton";
+import BroadcastButton from "@/components/WhatsAppBroadcastButton";
 
 export default async function AdminDashboard() {
   const session = await getServerSession(authOptions);
@@ -112,12 +112,15 @@ export default async function AdminDashboard() {
               <ShieldCheck className="absolute -bottom-10 -right-10 w-40 h-40 text-white/10" />
               <h3 className="text-xl font-serif font-bold italic relative z-10">Quick Actions</h3>
               <div className="space-y-3 relative z-10">
-                <WhatsAppBroadcastButton />
+                <BroadcastButton />
                 <Link href="/dashboard/admin/whatsapp-logs" className="w-full py-4 bg-white/10 border border-white/20 hover:bg-white/20 text-xs font-bold uppercase tracking-widest transition-all flex items-center justify-center gap-2">
                   <MessageSquare className="w-4 h-4" /> View WA Logs
                 </Link>
                 <Link href="/dashboard/admin/assign" className="w-full py-4 bg-accent text-accent-foreground hover:shadow-lg text-xs font-bold uppercase tracking-widest transition-all flex items-center justify-center gap-2">
                   <Users className="w-4 h-4" /> Assign Mentors
+                </Link>
+                <Link href="/dashboard/admin/mentor-logs" className="w-full py-4 bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold uppercase tracking-widest transition-all flex items-center justify-center gap-2 shadow-lg">
+                  <ShieldCheck className="w-4 h-4" /> Faculty Logs Report
                 </Link>
               </div>
             </div>

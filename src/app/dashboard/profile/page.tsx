@@ -31,8 +31,8 @@ export default function ProfilePage() {
   }, []);
 
   const handleSave = async () => {
-    if (!formData.whatsapp || !formData.email) {
-       alert("WhatsApp number and Email are mandatory.");
+    if (!formData.name || !formData.name.trim()) {
+       alert("Display name cannot be empty.");
        return;
     }
 
@@ -41,9 +41,15 @@ export default function ProfilePage() {
       const res = await fetch("/api/profile", {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
+        // Only send fields the API accepts (name and image).
+        // WhatsApp changes go through the 'Request Change' button below.
+        body: JSON.stringify({ name: formData.name, image: formData.image }),
       });
       if (res.ok) alert("Profile updated successfully!");
+      else {
+        const err = await res.json();
+        alert(err.error || "Failed to update profile.");
+      }
     } catch (e) {
       console.error(e);
     } finally {

@@ -1,11 +1,24 @@
 import { prisma } from "@/lib/prisma";
 import { NextResponse } from "next/server";
+import { getServerSession } from "next-auth/next";
+import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import crypto from "crypto";
+import bcrypt from "bcryptjs";
 import { sendCredentialsEmail } from "@/lib/email";
 
 export async function POST(req: Request) {
   try {
+    // 🔐 SECURITY FIX: Auth guard — only ADMIN may approve/reject
+    const session = await getServerSession(authOptions);
+    if (!session || (session.user as any).role !== "ADMIN") {
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    }
+
     const { userId, action } = await req.json();
+
+    if (!userId || !action) {
+      return NextResponse.json({ error: "userId and action are required" }, { status: 400 });
+    }
 
     if (action === "REJECT") {
       await prisma.user.update({
@@ -18,37 +31,26 @@ export async function POST(req: Request) {
     if (action === "APPROVE") {
       // 1. Generate unique Login ID and Password
       const loginId = `TI-${Math.floor(100000 + Math.random() * 900000)}`;
-      const password = crypto.randomBytes(4).toString("hex"); // 8 chars
+      const rawPassword = crypto.randomBytes(4).toString("hex"); // 8 chars
 
-      // 2. Update User
+      // 🔐 SECURITY FIX: Hash password before storing in DB
+      const hashedPassword = await bcrypt.hash(rawPassword, 10);
+
+      // 2. Update User with hashed password
       const user = await prisma.user.update({
         where: { id: userId },
         data: {
           status: "APPROVED",
           loginId,
-          password, // In production, hash this!
+          password: hashedPassword,
         },
       });
 
-      // 3. Send Email Notification via AWS SES
+      // 3. Send Email Notification via AWS SES (with raw password — only sent via email, never stored plain)
       let emailResult = { success: false, error: "No email provided" };
       if (user.email) {
-        emailResult = await sendCredentialsEmail(user.email, user.role || "STUDENT", loginId, password, user.name);
+        emailResult = await sendCredentialsEmail(user.email, user.role || "STUDENT", loginId, rawPassword, user.name);
       }
-
-      // 4. Mock WhatsApp Message Trigger
-      console.log(`
-        ---------- WHATSAPP TRIGGER ----------
-        To: ${user.whatsapp}
-        Message: 
-        Welcome to Tracker India 🇮🇳
-        Your login credentials:
-        URL: https://trackerindia.com/login
-        User ID: ${loginId}
-        Password: ${password}
-        Stay consistent. Success is near.
-        --------------------------------------
-      `);
 
       return NextResponse.json({ 
         message: "User approved successfully",

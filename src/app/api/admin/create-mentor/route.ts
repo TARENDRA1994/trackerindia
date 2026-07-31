@@ -8,7 +8,8 @@ export async function POST(req: Request) {
   const session = await getServerSession(authOptions);
   
   // Strict Admin Check
-  if (!session?.user || (session.user as any).role !== "ADMIN" || session.user?.email !== "tarendra.garhewal2024@gmail.com") {
+  const adminEmail = process.env.ADMIN_EMAIL || "tarendra.garhewal2024@gmail.com";
+  if (!session?.user || (session.user as any).role !== "ADMIN" || session.user?.email !== adminEmail) {
     return NextResponse.json({ message: "Unauthorized" }, { status: 401 });
   }
 

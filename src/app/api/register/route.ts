@@ -39,7 +39,8 @@ export async function POST(req: Request) {
       },
     });
 
-    return NextResponse.json({ message: "Registration successful. Awaiting admin approval.", user }, { status: 201 });
+    // 🔐 SECURITY FIX: Do not return full user object — minimizes data exposure
+    return NextResponse.json({ message: "Registration successful. Awaiting admin approval." }, { status: 201 });
   } catch (error: any) {
     console.error("Registration error:", error);
     return NextResponse.json({ error: "Internal server error" }, { status: 500 });

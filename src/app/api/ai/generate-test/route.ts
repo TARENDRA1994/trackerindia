@@ -33,7 +33,10 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: "Daily limit reached. You can only generate one AI test per day." }, { status: 403 });
     }
 
-    const { subject, exam, count = 20 } = await req.json();
+    const { subject, exam, count: rawCount = 20 } = await req.json();
+
+    // 🔐 SECURITY FIX: Clamp count to a safe range to prevent excessive AI API costs
+    const count = Math.min(Math.max(parseInt(rawCount) || 20, 5), 30);
 
     const prompt = `
       Act as a seasoned UPSC (Union Public Service Commission) examiner. 

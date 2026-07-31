@@ -8,7 +8,8 @@ export async function POST(req: Request) {
   try {
     const session = await getServerSession(authOptions);
     if (!session?.user || !(session.user as any).id) {
-      console.error("Unauthorized medical log attempt - Session user id missing", session);
+      // 🔐 SECURITY FIX: Don't log full session object — it may contain sensitive tokens
+      console.error("Unauthorized medical log attempt - missing session user id");
       return NextResponse.json({ error: "Unauthorized - Please relogin" }, { status: 401 });
     }
 

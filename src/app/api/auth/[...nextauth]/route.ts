@@ -51,8 +51,9 @@ export const authOptions: NextAuthOptions = {
         if (!isPasswordValid) return null;
 
         // 3. Admin Restriction Check
-        if (user.role === "ADMIN" && user.email !== "tarendra.garhewal2024@gmail.com") {
-           console.warn("RESTRICTED: Admin login attempt by", user.email);
+        const adminEmail = process.env.ADMIN_EMAIL || "tarendra.garhewal2024@gmail.com";
+        if (user.role === "ADMIN" && user.email !== adminEmail) {
+           console.warn("RESTRICTED: Admin login attempt by", user.email ? user.email.substring(0, 4) + "***" : "unknown");
            return null;
         }
 
@@ -85,10 +86,11 @@ export const authOptions: NextAuthOptions = {
       return session;
     },
     async redirect({ url, baseUrl }) {
-      // If the url is absolute, just trust it.
-      // This bypasses the default NextAuth check that rejects URLs that don't match NEXTAUTH_URL exactly.
-      if (url.startsWith('http')) return url;
-      return url.startsWith('/') ? `${baseUrl}${url}` : baseUrl;
+      // 🔐 SECURITY FIX: Only trust absolute URLs that belong to our own domain.
+      // Prevents open redirect attacks via ?callbackUrl=https://evil.com
+      if (url.startsWith(baseUrl)) return url;
+      if (url.startsWith('/')) return `${baseUrl}${url}`;
+      return baseUrl;
     },
   },
   pages: {
@@ -97,7 +99,8 @@ export const authOptions: NextAuthOptions = {
   session: {
     strategy: "jwt",
   },
-  secret: process.env.NEXTAUTH_SECRET || "supersecret",
+  // 🔐 SECURITY FIX: No fallback secret. NEXTAUTH_SECRET must be set in production env.
+  secret: process.env.NEXTAUTH_SECRET,
 };
 
 const handler = NextAuth(authOptions);

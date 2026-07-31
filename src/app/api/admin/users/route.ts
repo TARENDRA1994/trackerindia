@@ -45,9 +45,21 @@ export async function PATCH(req: Request) {
     const body = await req.json();
     const { userId, status, mentorId, mentorIds, details, password } = body;
 
+    // 🔐 SECURITY FIX: Never spread untrusted 'details' directly into DB update.
+    // Only whitelist safe, non-sensitive fields to prevent role/status escalation.
+    const allowedDetailFields = ["name", "city", "state", "medium", "exam", "targetYear", "dob"] as const;
+    const safeDetails: Record<string, any> = {};
+    if (details && typeof details === "object") {
+      for (const field of allowedDetailFields) {
+        if (field in details) {
+          safeDetails[field] = details[field];
+        }
+      }
+    }
+
     const updateData: any = {
       ...(status && { status }),
-      ...(details && { ...details }),
+      ...(Object.keys(safeDetails).length > 0 && safeDetails),
     };
 
     // Handle multiple mentors

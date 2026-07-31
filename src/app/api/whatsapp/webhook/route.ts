@@ -5,6 +5,12 @@ const VERIFY_TOKEN = process.env.WHATSAPP_WEBHOOK_VERIFY_TOKEN;
 
 // Webhook verification for Meta setup
 export async function GET(req: Request) {
+  // 🔐 SECURITY FIX: Guard against missing VERIFY_TOKEN env var
+  if (!VERIFY_TOKEN) {
+    console.error("WHATSAPP_WEBHOOK_VERIFY_TOKEN is not configured.");
+    return new NextResponse("Forbidden", { status: 403 });
+  }
+
   const { searchParams } = new URL(req.url);
   const mode = searchParams.get("hub.mode");
   const token = searchParams.get("hub.verify_token");
@@ -25,7 +31,34 @@ export async function GET(req: Request) {
 // Handle incoming messages and status updates
 export async function POST(req: Request) {
   try {
+    // 🔐 SECURITY FIX: Verify Meta signature to reject spoofed webhook payloads
+    const appSecret = process.env.WHATSAPP_APP_SECRET;
+    if (appSecret) {
+      const rawBody = await req.text();
+      const signature = req.headers.get("x-hub-signature-256");
+      if (!signature) {
+        return new NextResponse("Forbidden", { status: 403 });
+      }
+      const crypto = await import("crypto");
+      const expectedSig = "sha256=" + crypto.createHmac("sha256", appSecret).update(rawBody).digest("hex");
+      if (signature !== expectedSig) {
+        console.warn("WhatsApp webhook signature mismatch — possible spoofed request");
+        return new NextResponse("Forbidden", { status: 403 });
+      }
+      const body = JSON.parse(rawBody);
+      return await handleWebhookBody(body);
+    }
+
     const body = await req.json();
+    return await handleWebhookBody(body);
+  } catch (error) {
+    console.error("Webhook POST Error:", error);
+    return new NextResponse("Internal Server Error", { status: 500 });
+  }
+}
+
+async function handleWebhookBody(body: any): Promise<NextResponse> {
+  try {
 
     if (body.object) {
       if (

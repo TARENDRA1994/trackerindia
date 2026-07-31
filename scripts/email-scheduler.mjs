@@ -23,15 +23,15 @@ const fromEmail = process.env.AWS_SES_FROM_EMAIL || "info@trackerindia.com";
 
 async function sendReminderEmail(toEmail, userName, role) {
   const isStudent = role === "STUDENT";
-  const actionText = isStudent ? "submit your study log" : "review your students' study logs";
-  const buttonText = isStudent ? "Submit Daily Log" : "Review Students";
-  const linkPath = isStudent ? "/dashboard/student/daily-log" : "/dashboard/mentor/students";
+  const actionText = isStudent ? "submit your study log" : "submit your faculty daily productivity log";
+  const buttonText = isStudent ? "Submit Daily Log" : "Submit Faculty Log";
+  const linkPath = isStudent ? "/dashboard/log" : "/dashboard/mentor-log";
 
-  const htmlBody = \`
+  const htmlBody = `
     <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #eaeaeb; border-radius: 8px;">
       <h2 style="color: #1E3A8A; border-bottom: 2px solid #1E3A8A; padding-bottom: 10px;">UPSC Tracker - Daily Reminder</h2>
       <p style="color: #333; font-size: 16px;">Hello \${userName}! 🌟</p>
-      <p style="color: #333; font-size: 16px;">This is your daily reminder to \${actionText}. Consistency is the key to clearing UPSC!</p>
+      <p style="color: #333; font-size: 16px;">This is your daily reminder to \${actionText}. Consistency is key!</p>
       
       <p style="color: #333; font-size: 16px; margin-top: 30px;">
         <a href="\${APP_URL}\${linkPath}" style="background-color: #1E3A8A; color: #ffffff; padding: 12px 24px; text-decoration: none; border-radius: 4px; display: inline-block; font-weight: bold;">\${buttonText}</a>
@@ -39,17 +39,17 @@ async function sendReminderEmail(toEmail, userName, role) {
       
       <p style="color: #666; font-size: 14px; margin-top: 30px;">
         Have you already done it? If so, great job! You can ignore this email.<br/><br/>
-        Stay consistent. Success is near.<br/>
+        Stay consistent.<br/>
         - A Unit of Mentorship India
       </p>
     </div>
-  \`;
+  `;
 
   const params = {
     Destination: { ToAddresses: [toEmail] },
     Message: {
       Body: { Html: { Charset: "UTF-8", Data: htmlBody } },
-      Subject: { Charset: "UTF-8", Data: \`🔔 Reminder: \${isStudent ? "Submit your Daily UPSC Study Log" : "Review Student Logs"}\` },
+      Subject: { Charset: "UTF-8", Data: \`🔔 Reminder: \${isStudent ? "Submit your Daily UPSC Study Log" : "Submit your Daily Faculty Log"}\` },
     },
     Source: fromEmail,
   };
