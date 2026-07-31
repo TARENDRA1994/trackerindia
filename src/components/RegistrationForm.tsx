@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { CheckCircle, AlertCircle, ChevronRight, Loader2 } from "lucide-react";
+import Link from "next/link";
 
 const states = [
   "Andhra Pradesh", "Arunachal Pradesh", "Assam", "Bihar", "Chhattisgarh", "Goa", "Gujarat", "Haryana", "Himachal Pradesh", "Jharkhand", "Karnataka", "Kerala", "Madhya Pradesh", "Maharashtra", "Manipur", "Meghalaya", "Mizoram", "Nagaland", "Odisha", "Punjab", "Rajasthan", "Sikkim", "Tamil Nadu", "Telangana", "Tripura", "Uttar Pradesh", "Uttarakhand", "West Bengal", "Delhi", "Puducherry"
@@ -81,9 +82,15 @@ export default function RegistrationForm() {
         <p className="text-foreground/80 mb-6">
           Thank you for joining <strong>Tracker India</strong>. Your application is now with our administrative team for verification.
         </p>
-        <p className="text-sm text-muted-foreground bg-muted p-4 rounded border">
+        <p className="text-sm text-muted-foreground bg-muted p-4 rounded border mb-6">
           You will receive a WhatsApp message with your login credentials once approved.
         </p>
+        <Link 
+          href="/login?role=STUDENT" 
+          className="inline-block w-full bg-primary hover:bg-primary/90 text-white p-4 font-semibold uppercase tracking-widest transition-all"
+        >
+          Go to Student Login
+        </Link>
       </motion.div>
     );
   }
@@ -246,6 +253,16 @@ export default function RegistrationForm() {
           </button>
         </div>
       </form>
+
+      <div className="mt-6 flex flex-col sm:flex-row items-center justify-between gap-4 pt-6 border-t border-border">
+        <p className="text-sm text-muted-foreground">Already registered?</p>
+        <Link 
+          href="/login?role=STUDENT" 
+          className="px-6 py-2 border border-primary text-primary hover:bg-primary hover:text-white transition-all text-xs font-bold uppercase tracking-widest"
+        >
+          Student Login
+        </Link>
+      </div>
       
       <p className="text-center text-[10px] text-muted-foreground mt-8 uppercase tracking-tighter">
         Secure Governance Protocol Enforced • Data Privacy Guaranteed

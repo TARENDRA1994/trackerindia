@@ -36,13 +36,7 @@ export async function GET(req: Request) {
       orderBy: { name: "asc" }
     });
 
-    // MASKING LOGIC: Only first 5 digits of phone visible
-    const maskedStudents = students.map(s => ({
-      ...s,
-      whatsapp: s.whatsapp ? s.whatsapp.substring(0, 5) + "*****" : "N/A"
-    }));
-
-    return NextResponse.json(maskedStudents);
+    return NextResponse.json(students);
   } catch (error) {
     console.error("Mentor API error:", error);
     return NextResponse.json({ error: "Internal server error" }, { status: 500 });

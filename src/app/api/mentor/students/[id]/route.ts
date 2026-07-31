@@ -38,13 +38,7 @@ export async function GET(
       return NextResponse.json({ error: "Student record not found or not assigned to you" }, { status: 404 });
     }
 
-    // Mask phone for privacy in detailed view too
-    const maskedStudent = {
-       ...student,
-       whatsapp: student.whatsapp ? student.whatsapp.substring(0, 5) + "*****" : "N/A"
-    };
-
-    return NextResponse.json(maskedStudent);
+    return NextResponse.json(student);
   } catch (error) {
     console.error("Mentor Detail API Error:", error);
     return NextResponse.json({ error: "Internal server error" }, { status: 500 });

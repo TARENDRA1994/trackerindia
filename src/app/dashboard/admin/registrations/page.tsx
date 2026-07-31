@@ -20,12 +20,18 @@ function RegistrationsContent() {
   const [selectedUser, setSelectedUser] = useState<any>(null);
   const [filter, setFilter] = useState(initialFilter);
   const [roleFilter, setRoleFilter] = useState(initialRole);
+  const [searchTerm, setSearchTerm] = useState("");
 
   const fetchUsers = async () => {
     setLoading(true);
     try {
-      let url = `/api/admin/users?status=${filter}`;
-      if (roleFilter) url += `&role=${roleFilter}`;
+      let url = "/api/admin/users";
+      const params = [];
+      if (filter && filter !== "ALL") params.push(`status=${filter}`);
+      if (roleFilter) params.push(`role=${roleFilter}`);
+      if (params.length > 0) {
+        url += `?${params.join("&")}`;
+      }
       
       const res = await fetch(url);
       const data = await res.json();
@@ -40,6 +46,13 @@ function RegistrationsContent() {
   useEffect(() => {
     fetchUsers();
   }, [filter, roleFilter]);
+
+  const filteredUsers = users.filter(user => 
+    user.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    (user.email && user.email.toLowerCase().includes(searchTerm.toLowerCase())) ||
+    (user.whatsapp && user.whatsapp.toLowerCase().includes(searchTerm.toLowerCase())) ||
+    (user.role && user.role.toLowerCase().includes(searchTerm.toLowerCase()))
+  );
 
   const handleUpdateStatus = async (userId: string, status: string) => {
     try {
@@ -90,7 +103,7 @@ function RegistrationsContent() {
           </div>
           
           <div className="flex flex-wrap gap-2">
-            {["PENDING", "APPROVED", "HOLD", "REJECTED"].map(s => (
+            {["ALL", "PENDING", "APPROVED", "HOLD", "REJECTED"].map(s => (
               <button 
                 key={s} 
                 onClick={() => { setFilter(s); setRoleFilter(""); }}
@@ -115,13 +128,24 @@ function RegistrationsContent() {
           </div>
         </div>
 
+        {/* Search Bar */}
+        <div className="relative w-full">
+          <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-stone-400 w-5 h-5" />
+          <input 
+             className="w-full pl-12 pr-4 py-4 bg-white border border-stone-200 shadow-md outline-none focus:border-primary transition-all text-sm font-semibold placeholder:text-stone-400"
+             placeholder="Search users by name, email, role, or WhatsApp number..."
+             value={searchTerm}
+             onChange={(e) => setSearchTerm(e.target.value)}
+          />
+        </div>
+
         {/* User List Matrix */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           {loading ? (
             <div className="col-span-full py-20 text-center text-stone-400 font-bold uppercase tracking-widest text-xs">
               Fetching Applications...
             </div>
-          ) : users.length > 0 ? users.map((user) => (
+          ) : filteredUsers.length > 0 ? filteredUsers.map((user) => (
             <motion.div 
                layoutId={user.id}
                key={user.id} 

@@ -89,7 +89,10 @@ export default function HomePage() {
           <Link href="#portals" onClick={() => setActiveSection("portals")} className={`pb-1 transition-colors ${activeSection === 'portals' ? 'text-[#00E676] border-b-2 border-[#00E676]' : 'hover:text-white'}`}>Portals</Link>
         </nav>
 
-        <div>
+        <div className="flex items-center gap-6">
+          <Link prefetch={false} href="/login?role=STUDENT" className="text-stone-300 hover:text-white text-sm font-semibold transition-colors">
+            Student Login
+          </Link>
           <Link prefetch={false} href="/register" className="bg-[#00E676] hover:bg-[#00E676]/90 text-[#0f141e] px-6 py-2.5 rounded-full font-bold text-sm transition-all shadow-[0_0_15px_rgba(0,230,118,0.3)]">
             Register
           </Link>
@@ -116,11 +119,11 @@ export default function HomePage() {
         </p>
         
         <div className="flex flex-col sm:flex-row items-center gap-4">
-          <Link prefetch={false} href="/register" className="bg-[#00E676] hover:bg-[#00E676]/90 text-[#0f141e] px-8 py-4 rounded-xl font-bold text-base transition-all flex items-center gap-2 shadow-[0_0_20px_rgba(0,230,118,0.2)] hover:scale-105">
-            Get Started Free <ArrowRight className="w-4 h-4" />
+          <Link prefetch={false} href="/login?role=STUDENT" className="bg-white/5 hover:bg-white/10 border border-white/10 text-white px-8 py-4 rounded-xl font-bold text-base transition-all hover:scale-105">
+            Student Login
           </Link>
-          <Link href="#features" className="bg-white/5 hover:bg-white/10 border border-white/10 text-white px-8 py-4 rounded-xl font-bold text-base transition-all">
-            Explore Features
+          <Link prefetch={false} href="/register" className="bg-[#00E676] hover:bg-[#00E676]/90 text-[#0f141e] px-8 py-4 rounded-xl font-bold text-base transition-all flex items-center gap-2 shadow-[0_0_20px_rgba(0,230,118,0.2)] hover:scale-105">
+            Register Now <ArrowRight className="w-4 h-4" />
           </Link>
         </div>
       </section>

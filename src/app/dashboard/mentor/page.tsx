@@ -57,7 +57,9 @@ export default function MentorDashboard() {
   useEffect(() => { fetchStudents(); }, []);
 
   const filteredStudents = students.filter(s => 
-    s.name.toLowerCase().includes(searchTerm.toLowerCase())
+    s.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    (s.email && s.email.toLowerCase().includes(searchTerm.toLowerCase())) ||
+    (s.whatsapp && s.whatsapp.toLowerCase().includes(searchTerm.toLowerCase()))
   );
 
   return (
@@ -87,7 +89,7 @@ export default function MentorDashboard() {
               <Search className="absolute left-6 top-1/2 -translate-y-1/2 text-stone-300 w-5 h-5" />
               <input 
                  className="w-full pl-16 pr-6 py-6 bg-white border border-stone-200 shadow-2xl outline-none focus:border-primary transition-all text-sm font-bold placeholder:text-stone-300 italic"
-                 placeholder="Search student by name or ID..."
+                 placeholder="Search student by name, email, or WhatsApp number..."
                  value={searchTerm}
                  onChange={(e) => setSearchTerm(e.target.value)}
               />
