@@ -13,6 +13,13 @@ export default function MentorAssignmentPage() {
   const [mentors, setMentors] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
   const [selectedStudent, setSelectedStudent] = useState<any>(null);
+  const [searchTerm, setSearchTerm] = useState("");
+
+  const filteredStudents = students.filter(s =>
+    s.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    (s.email && s.email.toLowerCase().includes(searchTerm.toLowerCase())) ||
+    (s.whatsapp && s.whatsapp.toLowerCase().includes(searchTerm.toLowerCase()))
+  );
 
   const fetchData = async () => {
     setLoading(true);
@@ -90,13 +97,18 @@ export default function MentorAssignmentPage() {
             <div className="flex items-center justify-between">
                <h2 className="text-xl font-serif font-bold text-primary italic">Active Aspirants</h2>
                <div className="bg-white border p-2 flex items-center gap-2">
-                  <Search className="w-4 h-4 text-stone-300" />
-                  <input placeholder="Search name..." className="text-xs outline-none bg-transparent" />
+                  <Search className="w-4 h-4 text-stone-400" />
+                  <input 
+                    placeholder="Search name, email, or number..." 
+                    className="text-xs outline-none bg-transparent" 
+                    value={searchTerm}
+                    onChange={(e) => setSearchTerm(e.target.value)}
+                  />
                </div>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              {loading ? <LoadingPulse /> : students.map((s) => (
+              {loading ? <LoadingPulse /> : filteredStudents.map((s) => (
                 <div 
                    key={s.id} 
                    className={`p-6 border-2 transition-all cursor-pointer relative overflow-hidden ${
