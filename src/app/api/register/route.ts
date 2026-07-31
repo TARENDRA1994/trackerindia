@@ -1,5 +1,6 @@
 import { prisma } from "@/lib/prisma";
 import { NextResponse } from "next/server";
+import { FraudDetector } from "@/lib/fraud-detector";
 
 export async function POST(req: Request) {
   try {
@@ -22,7 +23,15 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: "User with this email or WhatsApp already exists" }, { status: 400 });
     }
 
-    // Create pending user
+    // Run Fraud Detection Analysis
+    const fraudAnalysis = FraudDetector.analyze({ name, email, whatsapp, city, state });
+    const initialStatus = fraudAnalysis.score >= 50 ? "HOLD" : "PENDING";
+
+    if (initialStatus === "HOLD") {
+       console.warn(`[FRAUD ALERT] User ${email} marked as HOLD. Score: ${fraudAnalysis.score}. Reasons: ${fraudAnalysis.reasons.join(", ")}`);
+    }
+
+    // Create user (PENDING or HOLD)
     const user = await prisma.user.create({
       data: {
         name,
@@ -34,13 +43,17 @@ export async function POST(req: Request) {
         medium,
         exam,
         targetYear: parseInt(targetYear),
-        status: "PENDING",
+        status: initialStatus,
         role: "STUDENT",
       },
     });
 
     // 🔐 SECURITY FIX: Do not return full user object — minimizes data exposure
-    return NextResponse.json({ message: "Registration successful. Awaiting admin approval." }, { status: 201 });
+    return NextResponse.json({ 
+      message: initialStatus === "HOLD" 
+        ? "Registration received. Your account is under manual review." 
+        : "Registration successful. Awaiting admin approval." 
+    }, { status: 201 });
   } catch (error: any) {
     console.error("Registration error:", error);
     return NextResponse.json({ error: "Internal server error" }, { status: 500 });

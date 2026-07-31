@@ -6,7 +6,7 @@ import {
   Search, Filter, CheckCircle, XCircle, 
   PauseCircle, Edit3, MoreHorizontal, 
   MapPin, Clock, Calendar, Mail, 
-  Phone, Book, Target, Users, Trash2
+  Phone, Book, Target, Users, Trash2, AlertTriangle
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -164,12 +164,13 @@ function RegistrationsContent() {
                   </div>
                 </div>
                 <div className="flex flex-col items-end gap-2">
-                   <div className={`px-3 py-1 rounded-full text-[9px] font-bold uppercase tracking-widest ${
+                   <div className={`px-3 py-1 rounded-full text-[9px] font-bold uppercase tracking-widest flex items-center gap-1 ${
                      user.status === "APPROVED" ? "bg-emerald-50 text-emerald-600" : 
                      user.status === "PENDING" ? "bg-amber-50 text-amber-600" :
-                     user.status === "HOLD" ? "bg-blue-50 text-blue-600" : "bg-red-50 text-red-600"
+                     user.status === "HOLD" ? "bg-red-50 text-red-600 border border-red-200 shadow-sm" : "bg-stone-50 text-stone-600"
                    }`}>
-                     {user.status}
+                     {user.status === "HOLD" && <AlertTriangle className="w-3 h-3" />}
+                     {user.status === "HOLD" ? "FLAGGED (HOLD)" : user.status}
                    </div>
                    <div className="text-[8px] font-bold text-stone-300 uppercase tracking-widest">{user.role}</div>
                 </div>
